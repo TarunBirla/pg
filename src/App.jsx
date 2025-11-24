@@ -5,6 +5,11 @@ import Dashboard from "./admin/pages/Dashboard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./middleware/ProtectedRoute";
+import Home from "./components/Home";
+import Abouts from "./components/Abouts";
+import Besiness from "./components/Besiness";
+import NewUpdate from "./components/NewUpdate";
+import Contactus from "./components/Contactus";
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +25,12 @@ function App() {
       />
 
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        {/* <Route path="/" element={<LandingPage />} /> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/abouts" element={<Abouts />} />
+        <Route path="/besiness" element={<Besiness />} />
+        <Route path="/news" element={<NewUpdate />} />
+        <Route path="/contact" element={<Contactus />} />
         <Route path="/admin/login" element={<Login />} />
 
         <Route
