@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       <footer className="w-full relative">
-
+<img src="/img/line.png"/>
         {/* TOP FOOTER WITH BG IMAGE */}
         <div
           className="w-full bg-cover bg-center bg-no-repeat py-16"

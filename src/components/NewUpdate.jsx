@@ -1,6 +1,7 @@
 
 import React from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 
 
 const NewUpdate = () => {
@@ -22,6 +23,9 @@ const NewUpdate = () => {
       <section className="w-full">
         <img src="/img/image.png" alt="Contact Banner" className="w-full object-cover" />
       </section>
+
+<Footer/>
+
     </>
 
     )

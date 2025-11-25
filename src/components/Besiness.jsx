@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 
 
 const Besiness = () => {
@@ -56,6 +57,9 @@ const Besiness = () => {
           className="w-full object-cover"
         />
       </section>
+
+<Footer/>
+
     </>
   );
 };

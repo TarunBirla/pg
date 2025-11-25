@@ -1,13 +1,31 @@
 // Header.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";  // optional icons
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // 👇 Detect scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="w-full fixed top-3 left-0 z-50 ">
+    <header
+      className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 
+      ${isScrolled ? "bg-black shadow-lg" : "bg-transparent"}`}
+    >
       <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
 
         {/* LOGO */}
