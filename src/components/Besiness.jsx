@@ -3,7 +3,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import GlobalMap from "./GlobalMap";
 
-
 const Besiness = () => {
   return (
     <>
@@ -20,7 +19,6 @@ const Besiness = () => {
         {/* CONTENT OVER IMAGE */}
         <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
           <div className="max-w-xl text-white">
-
             {/* Breadcrumb */}
             <div className="flex items-center gap-2">
               <span className="w-15 h-[2px] bg-[#40BD02]"></span>
@@ -28,9 +26,7 @@ const Besiness = () => {
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Businesses
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Businesses</h1>
 
             {/* Green line left */}
             <div className="flex gap-3 items-start">
@@ -48,8 +44,6 @@ const Besiness = () => {
         </div>
       </section>
 
-      
-
       {/* SECOND IMAGE */}
       <section className="w-full">
         <img
@@ -58,11 +52,199 @@ const Besiness = () => {
           className="w-full object-cover"
         />
       </section>
-      <GlobalMap/>
-      
 
-<Footer/>
+      {/* BUSINESSES SECTION */}
+      <section className="w-full py-12 mb-5 px-6 md:px-12 lg:px-20">
+        <div className="mb-10">
+          <p className="text-[#86C200] font-semibold tracking-wide">BUSINESS</p>
+          <h2 className="text-4xl md:text-5xl font-bold">Businesses</h2>
+        </div>
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+
+            <div className="relative group cursor-pointer">
+              <img
+                src="/img/b.png"
+                className="w-full h-48 object-cover "
+              />
+
+              <div className="absolute inset-0 bg-black/20 "></div>
+
+              <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
+                Real Estate Division
+              </p>
+
+              <div className="absolute left-3 bottom-4 w-[75%] h-[1px] bg-gradient-to-r from-[#C1FF00] to-[#2295CA]"></div>
+
+              <span className="absolute bottom-2 right-3 text-white text-xl">
+                <img src="/img/icon.png" />
+              </span>
+            </div>
+
+            <div className="relative group cursor-pointer">
+              <img
+                src="/img/b.png"
+                className="w-full h-48 object-cover "
+              />
+
+              <div className="absolute inset-0 bg-black/20 rounded"></div>
+
+              <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
+                Township Development
+              </p>
+
+              <div className="absolute left-3 bottom-4 w-[75%] h-[1px] bg-gradient-to-r from-[#C1FF00] to-[#2295CA]"></div>
+
+              <span className="absolute bottom-2 right-3 text-white text-xl">
+                <img src="/img/icon.png" />
+              </span>
+            </div>
+
+            <div className="relative group cursor-pointer">
+              <img
+                src="/img/b.png"
+                className="w-full h-48 object-cover "
+              />
+
+              <div className="absolute inset-0 bg-black/20 rounded"></div>
+
+              <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
+                Manufacturing and Export
+              </p>
+
+              <div className="absolute left-3 bottom-4 w-[75%] h-[1px] bg-gradient-to-r from-[#C1FF00] to-[#2295CA]"></div>
+
+              <span className="absolute bottom-2 right-3 text-white text-xl">
+                <img src="/img/icon.png" />
+              </span>
+            </div>
+
+            <div className="relative group cursor-pointer">
+              <img
+                src="/img/b.png"
+                className="w-full h-48 object-cover "
+              />
+
+              <div className="absolute inset-0 bg-black/20 rounded"></div>
+
+              <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
+                Fashion & Retail Division
+              </p>
+
+              <div className="absolute left-3 bottom-4 w-[75%] h-[1px] bg-gradient-to-r from-[#C1FF00] to-[#2295CA]"></div>
+
+              <span className="absolute bottom-2 right-3 text-white text-xl">
+                <img src="/img/icon.png" />
+              </span>
+            </div>
+
+            <div className="relative group cursor-pointer sm:col-span-2">
+             <img
+                src="/img/b.png"
+                className="w-full h-48 object-cover"
+              />
+
+              <div className="absolute inset-0 bg-black/20 rounded"></div>
+
+              <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
+                Education & Skill Development
+              </p>
+
+              <div className="absolute left-3 bottom-4 w-[75%] h-[1px] bg-gradient-to-r from-[#C1FF00] to-[#2295CA]"></div>
+
+              <span className="absolute bottom-2 right-3 text-white text-xl">
+                <img src="/img/icon.png" />
+              </span>
+              
+            </div>
+          </div>
+
+          {/* RIGHT BIG FEATURE CARD */}
+          <div className="relative h-full cursor-pointer">
+            <img src="/img/b.png" className="w-full h-full object-cover" />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
+            <p className="absolute bottom-12 left-6 text-white text-2xl font-semibold">
+              Education & Skill Development
+            </p>
+
+            <div className="absolute bottom-10 left-6 flex items-center">
+              <div className="w-28 h-[2px] bg-gradient-to-r from-[#C1FF00] to-[#2295CA]"></div>
+
+              <div className="w-[320px] h-[2px] bg-white ml-1"></div>
+            </div>
+
+            <div className="absolute bottom-3 left-6 flex items-center gap-2 text-white font-semibold text-lg">
+              <span>Explore More</span>
+              <span className="text-xl">⟶</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <img src="/img/line.png" />
+
+
+      {/* JOIN US SECTION */}
+<section className="w-full py-12 mb-5 px-6 md:px-12 lg:px-20">
+  {/* Heading */}
+  <div className="mb-10">
+    <p className="text-[#86C200] font-semibold tracking-wide">CAREERS</p>
+    <h2 className="text-4xl md:text-5xl font-bold">JOIN US</h2>
+  </div>
+
+  {/* GRID BLOCKS */}
+<div className="grid grid-cols-12 gap-3 mt-10">
+
+  {/* 1️⃣ TOP LEFT (5 columns) */}
+  <div className="col-span-12 md:col-span-5 h-[220px]">
+    <img
+      src="/img/b.png"
+      alt=""
+      className="w-full h-full object-cover rounded"
+    />
+  </div>
+
+  {/* 2️⃣ TOP RIGHT (7 columns) */}
+  <div className="col-span-12 md:col-span-7 h-[220px] bg-[#1E6FB6] text-white p-10 rounded flex flex-col justify-center">
+    <h3 className="text-2xl font-semibold mb-3">Businesses in India</h3>
+    <p className="text-sm leading-relaxed max-w-md">
+      Building upon its international expertise, Premier Group has diversified
+      its presence in India across multiple.
+    </p>
+  </div>
+
+  {/* ---------- SECOND ROW (4/4/4) ---------- */}
+
+  {/* 3️⃣ GREEN LEFT BLOCK */}
+  <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] rounded"></div>
+
+  {/* 4️⃣ MIDDLE BLUE "200+" BLOCK */}
+  <div className="col-span-12 md:col-span-4 h-[220px] bg-[#1E6FB6] text-white rounded flex flex-col items-center justify-center text-center p-6">
+    <img src="/img/iconusers.png" className="w-12 mb-3" />
+    <h3 className="text-3xl font-bold">200+</h3>
+    <p className="text-sm mt-1">Employees at the Premier Group</p>
+  </div>
+
+  {/* 5️⃣ GREEN RIGHT TEXT BLOCK */}
+  <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] text-white rounded p-6 flex flex-col justify-center">
+    <h3 className="text-xl font-semibold mb-2">Featured Jobs</h3>
+    <p className="text-sm leading-relaxed">
+      Building upon its international expertise, Premier Group has diversified
+      its presence.
+    </p>
+  </div>
+
+</div>
+
+</section>
+
+
+      <GlobalMap />
+
+      <Footer />
     </>
   );
 };
