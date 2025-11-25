@@ -1,185 +1,96 @@
-import React, { useEffect, useState } from "react";
-import http from "../../service/http";
-import { toast } from "react-toastify";
-import Select from "react-select";
-import { baseURL } from "../../service/api";
+import { FileText, FlameIcon, Home, Users } from "lucide-react";
 
-const DashboardPage = () => {
+const StatsCard = ({ title, value, change, icon: Icon, color }) => {
   return (
-    <div className="p-8">
-      <h2 className="text-2xl font-semibold mb-4">Dashboard</h2>
-      {/* Add your dashboard content here */}
-      <CreateBanner />
-      <BannerList />
-    </div>
-  );
-};
-
-export default DashboardPage;
-
-const CreateBanner = () => {
-  const [form, setForm] = useState({
-    heading: "",
-    subheading: "",
-    description: "",
-    order: 0,
-  });
-
-  const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState("");
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleFile = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-    setPreview(URL.createObjectURL(file));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!image) {
-      alert("Image is required");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("heading", form.heading);
-    formData.append("subheading", form.subheading);
-    formData.append("description", form.description);
-    formData.append("order", form.order);
-    formData.append("image", image);
-
-    try {
-      const res = await http.post("/banners", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      toast.success(res.data.message || "Banner created successfully"); // redirect after success
-    } catch (error) {
-      console.error("Create error:", error);
-      alert("Failed to create banner");
-    }
-  };
-
-  return (
-    <div className="p-8 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Create Banner</h1>
-
-      <form onSubmit={handleSubmit} className="space-y-5">
+    <div className="bg-white rounded-lg shadow p-6 border border-gray-200">
+      <div className="flex items-center justify-between">
         <div>
-          <label className="font-medium">Heading</label>
-          <input
-            type="text"
-            name="heading"
-            value={form.heading}
-            onChange={handleChange}
-            className="w-full border px-3 py-2 rounded mt-1"
-          />
-        </div>
-
-        <div>
-          <label className="font-medium">Subheading</label>
-          <input
-            type="text"
-            name="subheading"
-            value={form.subheading}
-            onChange={handleChange}
-            className="w-full border px-3 py-2 rounded mt-1"
-          />
-        </div>
-
-        <div>
-          <label className="font-medium">Description</label>
-          <textarea
-            name="description"
-            value={form.description}
-            onChange={handleChange}
-            className="w-full border px-3 py-2 rounded mt-1"
-          />
-        </div>
-
-        <div>
-          <label className="font-medium">Order</label>
-          <input
-            type="number"
-            name="order"
-            value={form.order}
-            onChange={handleChange}
-            className="w-full border px-3 py-2 rounded mt-1"
-          />
-        </div>
-
-        <div>
-          <label className="font-medium">Upload Image</label>
-          <input type="file" accept="image/*" onChange={handleFile} />
-          {preview && (
-            <img
-              src={preview}
-              alt="Preview"
-              className="mt-3 w-full h-40 object-cover rounded"
-            />
+          <p className="text-sm text-gray-600 mb-1">{title}</p>
+          <p className="text-2xl font-bold text-gray-900">{value}</p>
+          {change && (
+            <p
+              className={`text-sm mt-2 ${
+                change >= 0 ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {change >= 0 ? "↑" : "↓"} {Math.abs(change)}% from last month
+            </p>
           )}
         </div>
-
-        <button
-          type="submit"
-          className="bg-green-600 text-white px-4 py-2 rounded-lg"
+        <div
+          className={`w-12 h-12 ${color} rounded-lg flex items-center justify-center`}
         >
-          Create Banner
-        </button>
-      </form>
+          <Icon size={24} className="text-white" />
+        </div>
+      </div>
     </div>
   );
 };
 
-const BannerList = () => {
-  const [banners, setBanners] = useState([]);
-
-  const getBanners = async () => {
-    try {
-      const res = await http.get("/banners");
-      setBanners(res.data);
-    } catch (error) {
-      console.error("Fetch banner error:", error);
-    }
-  };
-
-  useEffect(() => {
-    getBanners();
-  }, []);
-
+// Dashboard Home Content
+const DashboardHome = () => {
   return (
-    <div className="p-8">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Banner List</h1>
-        <a href="#" className="px-4 py-2 bg-blue-600 text-white rounded-lg">
-          + Create Banner
-        </a>
+    <div className="space-y-6">
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <StatsCard
+          title="Total Banners"
+          value="24"
+          change={12}
+          icon={FlameIcon}
+          color="bg-blue-500"
+        />
+        <StatsCard
+          title="Total Posts"
+          value="142"
+          change={8}
+          icon={FileText}
+          color="bg-green-500"
+        />
+        <StatsCard
+          title="Total Users"
+          value="1,428"
+          change={-3}
+          icon={Users}
+          color="bg-purple-500"
+        />
+        <StatsCard
+          title="Active Sessions"
+          value="89"
+          change={15}
+          icon={Home}
+          color="bg-orange-500"
+        />
       </div>
 
-      {banners.length === 0 ? (
-        <p>No banners found</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {banners.map((item) => (
-            <div key={item.id} className="border rounded-lg p-4 shadow">
-              <img
-                src={`${baseURL}${item.image_url}`}
-                alt="Banner"
-                className="w-full h-40 object-cover rounded"
-              />
-              <h3 className="text-lg font-semibold mt-3">{item.heading}</h3>
-              <p className="text-sm text-gray-600">{item.subheading}</p>
-              <p className="text-xs text-gray-500 mt-1">{item.description}</p>
-              <p className="text-xs font-bold mt-2">Order: {item.order}</p>
-            </div>
-          ))}
+      {/* Recent Activity */}
+      <div className="bg-white rounded-lg shadow border border-gray-200">
+        <div className="p-4 md:p-6 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-800">
+            Recent Activity
+          </h2>
         </div>
-      )}
+        <div className="p-4 md:p-6">
+          <div className="space-y-4">
+            {[1, 2, 3, 4, 5].map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-4 pb-4 border-b border-gray-100 last:border-0"
+              >
+                <div className="w-10 h-10 bg-gray-200 rounded-full flex-shrink-0"></div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 truncate">
+                    User performed action #{item}
+                  </p>
+                  <p className="text-xs text-gray-500">2 hours ago</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
+
+export default DashboardHome;
