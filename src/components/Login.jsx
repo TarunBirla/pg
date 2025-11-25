@@ -87,7 +87,7 @@ const Login = () => {
         <div className="relative z-10 bg-[#1A3F51]/90 text-white p-8 rounded-[8px] shadow w-full max-w-[711.770751953125px]">
           <div className="flex flex-col items-center">
             <h2 className="text-[26px] font-semibold text-center">
-              HYSTER-YALE GROUP ADMINISTRATION LOGIN!
+              PREMIER GROUP ADMINISTRATION LOGIN!
             </h2>
             <p className="text-[13px] w-[347.16650390625px] mt-2 font-normal text-center mb-4">
               Use a valid username & password to gain access to the
