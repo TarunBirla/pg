@@ -30,7 +30,9 @@ const Header = () => {
 
         {/* LOGO */}
         <div className="flex items-center space-x-2">
+          <Link to="/">
           <img src="/img/Logo.png" alt="PG Logo" className="h-[80px] w-[150px]" />
+          </Link>
         </div>
 
         {/* Desktop Menu */}

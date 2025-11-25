@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import GlobalMap from "./GlobalMap";
 
 
 const Besiness = () => {
@@ -57,6 +58,8 @@ const Besiness = () => {
           className="w-full object-cover"
         />
       </section>
+      <GlobalMap/>
+      
 
 <Footer/>
 

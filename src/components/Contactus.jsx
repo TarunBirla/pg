@@ -3,6 +3,7 @@ import React from "react";
 import { Phone, Mail, Instagram, Linkedin } from "lucide-react";
 import Header from "./Header";
 import Footer from "./Footer";
+import GlobalMap from "./GlobalMap";
 
 
 const Contactus = () => {
@@ -166,6 +167,8 @@ const Contactus = () => {
           </div>
         </div>
       </section>
+      <GlobalMap/>
+
 
 <Footer/>
 

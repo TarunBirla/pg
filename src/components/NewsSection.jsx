@@ -1,0 +1,138 @@
+import { useRef } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+export default function NewsSection() {
+  const sliderRef = useRef(null);
+
+  const news = [
+    {
+      id: 1,
+      img: "/img/s1.png",
+      title:
+        "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
+      date: "November 2, 2025",
+      desc: "Sonarpur (West Bengal) [India], January 12: Premier Global School,",
+    },
+    {
+      id: 2,
+      img: "/img/s2.png",
+      title:
+        "Integrated Townships: Premier Group’s Vision for Modern, Sustainable Living",
+      date: "November 2, 2025",
+      desc: "In today’s fast-paced world, urban spaces focus on communities where people can live, work, learn, and thrive.",
+    },
+    {
+      id: 3,
+      img: "/img/s3.png",
+      title: "Growth with Purpose: The Journey of Premier Group",
+      date: "November 2, 2025",
+      desc: "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
+    },
+    {
+      id: 1,
+      img: "/img/s1.png",
+      title:
+        "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
+      date: "November 2, 2025",
+      desc: "Sonarpur (West Bengal) [India], January 12: Premier Global School,",
+    },
+    {
+      id: 2,
+      img: "/img/s2.png",
+      title:
+        "Integrated Townships: Premier Group’s Vision for Modern, Sustainable Living",
+      date: "November 2, 2025",
+      desc: "In today’s fast-paced world, urban spaces focus on communities where people can live, work, learn, and thrive.",
+    },
+    {
+      id: 3,
+      img: "/img/s3.png",
+      title: "Growth with Purpose: The Journey of Premier Group",
+      date: "November 2, 2025",
+      desc: "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
+    }
+  ];
+
+  const scrollLeft = () => {
+    sliderRef.current.scrollBy({ left: -350, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    sliderRef.current.scrollBy({ left: 350, behavior: "smooth" });
+  };
+
+  return (
+    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-20">
+      
+      {/* Heading */}
+      <div className="mb-12">
+        <p className="text-green-600 font-semibold tracking-wide">BLOG</p>
+        <h2 className="text-4xl font-bold mt-2">News & Updates</h2>
+      </div>
+
+      {/* Slider Row */}
+      <div className="relative w-full max-w-7xl mx-auto">
+        <div
+          ref={sliderRef}
+          className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth"
+        >
+          {news.map((item) => (
+            <div
+              key={item.id}
+              className="min-w-[360px] bg-white rounded-xl  transition p-4"
+            >
+              <img
+                src={item.img}
+                alt={item.title}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+
+              <p className="text-gray-500 text-sm mb-2">{item.date}</p>
+
+              <h3 className="font-bold text-lg mb-3 leading-tight">
+                {item.title}
+              </h3>
+
+              <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Buttons */}
+        <div className="flex justify-end gap-4 mt-6">
+          <button
+            onClick={scrollLeft}
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100"
+          >
+            <FaChevronLeft />
+          </button>
+
+          <button
+            onClick={scrollRight}
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100"
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+      </div>
+
+       <style>
+        {`
+            /* Hide scrollbar for Chrome, Safari, Edge */
+
+  .hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+            `}
+      </style>
+    </section>
+  );
+}

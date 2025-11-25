@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Swiper
@@ -11,6 +11,8 @@ import "swiper/css/pagination";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Header from "./Header";
 import Footer from "./Footer";
+import GlobalMap from "./GlobalMap";
+import NewsSection from "./NewsSection";
 
 const slides = [
   {
@@ -73,6 +75,68 @@ const tabs = [
   },
 ];
 
+const news = [
+  {
+    id: 1,
+    img:"/img/s1.png",
+    title: "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
+    date:"November 2, 2025",
+    desc:"Sonarpur (West Bengal) [India], January 12: Premier Global School,"
+
+
+  },
+  {
+    id: 2,
+    img:"/img/s2.png",
+
+    title: "Integrated Townships: Premier Group’s Vision for Modern, Sustainable Living",
+    date:"November 2, 2025",
+    desc:"In today’s fast-paced world, urban spaces are no longer just about buildings—they are about creating communities where people can live, work, learn, and thrive."
+
+
+
+  },
+  {
+    id: 3,
+    img:"/img/s3.png",
+
+    title: "Growth with Purpose: The Journey of Premier Group",
+    date:"November 2, 2025",
+    desc:"Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal"
+
+  },
+   {
+    id: 1,
+    img:"/img/s1.png",
+    title: "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
+    date:"November 2, 2025",
+    desc:"Sonarpur (West Bengal) [India], January 12: Premier Global School,"
+
+
+  },
+  {
+    id: 2,
+    img:"/img/s2.png",
+
+    title: "Integrated Townships: Premier Group’s Vision for Modern, Sustainable Living",
+    date:"November 2, 2025",
+    desc:"In today’s fast-paced world, urban spaces are no longer just about buildings—they are about creating communities where people can live, work, learn, and thrive."
+
+
+
+  },
+  {
+    id: 3,
+    img:"/img/s3.png",
+
+    title: "Growth with Purpose: The Journey of Premier Group",
+    date:"November 2, 2025",
+    desc:"Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal"
+
+  },
+ 
+];
+
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -81,6 +145,14 @@ const Home = () => {
   const [active, setActive] = useState(2); // default open tab
 
   const activeTab = tabs.find((t) => t.id === active);
+
+   const sliderRef = useRef(null);
+    const scrollLeft = () => {
+    sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
+  };
+  const scrollRight = () => {
+    sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -518,7 +590,10 @@ const Home = () => {
       </div>
     </section>
 
+    {/* New Update */}
+ <NewsSection/>
 
+<GlobalMap/>
 
       <Footer />
     </>

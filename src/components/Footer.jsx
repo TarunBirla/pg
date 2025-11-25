@@ -1,19 +1,20 @@
+import { Instagram, Linkedin } from "lucide-react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <>
       <footer className="w-full relative">
-<img src="/img/line.png"/>
+        <img src="/img/line.png" />
         {/* TOP FOOTER WITH BG IMAGE */}
         <div
           className="w-full bg-cover bg-center bg-no-repeat py-16"
-          style={{ backgroundImage: 'url("/img/footerbgimage.png")' }}
+          style={{ backgroundImage: 'url("/img/footerbgimg.png")' }}
         >
-          <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
-
+          <div className="max-w-6xl mb-20  mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
             {/* LEFT LARGE COLUMN - COL 4 */}
-            <div className="md:col-span-5">
+            <div className="md:col-span-4">
               <img
                 src="/img/Logo.png"
                 alt="PG Logo"
@@ -21,34 +22,50 @@ const Footer = () => {
               />
 
               <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
-                Premier Group unites under a shared vision to drive sustainable growth,
-                empower communities, and inspire progress for future generations.
+                Premier Group unites under a shared vision to drive sustainable
+                growth, empower communities, and inspire progress for future
+                generations.
               </p>
             </div>
 
             {/* RIGHT COLUMNS (Quick Links + Legal + Contact) - COL 8 */}
-            <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-10">
-
-              {/* QUICK LINKS */}
+            <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-4 gap-10 items-start">
+              {/* QUICK LINK */}
               <div>
                 <h4 className="text-lg font-semibold mb-4">Quick Link</h4>
-
                 <ul className="space-y-2 text-gray-700 text-sm">
-                  <li className="hover:text-[#40BD02] cursor-pointer">Home</li>
-                  <li className="hover:text-[#40BD02] cursor-pointer">About Us</li>
-                  <li className="hover:text-[#40BD02] cursor-pointer">Businesses</li>
-                  <li className="hover:text-[#40BD02] cursor-pointer">News & Updates</li>
-                  <li className="hover:text-[#40BD02] cursor-pointer">Contact Us</li>
+                  <li className="hover:text-[#40BD02] cursor-pointer">
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li className="hover:text-[#40BD02] cursor-pointer">
+                    {" "}
+                    <Link to="/abouts">About Us</Link>
+                  </li>
+                  <li className="hover:text-[#40BD02] cursor-pointer">
+                    {" "}
+                    <Link to="/besiness">Businesses</Link>
+                  </li>
+                  <li className="hover:text-[#40BD02] cursor-pointer">
+                    {" "}
+                    <Link to="/news">News & Updates</Link>
+                  </li>
+                  <li className="hover:text-[#40BD02] cursor-pointer">
+                    {" "}
+                    <Link to="/contact">Contact Us</Link>
+                  </li>
                 </ul>
               </div>
 
               {/* LEGAL */}
               <div>
                 <h4 className="text-lg font-semibold mb-4">Legal</h4>
-
                 <ul className="space-y-2 text-gray-700 text-sm">
-                  <li className="hover:text-[#40BD02] cursor-pointer">Terms & Conditions</li>
-                  <li className="hover:text-[#40BD02] cursor-pointer">Privacy Policy</li>
+                  <li className="hover:text-[#40BD02] cursor-pointer">
+                    Terms & Conditions
+                  </li>
+                  <li className="hover:text-[#40BD02] cursor-pointer">
+                    Privacy Policy
+                  </li>
                 </ul>
               </div>
 
@@ -56,30 +73,51 @@ const Footer = () => {
               <div>
                 <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
 
-                <div className="text-gray-700 text-sm space-y-3">
-
+                <div className="text-gray-700 text-sm space-y-4">
                   <div>
-                    <p className="text-gray-500">Phone :</p>
-                    <p className="text-[#40BD02] font-semibold">+9103340896344</p>
+                    <p className="text-[#2295CA]">Phone :</p>
+                    <p className=" font-semibold">+9103340896344</p>
                   </div>
 
                   <div>
-                    <p className="text-gray-500">Email :</p>
-                    <p className="text-[#40BD02] font-semibold">contact@premiergroup.co</p>
-                  </div>
-
-                  <div className="flex items-center gap-4 pt-2 text-2xl">
-                    <a href="#" className="text-[#40BD02] hover:text-[#37B8E1] transition">
-                      <FaInstagram />
-                    </a>
-
-                    <a href="#" className="text-[#40BD02] hover:text-[#37B8E1] transition">
-                      <FaLinkedin />
-                    </a>
+                    <p className="text-[#2295CA]">Email :</p>
+                    <p className="font-semibold">contact@premiergroup.co</p>
                   </div>
                 </div>
               </div>
 
+              {/* DIVIDER + SOCIAL ICONS */}
+              <div className="flex items-center space-x-6">
+                {/* VERTICAL LINE */}
+                <div className="h-30 w-[1px] bg-black/40"></div>
+
+                {/* SOCIAL ICONS */}
+
+                {/* <div className="flex space-x-1">
+      <div className="p-2 rounded">
+        <Instagram
+          size={24}
+          className=" text-gradient-to-br from-[#37B8E1] to-[#40BD02]"
+        />
+      </div>
+
+      <div className="p-2 rounded">
+        <Linkedin
+          size={24}
+          className=" text-gradient-to-br from-[#37B8E1] to-[#40BD02]"
+        />
+      </div>
+    </div> */}
+                <div className="flex space-x-1">
+                  <div className="p-2 rounded">
+                    <Instagram size={24} className="text-[#37B8E1] " />
+                  </div>
+
+                  <div className="p-2 rounded">
+                    <Linkedin size={24} className="text-[#37B8E1]  " />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -92,7 +130,6 @@ const Footer = () => {
           </span>
           . All rights reserved.
         </div>
-
       </footer>
     </>
   );
