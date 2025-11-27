@@ -75,33 +75,61 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-black text-white px-6 py-6 space-y-4">
-          <Link to="/" onClick={() => setMenuOpen(false)}>
-            Home
-          </Link>
-          <Link to="/abouts" onClick={() => setMenuOpen(false)}>
-            About
-          </Link>
-          <Link to="/besiness" onClick={() => setMenuOpen(false)}>
-            Businesses
-          </Link>
-          <Link to="/news" onClick={() => setMenuOpen(false)}>
-            News & Updates
-          </Link>
-          <Link to="/contact" onClick={() => setMenuOpen(false)}>
-            Contact Us
-          </Link>
+    {menuOpen && (
+  <div className="md:hidden bg-black text-white px-6 py-6 flex flex-col gap-4">
+    
+    <Link 
+      to="/" 
+      onClick={() => setMenuOpen(false)} 
+      className="block text-lg font-medium"
+    >
+      Home
+    </Link>
 
-          <Link
-            to="/admin/login"
-            className="block text-center py-2 rounded-md bg-gradient-to-r from-[#40BD02] to-[#37B8E1]"
-            onClick={() => setMenuOpen(false)}
-          >
-            Businesses
-          </Link>
-        </div>
-      )}
+    <Link 
+      to="/abouts" 
+      onClick={() => setMenuOpen(false)} 
+      className="block text-lg font-medium"
+    >
+      About
+    </Link>
+
+    <Link 
+      to="/besiness" 
+      onClick={() => setMenuOpen(false)} 
+      className="block text-lg font-medium"
+    >
+      Businesses
+    </Link>
+
+    <Link 
+      to="/news" 
+      onClick={() => setMenuOpen(false)} 
+      className="block text-lg font-medium"
+    >
+      News & Updates
+    </Link>
+
+    <Link 
+      to="/contact" 
+      onClick={() => setMenuOpen(false)} 
+      className="block text-lg font-medium"
+    >
+      Contact Us
+    </Link>
+
+    {/* Gradient Button */}
+    <Link
+      to="/besiness"
+      onClick={() => setMenuOpen(false)}
+      className="mt-4 block text-center py-2 rounded-md bg-gradient-to-r from-[#40BD02] to-[#37B8E1] font-semibold"
+    >
+      Businesses
+    </Link>
+
+  </div>
+)}
+
     </header>
   );
 };

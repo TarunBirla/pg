@@ -52,26 +52,35 @@ const tabs = [
     id: 1,
     title: "Manufacturing and Export",
     color: "bg-gradient-to-b from-[#40BD02] to-[#37B8E1]",
+    img:"/img/home.png"
   },
   {
     id: 2,
     title: "Real Estate Division",
     color: "bg-gradient-to-b from-[#37B8E1] to-[#40BD02]",
+    img:"/img/contact.png"
+
   },
   {
     id: 3,
     title: "Township Development",
     color: "bg-gradient-to-b from-[#40BD02] to-[#37B8E1]",
+    img:"/img/home.png"
+
   },
   {
     id: 4,
     title: "Fashion & Retail Division",
     color: "bg-gradient-to-b from-[#37B8E1] to-[#40BD02]",
+    img:"/img/about.png"
+
   },
   {
     id: 5,
     title: "Education & Skill Development",
     color: "bg-gradient-to-b from-[#40BD02] to-[#37B8E1]",
+    img:"/img/contact.png"
+
   },
 ];
 
@@ -254,6 +263,40 @@ const Home = () => {
             ))}
           </Swiper>
         </div>
+
+         <div className="block lg:hidden absolute bottom-8 right-8 w-[105px] z-20">
+          <Swiper
+            modules={[Navigation, Thumbs, Controller]}
+            slidesPerView={2}
+            spaceBetween={15}
+            onSwiper={(swiper) => (thumbSwiperRef.current = swiper)}
+            controller={{ control: mainSwiperRef.current }}
+            watchSlidesProgress={true}
+            slideToClickedSlide={true}
+          >
+            {slides.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  onClick={() => mainSwiperRef.current.slideTo(index)}
+                  className={`cursor-pointer p-[3px] rounded-xl transition 
+          ${
+            currentIndex === index
+              ? "bg-gradient-to-r from-[#37B8E1] to-[#40BD02] scale-105"
+              : "bg-transparent"
+          }`}
+                >
+                  <div className="bg-white/10 rounded-xl overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt="thumb"
+                      className="w-full h-12 object-cover rounded-xl"
+                    />
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </section>
 
       {/* SECOND IMAGE SECTION */}
@@ -375,7 +418,7 @@ const Home = () => {
       </div>
     </section>
 
-    <section className="relative w-full h-[550px]">
+    {/* <section className="relative  h-[550px]">
       
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -400,7 +443,6 @@ const Home = () => {
       `}
     >
 
-      {/* TOP TITLE (VERTICAL) */}
       <div
         className="text-white text-sm font-medium rotate-180"
         style={{ writingMode: "vertical-rl" }}
@@ -408,7 +450,6 @@ const Home = () => {
         {tab.title}
       </div>
 
-      {/* BOTTOM NUMBER BOX */}
       <div className="w-full py-3 flex items-center justify-center">
         <span
           className={`text-white text-xs px-3 py-1 rounded-full 
@@ -424,7 +465,6 @@ const Home = () => {
 </div>
 
 
-        {/* RIGHT TEXT CONTENT */}
         <div className="flex-1 flex items-end p-10">
           <div className="bg-black/50 text-white p-6 rounded-lg max-w-md">
             <p className="text-sm leading-relaxed">{activeTab.title}</p>
@@ -432,7 +472,140 @@ const Home = () => {
         </div>
 
       </div>
-    </section>
+    </section> */}
+    
+
+    <section className="relative h-[300px] md:h-[550px] w-full">
+
+  {/* BACKGROUND */}
+  <div
+    className="absolute inset-0 bg-cover bg-center hidden md:block"
+    style={{ backgroundImage: `url(${activeTab.img})` }}
+  ></div>
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/30 hidden md:block"></div>
+
+  {/* DESKTOP */}
+  {/* Desktop code here */}
+  {/* DESKTOP VIEW */}
+<div className="hidden md:flex relative z-10 h-full">
+
+  {/* LEFT TABS */}
+  <div className="flex h-full">
+    {tabs.map((tab) => (
+      <div
+        key={tab.id}
+        onClick={() => setActive(tab.id)}
+        className={`
+          cursor-pointer flex flex-col items-center justify-between 
+          h-full w-[90px] border-r border-white/20
+          transition-all duration-300
+          ${active === tab.id ? "bg-transparent" : tab.color}
+        `}
+      >
+        {/* Vertical Title */}
+        <div
+          className="text-white text-sm font-medium rotate-180"
+          style={{ writingMode: "vertical-rl" }}
+        >
+          {tab.title}
+        </div>
+
+        {/* Bottom Number */}
+        <div className="w-full py-3 flex items-center justify-center">
+          <span
+            className={`text-white text-xs px-3 py-1 rounded-full
+            ${active === tab.id ? "bg-white/30" : "bg-black/30"}`}
+          >
+            0{tab.id}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* RIGHT CONTENT */}
+  <div className="flex-1 flex items-end p-10">
+    <div className="bg-black/50 text-white p-6 rounded-lg max-w-md">
+      <p className="text-sm leading-relaxed">{activeTab.title}</p>
+    </div>
+  </div>
+</div>
+
+
+  {/* MOBILE */}
+  {/* Mobile code here */}
+  {/* MOBILE VIEW */}
+<div className="block md:hidden relative z-10 h-full">
+
+  <div className="flex h-full">
+
+    {/* LEFT COLOR STRIPS */}
+    <div className="flex h-full">
+      {tabs.map((tab) => (
+        <div
+          key={tab.id}
+          onClick={() => setActive(tab.id)}
+          className={`
+            cursor-pointer flex flex-col items-center justify-between
+            w-[30px] h-full
+            ${tab.color}
+            border-r border-white/30
+            transition-all duration-300
+            ${active === tab.id ? "brightness-125" : ""}
+          `}
+        >
+
+          {/* VERTICAL TEXT */}
+          <div
+            className="text-white text-xs font-semibold mt-4"
+            style={{
+              writingMode: "vertical-rl",
+              transform: "rotate(180deg)"
+            }}
+          >
+            {tab.title}
+          </div>
+
+          {/* NUMBER */}
+          <div className="mb-4">
+            <span className="bg-black/40 text-white text-[10px] px-2 py-1 rounded-full">
+              0{tab.id}
+            </span>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    {/* RIGHT SIDE IMAGE + TEXT */}
+    <div className="flex-1 relative">
+
+     <img
+  src={activeTab.img}
+  alt={activeTab.title}
+  className="h-full w-full object-cover transition-all duration-500"
+/>
+
+
+      {/* Overlay Text */}
+      <div className="absolute bottom-4 left-4 right-4">
+        <div className="bg-black/60 text-white p-4 rounded-lg">
+          <p className="text-xs leading-relaxed">
+            {activeTab.title}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</section>
+
 
 
     {/* Chairman's Message */}
@@ -494,7 +667,7 @@ const Home = () => {
 
     {/* RIGHT SIDE IMAGE */}
     <div className="flex justify-center md:justify-end">
-      <div className="  -mt-[140px]   ">
+      <div className="  -mt-[35px] md:-mt-[140px]  ">
         <img
           src="/img/chairmanimg.png"
           alt="Chairman"
