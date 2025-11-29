@@ -74,9 +74,9 @@ const Login = () => {
         {/* Logo */}
         <div className="absolute top-15 left-12 lg:left-[110px]">
           <img
-            src="/Construction-Logo.jpg"
+            src="/img/Logo.png"
             alt="Logo"
-            className="h-[50px] w-[50px] rounded-full"
+            className="h-[50px] w-full object-contain"
           />
         </div>
 

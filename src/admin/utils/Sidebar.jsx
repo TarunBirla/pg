@@ -203,14 +203,63 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         { name: "Add Service Bar", link: "/dashboard/servicebar/add" },
       ],
     },
+
+    {
+      id: "architech",
+      label: "Architech",
+      icon: Wrench,
+      options: [
+        { name: "All Architech", link: "/dashboard/architech" },
+        { name: "Add Architech", link: "/dashboard/architech/add" },
+      ],
+    },
+    {
+      id: "business",
+      label: "Business",
+      icon: Wrench,
+      options: [
+        { name: "All Business", link: "/dashboard/business" },
+        { name: "Add Business", link: "/dashboard/business/add" },
+      ],
+    },
+
+    {
+      id: "journey",
+      label: "Journey",
+      icon: Wrench,
+      options: [
+        { name: "Journey", link: "/dashboard/journey" },
+        { name: "Add Journey", link: "/dashboard/journey/add" },
+      ],
+    },
+
+    {
+      id: "news",
+      label: "News",
+      icon: Wrench,
+      options: [
+        { name: "All News", link: "/dashboard/news" },
+        { name: "Add News", link: "/dashboard/news/add" },
+      ],
+    },
+
+    {
+      id: "globalPresence",
+      label: "Global Presence",
+      icon: Wrench,
+      options: [
+        { name: "All Global Presence", link: "/dashboard/globalPresence" },
+        { name: "Add Global Presence", link: "/dashboard/globalPresence/add" },
+      ],
+    },
     {
       id: "settings",
       label: "Settings",
       icon: Settings,
       options: [
-        { name: "Profile", link: "/dashboard/settings/profile" },
-        { name: "Site Settings", link: "/dashboard/settings/site" },
-        { name: "Security", link: "/dashboard/settings/security" },
+        // { name: "Profile", link: "/dashboard/settings/profile" },
+        { name: "All Settings", link: "/dashboard/settings" },
+        // { name: "Security", link: "/dashboard/settings/security" },
       ],
     },
   ];

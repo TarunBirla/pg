@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = "http://localhost:4000";
+export const baseURL = "https://test.imanglobal.net";
 
 const api = axios.create({
   baseURL: `${baseURL}/api`, // reuse the baseURL here

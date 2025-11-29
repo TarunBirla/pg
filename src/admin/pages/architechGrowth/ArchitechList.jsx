@@ -4,135 +4,36 @@ import http from "../../../service/http";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default function BannersList() {
+export default function ArchitechList() {
   const [entries, setEntries] = useState(10);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const [banners, setBanners] = useState([]);
-  const fetchBanners = async () => {
+  const [architech, setArchitech] = useState([]);
+  const fetcharchitech = async () => {
     try {
-      const res = await http.get("/banners");
-      setBanners(res.data);
+      const res = await http.get("/architech");
+      setArchitech(res.data);
       console.log(res.data);
     } catch (error) {
-      console.error("Error fetching banners:", error);
+      console.error("Error fetching architech:", error);
     }
   };
   useEffect(() => {
-    fetchBanners();
+    fetcharchitech();
   }, []);
 
-  // Sample data with more entries for pagination
-  const allBanners = [
-    {
-      id: 10,
-      title: "first",
-      slug: "first",
-      photo:
-        "https://via.placeholder.com/150x80/ff6b9d/ffffff?text=First+Banner",
-      status: "active",
-    },
-    {
-      id: 11,
-      title: "second",
-      slug: "second",
-      photo:
-        "https://via.placeholder.com/150x80/4ecdc4/ffffff?text=Second+Banner",
-      status: "active",
-    },
-    {
-      id: 12,
-      title: "third",
-      slug: "third",
-      photo:
-        "https://via.placeholder.com/150x80/95e1d3/ffffff?text=Third+Banner",
-      status: "active",
-    },
-    {
-      id: 13,
-      title: "fourth",
-      slug: "fourth",
-      photo:
-        "https://via.placeholder.com/150x80/86af49/ffffff?text=Fourth+Banner",
-      status: "active",
-    },
-    {
-      id: 14,
-      title: "fifth",
-      slug: "fifth",
-      photo:
-        "https://via.placeholder.com/150x80/f38181/ffffff?text=Fifth+Banner",
-      status: "active",
-    },
-    {
-      id: 15,
-      title: "sixth",
-      slug: "sixth",
-      photo:
-        "https://via.placeholder.com/150x80/aa96da/ffffff?text=Sixth+Banner",
-      status: "active",
-    },
-    {
-      id: 16,
-      title: "seventh",
-      slug: "seventh",
-      photo:
-        "https://via.placeholder.com/150x80/fcbad3/ffffff?text=Seventh+Banner",
-      status: "active",
-    },
-    {
-      id: 17,
-      title: "eighth",
-      slug: "eighth",
-      photo:
-        "https://via.placeholder.com/150x80/ffffd2/333333?text=Eighth+Banner",
-      status: "active",
-    },
-    {
-      id: 18,
-      title: "ninth",
-      slug: "ninth",
-      photo:
-        "https://via.placeholder.com/150x80/a8d8ea/ffffff?text=Ninth+Banner",
-      status: "active",
-    },
-    {
-      id: 19,
-      title: "tenth",
-      slug: "tenth",
-      photo:
-        "https://via.placeholder.com/150x80/ffccb6/ffffff?text=Tenth+Banner",
-      status: "active",
-    },
-    {
-      id: 20,
-      title: "eleventh",
-      slug: "eleventh",
-      photo:
-        "https://via.placeholder.com/150x80/b8e0d2/ffffff?text=Eleventh+Banner",
-      status: "active",
-    },
-    {
-      id: 21,
-      title: "twelfth",
-      slug: "twelfth",
-      photo:
-        "https://via.placeholder.com/150x80/d6eadf/333333?text=Twelfth+Banner",
-      status: "active",
-    },
-  ];
-
-  const filteredBanners = banners.filter((banner) =>
-    banner.heading.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredarchitech =
+    architech?.filter((item) =>
+      item.title.toLowerCase().includes(search.toLowerCase())
+    ) || [];
 
   // Pagination calculations
-  const totalEntries = filteredBanners.length;
+  const totalEntries = filteredarchitech.length;
   const totalPages = Math.ceil(totalEntries / entries);
   const startIndex = (currentPage - 1) * entries;
   const endIndex = Math.min(startIndex + entries, totalEntries);
-  const currentBanners = filteredBanners.slice(startIndex, endIndex);
+  const currentarchitech = filteredarchitech.slice(startIndex, endIndex);
 
   // Reset to first page when search or entries change
   React.useEffect(() => {
@@ -173,17 +74,18 @@ export default function BannersList() {
     return pages;
   };
 
-  const handleDeleteBanner = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this banner?")) return;
+  const handleDeletearchitech = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this architech?"))
+      return;
 
     try {
-      await http.delete(`/banners/${id}`);
+      await http.delete(`/architech/${id}`);
 
-      toast.success("Banner deleted successfully!");
-      fetchBanners();
+      toast.success("architech deleted successfully!");
+      fetcharchitech();
     } catch (error) {
       console.error("Delete error:", error);
-      toast.error(error.response.data.message || "Failed to delete banner.");
+      toast.error(error.response.data.message || "Failed to delete architech.");
     }
   };
 
@@ -244,11 +146,11 @@ export default function BannersList() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-4 md:p-6 border-b border-gray-200">
           <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
-            Banners List
+            Architech List
           </h1>
           <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center">
             <Plus size={18} />
-            Add Banner
+            Add Architech
           </button>
         </div>
 
@@ -291,7 +193,6 @@ export default function BannersList() {
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Title
                 </th>
-
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Description
                 </th>
@@ -307,32 +208,34 @@ export default function BannersList() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {currentBanners.length === 0 ? (
+              {currentarchitech.length === 0 ? (
                 <tr>
-                  <td colSpan="6" className="text-center py-4">
-                    No Banners Found
+                  <td colSpan="6" className="px-4 py-4 text-center">
+                    No data available
                   </td>
                 </tr>
               ) : (
-                currentBanners.map((banner) => (
+                currentarchitech.map((architech) => (
                   <tr
-                    key={banner.id}
+                    key={architech.id}
                     className="hover:bg-gray-50 transition-colors"
                   >
                     <td className="px-4 py-4 text-sm text-gray-600">
-                      {banner.id}
+                      {architech.id}
                     </td>
                     <td className="px-4 py-4 text-sm text-gray-800">
-                      {banner.heading}
+                      {architech.title}
                     </td>
 
-                    <td className="max-w-xs truncate">{banner.description}</td>
+                    <td className="max-w-xs truncate">
+                      {architech.description}
+                    </td>
 
                     <td className="px-4 py-4">
                       <div className="image-zoom-container">
                         <img
-                          src={banner.image_url}
-                          alt={banner.heading}
+                          src={architech.image_url}
+                          alt={architech.title}
                           className="image-zoom h-10 w-auto object-cover"
                         />
                       </div>
@@ -341,26 +244,28 @@ export default function BannersList() {
                       <span
                         className={`text-xs px-3 py-1 rounded-full font-semibold 
                       ${
-                        banner.active === true
+                        architech.active === true
                           ? "bg-emerald-100 text-emerald-700 border border-emerald-300"
                           : "bg-red-100 text-red-700 border border-red-300"
                       }`}
                       >
-                        {banner.active === true ? "Active" : "Inactive"}
+                        {architech.active === true ? "Active" : "Inactive"}
                       </span>
                     </td>
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() =>
-                            navigate(`/dashboard/banners/edit/${banner.id}`)
+                            navigate(
+                              `/dashboard/architech/edit/${architech.id}`
+                            )
                           }
                           className="bg-gray-900 text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
                         >
                           <Edit size={16} />
                         </button>
                         <button
-                          onClick={() => handleDeleteBanner(banner.id)}
+                          onClick={() => handleDeletearchitech(architech.id)}
                           className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
                         >
                           <Trash2 size={16} />

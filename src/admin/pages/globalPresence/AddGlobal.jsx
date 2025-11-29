@@ -7,11 +7,10 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { toast } from "react-toastify";
 
-const AddBanner = () => {
+const AddGlobal = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    category: "",
     status: 1,
   });
   const [photo, setPhoto] = useState(null);
@@ -62,36 +61,37 @@ const AddBanner = () => {
 
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("heading", formData.title);
+      formDataToSend.append("title", formData.title);
       formDataToSend.append("description", formData.description);
-      //   formDataToSend.append("category", formData.category);
+
       formDataToSend.append("active", formData.status);
 
       if (photo) {
         formDataToSend.append("image", photo);
       }
-      //   if (mobileImage) {
-      //     formDataToSend.append("mobileImage", mobileImage);
-      //   }
 
-      // Get auth token from localStorage or your auth state
       const token = localStorage.getItem("authToken");
 
-      const response = await http.post("/banners", formDataToSend, {
+      const response = await http.post("/globalPresence", formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       if (response.status == 201) {
         const result = await response.data;
-        toast.success("Banner created successfully!");
+        toast.success("Global Presence created successfully!");
         handleReset();
       } else {
-        const error = await response.json();
-        toast.error(`Error: ${error.message || "Failed to create banner"}`);
+        const error = await response.data;
+        toast.error(
+          `Error: ${error.message || "Failed to create Global Presence."}`
+        );
       }
     } catch (error) {
       console.error("Error submitting:", error);
-      toast.error("An error occurred while submitting the form");
+      toast.error(
+        error.response.data.message ||
+          "An error occurred while submitting the form"
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -101,16 +101,13 @@ const AddBanner = () => {
     setFormData({
       title: "",
       description: "",
-      category: "",
-      status: "Active",
+      status: 1,
     });
     setPhoto(null);
     setMobileImage(null);
     setPhotoName("No file chosen");
     setMobileName("No file chosen");
-    if (descriptionRef.current) {
-      descriptionRef.current.innerHTML = "";
-    }
+
     if (photoInputRef.current) photoInputRef.current.value = "";
     if (mobileInputRef.current) mobileInputRef.current.value = "";
   };
@@ -120,7 +117,7 @@ const AddBanner = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Add Banner
+            Add Global Presence
           </h1>
 
           <div>
@@ -181,49 +178,6 @@ const AddBanner = () => {
                 <span className="ml-3 text-sm text-gray-500">{photoName}</span>
               </div>
             </div>
-
-            {/* Mobile Banner Image Field */}
-            {/* <div className="mb-6">
-              <label className="block text-sm text-gray-600 mb-2">
-                Mobile Banner Image <span className="text-red-500">*</span>
-              </label>
-              <div className="flex items-center">
-                <input
-                  type="file"
-                  ref={mobileInputRef}
-                  onChange={handleMobileImageChange}
-                  accept="image/*"
-                  className="hidden"
-                  id="mobile-upload"
-                />
-                <label
-                  htmlFor="mobile-upload"
-                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded cursor-pointer hover:bg-gray-300 transition-colors"
-                >
-                  Choose File
-                </label>
-                <span className="ml-3 text-sm text-gray-500">{mobileName}</span>
-              </div>
-            </div> */}
-
-            {/* Category Field */}
-            {/* <div className="mb-6">
-              <label className="block text-sm text-gray-600 mb-2">
-                Category <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-gray-500"
-              >
-                <option value="">pick a Mood</option>
-                <option value="happy">Happy</option>
-                <option value="sad">Sad</option>
-                <option value="energetic">Energetic</option>
-                <option value="calm">Calm</option>
-              </select>
-            </div> */}
 
             {/* Status Field */}
             <div className="mb-6">
@@ -296,4 +250,4 @@ const AddBanner = () => {
   );
 };
 
-export default AddBanner;
+export default AddGlobal;

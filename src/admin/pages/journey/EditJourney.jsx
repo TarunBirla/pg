@@ -8,13 +8,16 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { toast } from "react-toastify";
 
-const EditBanner = () => {
+const EditJourney = () => {
   const { id } = useParams();
 
   const [formData, setFormData] = useState({
+    year_range: "",
+    step_number: "",
     title: "",
+    subtitle: "",
     description: "",
-    status: 1,
+    status: 1, // or true (backend accepts both)
   });
 
   const [photo, setPhoto] = useState(null);
@@ -27,11 +30,14 @@ const EditBanner = () => {
   useEffect(() => {
     const loadBanner = async () => {
       try {
-        const res = await http.get(`/banners/${id}`);
+        const res = await http.get(`/journey/${id}`);
         const data = res.data;
 
         setFormData({
-          title: data.heading || "",
+          year_range: data.year_range || "",
+          step_number: data.step_number || "",
+          title: data.title || "",
+          subtitle: data.subtitle || "",
           description: data.description || "",
           status: data.active ? 1 : 0,
         });
@@ -75,23 +81,27 @@ const EditBanner = () => {
 
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("heading", formData.title);
+      formDataToSend.append("title", formData.title);
+
+      formDataToSend.append("year_range", formData.year_range);
+      formDataToSend.append("step_number", formData.step_number);
+      formDataToSend.append("subtitle", formData.subtitle);
 
       formDataToSend.append("description", formData.description);
       formDataToSend.append("active", formData.status);
 
       if (photo) formDataToSend.append("image", photo);
 
-      const res = await http.put(`/banners/${id}`, formDataToSend, {
+      const res = await http.put(`/journey/${id}`, formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       if (res.status === 200) {
-        toast.success("Banner updated successfully!");
+        toast.success("Journey updated successfully!");
       }
     } catch (error) {
       console.error("Error updating:", error);
-      toast.error(error.response.data.message || "Failed to update banner");
+      toast.error(error.response.data.message || "Failed to update journey");
     } finally {
       setIsSubmitting(false);
     }
@@ -102,7 +112,7 @@ const EditBanner = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Edit Banner
+            Edit Journey
           </h1>
 
           {/* Title */}
@@ -116,6 +126,51 @@ const EditBanner = () => {
               value={formData.title}
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:ring-1"
+            />
+          </div>
+
+          {/* Subtitle Field */}
+          <div className="mb-6">
+            <label className="block text-sm text-gray-600 mb-2">
+              Subtitle <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="subtitle"
+              value={formData.subtitle}
+              onChange={handleInputChange}
+              placeholder="Enter subtitle"
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          {/* Year Range Field */}
+          <div className="mb-6">
+            <label className="block text-sm text-gray-600 mb-2">
+              Year Range <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="year_range"
+              value={formData.year_range}
+              onChange={handleInputChange}
+              placeholder="Enter year range"
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          {/* Step Number Field */}
+          <div className="mb-6">
+            <label className="block text-sm text-gray-600 mb-2">
+              Step Number <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="step_number"
+              value={formData.step_number}
+              onChange={handleInputChange}
+              placeholder="Enter step number"
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -187,7 +242,7 @@ const EditBanner = () => {
             disabled={isSubmitting}
             className="px-6 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 disabled:bg-teal-300"
           >
-            {isSubmitting ? "Updating..." : "Update Banner"}
+            {isSubmitting ? "Updating..." : "Update Service"}
           </button>
         </div>
       </div>
@@ -195,4 +250,4 @@ const EditBanner = () => {
   );
 };
 
-export default EditBanner;
+export default EditJourney;

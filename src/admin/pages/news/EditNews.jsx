@@ -8,7 +8,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { toast } from "react-toastify";
 
-const EditBanner = () => {
+const EditNews = () => {
   const { id } = useParams();
 
   const [formData, setFormData] = useState({
@@ -27,11 +27,11 @@ const EditBanner = () => {
   useEffect(() => {
     const loadBanner = async () => {
       try {
-        const res = await http.get(`/banners/${id}`);
+        const res = await http.get(`/news/${id}`);
         const data = res.data;
 
         setFormData({
-          title: data.heading || "",
+          title: data.title || "",
           description: data.description || "",
           status: data.active ? 1 : 0,
         });
@@ -75,23 +75,23 @@ const EditBanner = () => {
 
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("heading", formData.title);
+      formDataToSend.append("title", formData.title);
 
       formDataToSend.append("description", formData.description);
       formDataToSend.append("active", formData.status);
 
       if (photo) formDataToSend.append("image", photo);
 
-      const res = await http.put(`/banners/${id}`, formDataToSend, {
+      const res = await http.put(`/news/${id}`, formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       if (res.status === 200) {
-        toast.success("Banner updated successfully!");
+        toast.success("News updated successfully!");
       }
     } catch (error) {
       console.error("Error updating:", error);
-      toast.error(error.response.data.message || "Failed to update banner");
+      toast.error(error.response.data.message || "Failed to update news");
     } finally {
       setIsSubmitting(false);
     }
@@ -102,7 +102,7 @@ const EditBanner = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Edit Banner
+            Edit Service
           </h1>
 
           {/* Title */}
@@ -187,7 +187,7 @@ const EditBanner = () => {
             disabled={isSubmitting}
             className="px-6 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 disabled:bg-teal-300"
           >
-            {isSubmitting ? "Updating..." : "Update Banner"}
+            {isSubmitting ? "Updating..." : "Update Service"}
           </button>
         </div>
       </div>
@@ -195,4 +195,4 @@ const EditBanner = () => {
   );
 };
 
-export default EditBanner;
+export default EditNews;

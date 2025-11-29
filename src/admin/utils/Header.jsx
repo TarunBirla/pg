@@ -1,6 +1,8 @@
 import { Bell, LogOut, Menu, Search } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ title, setIsOpen, user }) => {
+  const navigate = useNavigate();
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
       <div className="flex items-center justify-between px-4 py-3 md:px-6">
@@ -43,7 +45,13 @@ const Header = ({ title, setIsOpen, user }) => {
           </div>
 
           {/* Logout */}
-          <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+          <button
+            onClick={() => {
+              localStorage.clear();
+              navigate("/admin/login");
+            }}
+            className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+          >
             <LogOut size={20} />
           </button>
         </div>

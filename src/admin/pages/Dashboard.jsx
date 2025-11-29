@@ -16,17 +16,30 @@ import EditService from "./serviceSection/EditService";
 import AddServicebar from "./serviceSection/AddServiceBar";
 import ServiceBarList from "./serviceSection/ServiceBarList";
 import EditServiceBar from "./serviceSection/EditServiceBar";
+import ArchitechList from "./architechGrowth/ArchitechList";
+import AddArchitech from "./architechGrowth/AddArchitech";
+import EditArchitech from "./architechGrowth/EditArchitech";
+import NewsList from "./news/NewsList";
+import AddNews from "./news/AddNews";
+import EditNews from "./news/EditNews";
+import AddSettings from "./settings/AddSettings";
+import EditSettings from "./settings/EditSettings";
+import GlobalList from "./globalPresence/GlobalList";
+import AddGlobal from "./globalPresence/AddGlobal";
+import EditGlobal from "./globalPresence/EditGlobal";
+import JourneyList from "./journey/JourneyList";
+import AddJourney from "./journey/AddJourney";
+import EditJourney from "./journey/EditJourney";
+import BusinessList from "./business/BusinessList";
+import AddBusiness from "./business/AddBusiness";
+import EditBusiness from "./business/EditBusiness";
 
 export default function DashboardLayout() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("home");
   const [title, setTitle] = useState("Dashboard");
 
-  const user = {
-    name: "John Doe",
-    email: "john@example.com",
-    role: "admin",
-  };
+  const user = JSON.parse(localStorage.getItem("userData"));
 
   useEffect(() => {
     const titles = {
@@ -97,6 +110,29 @@ export default function DashboardLayout() {
             <Route path="servicebar" element={<ServiceBarList />} />
             <Route path="servicebar/add" element={<AddServicebar />} />
             <Route path="servicebar/edit/:id" element={<EditServiceBar />} />
+
+            <Route path="architech" element={<ArchitechList />} />
+            <Route path="architech/add" element={<AddArchitech />} />
+            <Route path="architech/edit/:id" element={<EditArchitech />} />
+
+            <Route path="business" element={<BusinessList />} />
+            <Route path="business/add" element={<AddBusiness />} />
+            <Route path="business/edit/:id" element={<EditBusiness />} />
+
+            <Route path="journey" element={<JourneyList />} />
+            <Route path="journey/add" element={<AddJourney />} />
+            <Route path="journey/edit/:id" element={<EditJourney />} />
+
+            <Route path="globalPresence" element={<GlobalList />} />
+            <Route path="globalPresence/add" element={<AddGlobal />} />
+            <Route path="globalPresence/edit/:id" element={<EditGlobal />} />
+
+            <Route path="news" element={<NewsList />} />
+            <Route path="news/add" element={<AddNews />} />
+            <Route path="news/edit/:id" element={<EditNews />} />
+
+            {/* <Route path="settings" element={<AddSettings />} /> */}
+            <Route path="settings" element={<EditSettings />} />
 
             {/* <Route path="/dashboard/users" element={<UsersPage />} /> */}
             {/* <Route path="/dashboard/settings" element={<SettingsPage />} /> */}

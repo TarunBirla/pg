@@ -7,13 +7,16 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { toast } from "react-toastify";
 
-const AddBanner = () => {
+const AddJourney = () => {
   const [formData, setFormData] = useState({
+    year_range: "",
+    step_number: "",
     title: "",
+    subtitle: "",
     description: "",
-    category: "",
-    status: 1,
+    status: 1, // or true (backend accepts both)
   });
+
   const [photo, setPhoto] = useState(null);
   const [mobileImage, setMobileImage] = useState(null);
   const [photoName, setPhotoName] = useState("No file chosen");
@@ -53,7 +56,14 @@ const AddBanner = () => {
   };
 
   const handleSubmit = async () => {
-    if (!formData.title || !photo || !formData.description) {
+    if (
+      !formData.title ||
+      !photo ||
+      !formData.description ||
+      !formData.year_range ||
+      !formData.step_number ||
+      !formData.subtitle
+    ) {
       toast.error("Please fill all required fields");
       return;
     }
@@ -62,36 +72,37 @@ const AddBanner = () => {
 
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("heading", formData.title);
+      formDataToSend.append("title", formData.title);
       formDataToSend.append("description", formData.description);
-      //   formDataToSend.append("category", formData.category);
+      formDataToSend.append("year_range", formData.year_range);
+      formDataToSend.append("step_number", formData.step_number);
+      formDataToSend.append("subtitle", formData.subtitle);
       formDataToSend.append("active", formData.status);
 
       if (photo) {
         formDataToSend.append("image", photo);
       }
-      //   if (mobileImage) {
-      //     formDataToSend.append("mobileImage", mobileImage);
-      //   }
 
-      // Get auth token from localStorage or your auth state
       const token = localStorage.getItem("authToken");
 
-      const response = await http.post("/banners", formDataToSend, {
+      const response = await http.post("/journey", formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       if (response.status == 201) {
         const result = await response.data;
-        toast.success("Banner created successfully!");
+        toast.success("Journey created successfully!");
         handleReset();
       } else {
-        const error = await response.json();
-        toast.error(`Error: ${error.message || "Failed to create banner"}`);
+        const error = await response.data;
+        toast.error(`Error: ${error.message || "Failed to create Journey."}`);
       }
     } catch (error) {
       console.error("Error submitting:", error);
-      toast.error("An error occurred while submitting the form");
+      toast.error(
+        error.response.data.message ||
+          "An error occurred while submitting the form"
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -101,16 +112,13 @@ const AddBanner = () => {
     setFormData({
       title: "",
       description: "",
-      category: "",
-      status: "Active",
+      status: 1,
     });
     setPhoto(null);
     setMobileImage(null);
     setPhotoName("No file chosen");
     setMobileName("No file chosen");
-    if (descriptionRef.current) {
-      descriptionRef.current.innerHTML = "";
-    }
+
     if (photoInputRef.current) photoInputRef.current.value = "";
     if (mobileInputRef.current) mobileInputRef.current.value = "";
   };
@@ -120,7 +128,7 @@ const AddBanner = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Add Banner
+            Add Journey
           </h1>
 
           <div>
@@ -135,6 +143,51 @@ const AddBanner = () => {
                 value={formData.title}
                 onChange={handleInputChange}
                 placeholder="Enter title"
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            {/* Subtitle Field */}
+            <div className="mb-6">
+              <label className="block text-sm text-gray-600 mb-2">
+                Subtitle <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="subtitle"
+                value={formData.subtitle}
+                onChange={handleInputChange}
+                placeholder="Enter subtitle"
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            {/* Year Range Field */}
+            <div className="mb-6">
+              <label className="block text-sm text-gray-600 mb-2">
+                Year Range <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="year_range"
+                value={formData.year_range}
+                onChange={handleInputChange}
+                placeholder="Enter year range"
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            {/* Step Number Field */}
+            <div className="mb-6">
+              <label className="block text-sm text-gray-600 mb-2">
+                Step Number <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="step_number"
+                value={formData.step_number}
+                onChange={handleInputChange}
+                placeholder="Enter step number"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
@@ -181,49 +234,6 @@ const AddBanner = () => {
                 <span className="ml-3 text-sm text-gray-500">{photoName}</span>
               </div>
             </div>
-
-            {/* Mobile Banner Image Field */}
-            {/* <div className="mb-6">
-              <label className="block text-sm text-gray-600 mb-2">
-                Mobile Banner Image <span className="text-red-500">*</span>
-              </label>
-              <div className="flex items-center">
-                <input
-                  type="file"
-                  ref={mobileInputRef}
-                  onChange={handleMobileImageChange}
-                  accept="image/*"
-                  className="hidden"
-                  id="mobile-upload"
-                />
-                <label
-                  htmlFor="mobile-upload"
-                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded cursor-pointer hover:bg-gray-300 transition-colors"
-                >
-                  Choose File
-                </label>
-                <span className="ml-3 text-sm text-gray-500">{mobileName}</span>
-              </div>
-            </div> */}
-
-            {/* Category Field */}
-            {/* <div className="mb-6">
-              <label className="block text-sm text-gray-600 mb-2">
-                Category <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-gray-500"
-              >
-                <option value="">pick a Mood</option>
-                <option value="happy">Happy</option>
-                <option value="sad">Sad</option>
-                <option value="energetic">Energetic</option>
-                <option value="calm">Calm</option>
-              </select>
-            </div> */}
 
             {/* Status Field */}
             <div className="mb-6">
@@ -296,4 +306,4 @@ const AddBanner = () => {
   );
 };
 
-export default AddBanner;
+export default AddJourney;
