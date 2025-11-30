@@ -27,8 +27,8 @@ const EditGlobal = () => {
   useEffect(() => {
     const loadBanner = async () => {
       try {
-        const res = await http.get(`/globalPresence/${id}`);
-        const data = res.data;
+        const res = await http.get(`/globalpresence/${id}`);
+        const data = res.data.data;
 
         setFormData({
           title: data.title || "",
@@ -82,7 +82,7 @@ const EditGlobal = () => {
 
       if (photo) formDataToSend.append("image", photo);
 
-      const res = await http.put(`/globalPresence/${id}`, formDataToSend, {
+      const res = await http.put(`/globalpresence/${id}`, formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -189,7 +189,7 @@ const EditGlobal = () => {
             disabled={isSubmitting}
             className="px-6 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 disabled:bg-teal-300"
           >
-            {isSubmitting ? "Updating..." : "Update Service"}
+            {isSubmitting ? "Updating..." : "Update"}
           </button>
         </div>
       </div>

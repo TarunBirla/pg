@@ -6,6 +6,7 @@ import { Editor } from "primereact/editor";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+import { toast } from "react-toastify";
 
 const EditServiceBar = () => {
   const { id } = useParams();
@@ -78,15 +79,20 @@ const EditServiceBar = () => {
 
       formDataToSend.append("description", formData.description);
       formDataToSend.append("active", formData.status);
+      if (photo) formDataToSend.append("image", photo);
 
-      const res = await http.put(`/servicebar/${id}`, formData);
+      const res = await http.put(`/servicebar/${id}`, formDataToSend, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       if (res.status === 200) {
-        alert("Service bar updated successfully!");
+        toast.success("Service bar updated successfully!");
       }
     } catch (error) {
       console.error("Error updating:", error);
-      alert("Failed to update service bar");
+      toast.error(
+        error.response.data.message || "Failed to update service bar"
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -129,6 +135,38 @@ const EditServiceBar = () => {
             />
           </div>
 
+          {/* Photo */}
+          <div className="mb-6">
+            <label className="block text-sm text-gray-600 mb-2">Photo</label>
+
+            {/* Current Preview */}
+            {preview && (
+              <img
+                src={preview}
+                alt="Preview"
+                className="w-48 h-28 object-cover rounded mb-3 border"
+              />
+            )}
+
+            <div className="flex items-center">
+              <input
+                type="file"
+                ref={photoInputRef}
+                onChange={handlePhotoChange}
+                accept="image/*"
+                className="hidden"
+                id="photo-upload"
+              />
+              <label
+                htmlFor="photo-upload"
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded cursor-pointer"
+              >
+                Choose File
+              </label>
+              <span className="ml-3 text-sm text-gray-500">{photoName}</span>
+            </div>
+          </div>
+
           {/* Status */}
           <div className="mb-6">
             <label className="block text-sm text-gray-600 mb-2">
@@ -150,7 +188,7 @@ const EditServiceBar = () => {
             disabled={isSubmitting}
             className="px-6 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 disabled:bg-teal-300"
           >
-            {isSubmitting ? "Updating..." : "Update Banner"}
+            {isSubmitting ? "Updating..." : "Update"}
           </button>
         </div>
       </div>

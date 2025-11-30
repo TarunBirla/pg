@@ -33,6 +33,16 @@ import EditJourney from "./journey/EditJourney";
 import BusinessList from "./business/BusinessList";
 import AddBusiness from "./business/AddBusiness";
 import EditBusiness from "./business/EditBusiness";
+import AddJourneySteps from "./journey/AddJourneySteps";
+import JourneyStepsList from "./journey/JourneyStepsList";
+import EditJourneySteps from "./journey/EditJourneySteps";
+import ChairmanMsgList from "./chairmanmsg/ChairmanMsgList";
+import AddChairmanMsg from "./chairmanmsg/AddChairmanMsg";
+import EditChairmanMsg from "./chairmanmsg/EditChairmanMsg";
+import LastdecadeList from "./lastdecade/LastdecadeList";
+import AddLastdecade from "./lastdecade/AddLastdecade";
+import EditLastdecade from "./lastdecade/EditLastdecade";
+import ContactusList from "./contactus/ContactusList";
 
 export default function DashboardLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,6 +93,7 @@ export default function DashboardLayout() {
         setIsOpen={setIsOpen}
         activeMenu={activeMenu}
         setActiveMenu={setActiveMenu}
+        user={user}
       />
 
       {/* Main Content */}
@@ -123,6 +134,13 @@ export default function DashboardLayout() {
             <Route path="journey/add" element={<AddJourney />} />
             <Route path="journey/edit/:id" element={<EditJourney />} />
 
+            <Route path="journeysteps" element={<JourneyStepsList />} />
+            <Route path="journeysteps/add" element={<AddJourneySteps />} />
+            <Route
+              path="journeysteps/edit/:id"
+              element={<EditJourneySteps />}
+            />
+
             <Route path="globalPresence" element={<GlobalList />} />
             <Route path="globalPresence/add" element={<AddGlobal />} />
             <Route path="globalPresence/edit/:id" element={<EditGlobal />} />
@@ -131,7 +149,15 @@ export default function DashboardLayout() {
             <Route path="news/add" element={<AddNews />} />
             <Route path="news/edit/:id" element={<EditNews />} />
 
-            {/* <Route path="settings" element={<AddSettings />} /> */}
+            <Route path="lastdecade" element={<LastdecadeList />} />
+            <Route path="lastdecade/add" element={<AddLastdecade />} />
+            <Route path="lastdecade/edit/:id" element={<EditLastdecade />} />
+
+            <Route path="chairmanmsg" element={<ChairmanMsgList />} />
+            <Route path="chairmanmsg/add" element={<AddChairmanMsg />} />
+            <Route path="chairmanmsg/edit/:id" element={<EditChairmanMsg />} />
+
+            <Route path="contactus" element={<ContactusList />} />
             <Route path="settings" element={<EditSettings />} />
 
             {/* <Route path="/dashboard/users" element={<UsersPage />} /> */}

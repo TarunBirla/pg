@@ -22,20 +22,20 @@ const Header = ({ title, setIsOpen, user }) => {
         {/* Right Section */}
         <div className="flex items-center gap-2 md:gap-4">
           {/* Search - Hidden on mobile */}
-          <div className="hidden md:flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
+          {/* <div className="hidden md:flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
             <Search size={18} className="text-gray-400" />
             <input
               type="text"
               placeholder="Search..."
               className="bg-transparent border-none outline-none text-sm w-48"
             />
-          </div>
+          </div> */}
 
           {/* Notifications */}
-          <button className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+          {/* <button className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
             <Bell size={20} />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-          </button>
+          </button> */}
 
           {/* User Menu - Hidden on small mobile */}
           <div className="hidden sm:flex items-center gap-2">

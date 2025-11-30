@@ -3,6 +3,7 @@ import { Pencil, Trash2, Plus, Edit } from "lucide-react";
 import http from "../../../service/http";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { RotatingLines } from "react-loader-spinner";
 
 export default function GlobalList() {
   const [entries, setEntries] = useState(10);
@@ -10,13 +11,18 @@ export default function GlobalList() {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const [global, setGlobal] = useState([]);
+
+  const [loading, setLoading] = useState(false);
   const fetchglobal = async () => {
     try {
-      const res = await http.get("/globalPresence");
+      setLoading(true);
+      const res = await http.get("/globalpresence");
       setGlobal(res.data?.data);
       console.log(res.data);
     } catch (error) {
       console.error("Error fetching global:", error);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -74,17 +80,22 @@ export default function GlobalList() {
     return pages;
   };
 
+  const [deleteLoadingId, setDeleteLoadingId] = useState(null);
+
   const handleDeleteglobal = async (id) => {
     if (!window.confirm("Are you sure you want to delete this global?")) return;
 
     try {
-      await http.delete(`/globalPresence/${id}`);
+      setDeleteLoadingId(id);
+      await http.delete(`/globalpresence/${id}`);
 
       toast.success("GlobalPresence deleted successfully!");
       fetchglobal();
     } catch (error) {
       console.error("Delete error:", error);
       toast.error(error.response.data.message || "Failed to delete global.");
+    } finally {
+      setDeleteLoadingId(null);
     }
   };
 
@@ -147,7 +158,10 @@ export default function GlobalList() {
           <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
             Global Presence List
           </h1>
-          <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center">
+          <button
+            onClick={() => navigate("/dashboard/globalPresence/add")}
+            className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center"
+          >
             <Plus size={18} />
             Add Global
           </button>
@@ -207,7 +221,21 @@ export default function GlobalList() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {currentglobal.length === 0 ? (
+              {loading ? (
+                <tr>
+                  <td colSpan="9" className="px-4 py-4 text-center">
+                    <div className="flex justify-center items-center w-full h-20">
+                      <RotatingLines
+                        strokeColor="#1E1E1E"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="20"
+                        visible={true}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ) : currentglobal.length === 0 ? (
                 <tr>
                   <td colSpan="6" className="px-4 py-4 text-center">
                     No data available
@@ -226,7 +254,10 @@ export default function GlobalList() {
                       {global.title}
                     </td>
 
-                    <td className="max-w-xs truncate">{global.description}</td>
+                    <td
+                      className="max-w-xs truncate text-sm "
+                      dangerouslySetInnerHTML={{ __html: global?.description }}
+                    ></td>
 
                     <td className="px-4 py-4">
                       <div className="image-zoom-container">
@@ -253,17 +284,41 @@ export default function GlobalList() {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() =>
-                            navigate(`/dashboard/global/edit/${global.id}`)
+                            navigate(
+                              `/dashboard/globalPresence/edit/${global.id}`
+                            )
                           }
-                          className="bg-gray-900 text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
+                          className="bg-gray-900 cursor-pointer text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
                         >
                           <Edit size={16} />
                         </button>
-                        <button
+                        {/* <button
                           onClick={() => handleDeleteglobal(global.id)}
                           className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
                         >
                           <Trash2 size={16} />
+                        </button> */}
+
+                        <button
+                          className={`bg-red-500  h-8 w-8 cursor-pointer flex items-center justify-center  text-white p-2 rounded-full hover:bg-red-600 transition-colors
+                                                ${
+                                                  deleteLoadingId === global.id
+                                                    ? "opacity-50 cursor-not-allowed"
+                                                    : ""
+                                                }`}
+                          disabled={deleteLoadingId === global.id}
+                          onClick={() => handleDeleteglobal(global.id)}
+                        >
+                          {deleteLoadingId === global.id ? (
+                            <RotatingLines
+                              width="20"
+                              strokeColor="#fff"
+                              visible={true}
+                              strokeWidth="5"
+                            />
+                          ) : (
+                            <Trash2 size={16} />
+                          )}
                         </button>
                       </div>
                     </td>

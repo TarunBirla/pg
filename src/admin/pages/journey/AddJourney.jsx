@@ -9,10 +9,8 @@ import { toast } from "react-toastify";
 
 const AddJourney = () => {
   const [formData, setFormData] = useState({
-    year_range: "",
-    step_number: "",
     title: "",
-    subtitle: "",
+
     description: "",
     status: 1, // or true (backend accepts both)
   });
@@ -56,14 +54,7 @@ const AddJourney = () => {
   };
 
   const handleSubmit = async () => {
-    if (
-      !formData.title ||
-      !photo ||
-      !formData.description ||
-      !formData.year_range ||
-      !formData.step_number ||
-      !formData.subtitle
-    ) {
+    if (!formData.title || !formData.description) {
       toast.error("Please fill all required fields");
       return;
     }
@@ -74,19 +65,15 @@ const AddJourney = () => {
       const formDataToSend = new FormData();
       formDataToSend.append("title", formData.title);
       formDataToSend.append("description", formData.description);
-      formDataToSend.append("year_range", formData.year_range);
-      formDataToSend.append("step_number", formData.step_number);
-      formDataToSend.append("subtitle", formData.subtitle);
-      formDataToSend.append("active", formData.status);
 
-      if (photo) {
-        formDataToSend.append("image", photo);
-      }
+      formDataToSend.append("active", formData.status);
 
       const token = localStorage.getItem("authToken");
 
-      const response = await http.post("/journey", formDataToSend, {
-        headers: { "Content-Type": "multipart/form-data" },
+      const response = await http.post("/journeys", {
+        title: formData.title,
+        description: formData.description,
+        active: formData.status,
       });
 
       if (response.status == 201) {
@@ -147,51 +134,6 @@ const AddJourney = () => {
               />
             </div>
 
-            {/* Subtitle Field */}
-            <div className="mb-6">
-              <label className="block text-sm text-gray-600 mb-2">
-                Subtitle <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="subtitle"
-                value={formData.subtitle}
-                onChange={handleInputChange}
-                placeholder="Enter subtitle"
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-
-            {/* Year Range Field */}
-            <div className="mb-6">
-              <label className="block text-sm text-gray-600 mb-2">
-                Year Range <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="year_range"
-                value={formData.year_range}
-                onChange={handleInputChange}
-                placeholder="Enter year range"
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-
-            {/* Step Number Field */}
-            <div className="mb-6">
-              <label className="block text-sm text-gray-600 mb-2">
-                Step Number <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="step_number"
-                value={formData.step_number}
-                onChange={handleInputChange}
-                placeholder="Enter step number"
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-
             {/* Description Field */}
             <div className="mb-6">
               <label className="block text-sm text-gray-600 mb-2">
@@ -212,7 +154,7 @@ const AddJourney = () => {
             </div>
 
             {/* Photo Field */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <label className="block text-sm text-gray-600 mb-2">
                 Photo <span className="text-red-500">*</span>
               </label>
@@ -233,7 +175,7 @@ const AddJourney = () => {
                 </label>
                 <span className="ml-3 text-sm text-gray-500">{photoName}</span>
               </div>
-            </div>
+            </div> */}
 
             {/* Status Field */}
             <div className="mb-6">

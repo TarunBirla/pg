@@ -5,6 +5,7 @@ import { Editor } from "primereact/editor";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+import { toast } from "react-toastify";
 
 const AddServicebar = () => {
   const [formData, setFormData] = useState({
@@ -65,21 +66,28 @@ const AddServicebar = () => {
 
       formDataToSend.append("active", formData.status);
 
+      if (photo) formDataToSend.append("image", photo);
+
       const token = localStorage.getItem("authToken");
 
-      const response = await http.post("/servicebar", formData);
+      const response = await http.post("/servicebar", formDataToSend, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       if (response.status == 201) {
         const result = await response.data;
-        alert("Servicebar created successfully!");
+        toast.success("Servicebar created successfully!");
         handleReset();
       } else {
         const error = await response.json();
-        alert(`Error: ${error.message || "Failed to create servicebar"}`);
+        toast.error(`Error: ${error.message || "Failed to create servicebar"}`);
       }
     } catch (error) {
       console.error("Error submitting:", error);
-      alert("An error occurred while submitting the form");
+      toast.error(
+        error.response.data.message ||
+          "An error occurred while submitting the form"
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -89,7 +97,6 @@ const AddServicebar = () => {
     setFormData({
       title: "",
       description: "",
-
       status: 1,
     });
     setPhoto(null);
@@ -142,6 +149,30 @@ const AddServicebar = () => {
                   setFormData({ ...formData, description: e.htmlValue })
                 }
               />
+            </div>
+
+            {/* Photo Field */}
+            <div className="mb-6">
+              <label className="block text-sm text-gray-600 mb-2">
+                Photo <span className="text-red-500">*</span>
+              </label>
+              <div className="flex items-center">
+                <input
+                  type="file"
+                  ref={photoInputRef}
+                  onChange={handlePhotoChange}
+                  accept="image/*"
+                  className="hidden"
+                  id="photo-upload"
+                />
+                <label
+                  htmlFor="photo-upload"
+                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded cursor-pointer hover:bg-gray-300 transition-colors"
+                >
+                  Choose File
+                </label>
+                <span className="ml-3 text-sm text-gray-500">{photoName}</span>
+              </div>
             </div>
 
             {/* Status Field */}

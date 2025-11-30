@@ -7,7 +7,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { toast } from "react-toastify";
 
-const AddBusiness = () => {
+const AddLastdecade = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -52,7 +52,7 @@ const AddBusiness = () => {
   };
 
   const handleSubmit = async () => {
-    if (!formData.title || !photo) {
+    if (!formData.title || !photo || !formData.description) {
       toast.error("Please fill all required fields");
       return;
     }
@@ -72,17 +72,19 @@ const AddBusiness = () => {
 
       const token = localStorage.getItem("authToken");
 
-      const response = await http.post("/business", formDataToSend, {
+      const response = await http.post("/lastdecade", formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       if (response.status == 201) {
         const result = await response.data;
-        toast.success("Business created successfully!");
+        toast.success("Lastdecade created successfully!");
         handleReset();
       } else {
         const error = await response.data;
-        toast.error(`Error: ${error.message || "Failed to create Business."}`);
+        toast.error(
+          `Error: ${error.message || "Failed to create Lastdecade."}`
+        );
       }
     } catch (error) {
       console.error("Error submitting:", error);
@@ -115,7 +117,7 @@ const AddBusiness = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Add Business
+            Add Lastdecade
           </h1>
 
           <div>
@@ -135,7 +137,7 @@ const AddBusiness = () => {
             </div>
 
             {/* Description Field */}
-            {/* <div className="mb-6">
+            <div className="mb-6">
               <label className="block text-sm text-gray-600 mb-2">
                 Description
               </label>
@@ -151,7 +153,7 @@ const AddBusiness = () => {
                   setFormData({ ...formData, description: e.htmlValue })
                 }
               />
-            </div> */}
+            </div>
 
             {/* Photo Field */}
             <div className="mb-6">
@@ -248,4 +250,4 @@ const AddBusiness = () => {
   );
 };
 
-export default AddBusiness;
+export default AddLastdecade;

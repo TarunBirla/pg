@@ -5,41 +5,42 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RotatingLines } from "react-loader-spinner";
 
-export default function ServiceBarList() {
+export default function JourneyStepsList() {
   const [entries, setEntries] = useState(10);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const [servicebar, setServicebar] = useState([]);
+  const [journey, setJourney] = useState([]);
+
   const [loading, setLoading] = useState(false);
 
-  const fetchservicebar = async () => {
+  const fetchjourney = async () => {
     try {
       setLoading(true);
-      const res = await http.get("/servicebar");
-      setServicebar(res.data);
+      const res = await http.get("/journeysteps");
+      setJourney(res.data);
       console.log(res.data);
     } catch (error) {
-      console.error("Error fetching servicebar:", error);
+      console.error("Error fetching journey:", error);
     } finally {
       setLoading(false);
     }
   };
   useEffect(() => {
-    fetchservicebar();
+    fetchjourney();
   }, []);
 
-  const filteredservicebar =
-    servicebar?.data?.filter((item) =>
+  const filteredjourney =
+    journey?.filter((item) =>
       item.title.toLowerCase().includes(search.toLowerCase())
     ) || [];
 
   // Pagination calculations
-  const totalEntries = filteredservicebar.length;
+  const totalEntries = filteredjourney.length;
   const totalPages = Math.ceil(totalEntries / entries);
   const startIndex = (currentPage - 1) * entries;
   const endIndex = Math.min(startIndex + entries, totalEntries);
-  const currentservicebar = filteredservicebar.slice(startIndex, endIndex);
+  const currentjourney = filteredjourney.slice(startIndex, endIndex);
 
   // Reset to first page when search or entries change
   React.useEffect(() => {
@@ -79,20 +80,24 @@ export default function ServiceBarList() {
     }
     return pages;
   };
+
   const [deleteLoadingId, setDeleteLoadingId] = useState(null);
 
-  const handleDeleteBanner = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this banner?")) return;
+  const handleDeletejourney = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this journey?"))
+      return;
 
     try {
       setDeleteLoadingId(id);
-      await http.delete(`/servicebar/${id}`);
+      await http.delete(`/journeysteps/${id}`);
 
-      toast.success("Banner deleted successfully!");
-      fetchservicebar();
+      toast.success("journey Steps deleted successfully!");
+      fetchjourney();
     } catch (error) {
       console.error("Delete error:", error);
-      toast.error(error.response.data.message || "Failed to delete banner.");
+      toast.error(
+        error.response.data.message || "Failed to delete journey Steps."
+      );
     } finally {
       setDeleteLoadingId(null);
     }
@@ -155,14 +160,14 @@ export default function ServiceBarList() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-4 md:p-6 border-b border-gray-200">
           <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
-            Service Bar List
+            Journey Steps List
           </h1>
           <button
-            onClick={() => navigate("/dashboard/servicebar/add")}
+            onClick={() => navigate("/dashboard/journeysteps/add")}
             className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center"
           >
             <Plus size={18} />
-            Add Service Bar
+            Add Steps
           </button>
         </div>
 
@@ -202,6 +207,15 @@ export default function ServiceBarList() {
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   S.N.
                 </th>
+
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Year Range
+                </th>
+
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Step No.
+                </th>
+
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Title
                 </th>
@@ -211,12 +225,9 @@ export default function ServiceBarList() {
                 </th>
 
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Photo
-                </th>
-
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Status
                 </th>
+
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Action
                 </th>
@@ -237,62 +248,62 @@ export default function ServiceBarList() {
                     </div>
                   </td>
                 </tr>
-              ) : currentservicebar.length === 0 ? (
+              ) : currentjourney.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="px-4 py-4 text-center">
+                  <td colSpan="6" className="px-4 py-4 text-center">
                     No data available
                   </td>
                 </tr>
               ) : (
-                currentservicebar.map((banner) => (
+                currentjourney.map((journey, index) => (
                   <tr
-                    key={banner.id}
+                    key={journey.id}
                     className="hover:bg-gray-50 transition-colors"
                   >
                     <td className="px-4 py-4 text-sm text-gray-600">
-                      {banner.id}
+                      {index + 1}
                     </td>
                     <td className="px-4 py-4 text-sm text-gray-800">
-                      {banner.title}
+                      {journey.year_range}
+                    </td>
+                    <td className="px-4 py-4 text-sm text-gray-800">
+                      {journey.step_number}
+                    </td>
+                    <td className="px-4 py-4 text-sm text-gray-800">
+                      {journey.title}
                     </td>
 
                     <td
                       className="max-w-xs truncate text-sm "
-                      dangerouslySetInnerHTML={{ __html: banner.description }}
+                      dangerouslySetInnerHTML={{ __html: journey?.description }}
                     ></td>
-                    <td className="px-4 py-4">
-                      <div className="image-zoom-container">
-                        <img
-                          src={banner.image_url}
-                          alt={banner.title}
-                          className="image-zoom h-10 w-auto object-cover"
-                        />
-                      </div>
-                    </td>
+
                     <td className="px-4 py-4">
                       <span
                         className={`text-xs px-3 py-1 rounded-full font-semibold 
                       ${
-                        banner.active === true
+                        journey.active === true
                           ? "bg-emerald-100 text-emerald-700 border border-emerald-300"
                           : "bg-red-100 text-red-700 border border-red-300"
                       }`}
                       >
-                        {banner.active === true ? "Active" : "Inactive"}
+                        {journey.active === true ? "Active" : "Inactive"}
                       </span>
                     </td>
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() =>
-                            navigate(`/dashboard/servicebar/edit/${banner.id}`)
+                            navigate(
+                              `/dashboard/journeysteps/edit/${journey.id}`
+                            )
                           }
                           className="bg-gray-900 cursor-pointer text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
                         >
                           <Edit size={16} />
                         </button>
                         {/* <button
-                          onClick={() => handleDeleteBanner(banner.id)}
+                          onClick={() => handleDeletejourney(journey.id)}
                           className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
                         >
                           <Trash2 size={16} />
@@ -301,14 +312,14 @@ export default function ServiceBarList() {
                         <button
                           className={`bg-red-500  h-8 w-8 cursor-pointer flex items-center justify-center  text-white p-2 rounded-full hover:bg-red-600 transition-colors
                                                 ${
-                                                  deleteLoadingId === banner.id
+                                                  deleteLoadingId === journey.id
                                                     ? "opacity-50 cursor-not-allowed"
                                                     : ""
                                                 }`}
-                          disabled={deleteLoadingId === banner.id}
-                          onClick={() => handleDeleteBanner(banner.id)}
+                          disabled={deleteLoadingId === journey.id}
+                          onClick={() => handleDeletejourney(journey.id)}
                         >
-                          {deleteLoadingId === banner.id ? (
+                          {deleteLoadingId === journey.id ? (
                             <RotatingLines
                               width="20"
                               strokeColor="#fff"
@@ -330,6 +341,15 @@ export default function ServiceBarList() {
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   S.N.
                 </th>
+
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Year Range
+                </th>
+
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Step No.
+                </th>
+
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Title
                 </th>
@@ -337,13 +357,11 @@ export default function ServiceBarList() {
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Description
                 </th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Photo
-                </th>
 
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Status
                 </th>
+
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Action
                 </th>

@@ -3,6 +3,7 @@ import { Pencil, Trash2, Plus, Edit } from "lucide-react";
 import http from "../../../service/http";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { RotatingLines } from "react-loader-spinner";
 
 export default function NewsList() {
   const [entries, setEntries] = useState(10);
@@ -10,13 +11,18 @@ export default function NewsList() {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const fetchnews = async () => {
     try {
+      setLoading(true);
       const res = await http.get("/news");
       setNews(res.data);
       console.log(res.data);
     } catch (error) {
       console.error("Error fetching news:", error);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -73,11 +79,13 @@ export default function NewsList() {
     }
     return pages;
   };
+  const [deleteLoadingId, setDeleteLoadingId] = useState(null);
 
   const handleDeletenews = async (id) => {
     if (!window.confirm("Are you sure you want to delete this news?")) return;
 
     try {
+      setDeleteLoadingId(id);
       await http.delete(`/news/${id}`);
 
       toast.success("news deleted successfully!");
@@ -85,6 +93,8 @@ export default function NewsList() {
     } catch (error) {
       console.error("Delete error:", error);
       toast.error(error.response.data.message || "Failed to delete news.");
+    } finally {
+      setDeleteLoadingId(null);
     }
   };
 
@@ -147,7 +157,10 @@ export default function NewsList() {
           <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
             News List
           </h1>
-          <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center">
+          <button
+            onClick={() => navigate("/dashboard/news/add")}
+            className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center"
+          >
             <Plus size={18} />
             Add News
           </button>
@@ -207,7 +220,21 @@ export default function NewsList() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {currentnews.length === 0 ? (
+              {loading ? (
+                <tr>
+                  <td colSpan="9" className="px-4 py-4 text-center">
+                    <div className="flex justify-center items-center w-full h-20">
+                      <RotatingLines
+                        strokeColor="#1E1E1E"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="20"
+                        visible={true}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ) : currentnews.length === 0 ? (
                 <tr>
                   <td colSpan="6" className="px-4 py-4 text-center">
                     No data available
@@ -226,8 +253,10 @@ export default function NewsList() {
                       {news.title}
                     </td>
 
-                    <td className="max-w-xs truncate">{news.description}</td>
-
+                    <td
+                      className="max-w-xs truncate text-sm "
+                      dangerouslySetInnerHTML={{ __html: news?.description }}
+                    ></td>
                     <td className="px-4 py-4">
                       <div className="image-zoom-container">
                         <img
@@ -255,15 +284,36 @@ export default function NewsList() {
                           onClick={() =>
                             navigate(`/dashboard/news/edit/${news.id}`)
                           }
-                          className="bg-gray-900 text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
+                          className="bg-gray-900 cursor-pointer  text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
                         >
                           <Edit size={16} />
                         </button>
-                        <button
+                        {/* <button
                           onClick={() => handleDeletenews(news.id)}
                           className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
                         >
                           <Trash2 size={16} />
+                        </button> */}
+                        <button
+                          className={`bg-red-500  h-8 w-8 cursor-pointer flex items-center justify-center  text-white p-2 rounded-full hover:bg-red-600 transition-colors
+                                                ${
+                                                  deleteLoadingId === news.id
+                                                    ? "opacity-50 cursor-not-allowed"
+                                                    : ""
+                                                }`}
+                          disabled={deleteLoadingId === news.id}
+                          onClick={() => handleDeletenews(news.id)}
+                        >
+                          {deleteLoadingId === news.id ? (
+                            <RotatingLines
+                              width="20"
+                              strokeColor="#fff"
+                              visible={true}
+                              strokeWidth="5"
+                            />
+                          ) : (
+                            <Trash2 size={16} />
+                          )}
                         </button>
                       </div>
                     </td>

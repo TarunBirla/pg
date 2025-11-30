@@ -3,6 +3,7 @@ import { Pencil, Trash2, Plus, Edit } from "lucide-react";
 import http from "../../../service/http";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { RotatingLines } from "react-loader-spinner";
 
 export default function AboutusList() {
   const [entries, setEntries] = useState(10);
@@ -10,13 +11,17 @@ export default function AboutusList() {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const [aboutus, setAboutus] = useState([]);
+  const [loading, setLoading] = useState(false);
   const fetchaboutus = async () => {
     try {
+      setLoading(true);
       const res = await http.get("/aboutus");
       setAboutus(res.data);
       console.log(res.data);
     } catch (error) {
       console.error("Error fetching aboutus:", error);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -73,11 +78,13 @@ export default function AboutusList() {
     }
     return pages;
   };
+  const [deleteLoadingId, setDeleteLoadingId] = useState(null);
 
   const handleDeleteabout = async (id) => {
     if (!window.confirm("Are you sure you want to delete this about?")) return;
 
     try {
+      setDeleteLoadingId(id);
       await http.delete(`/aboutus/delete`);
 
       toast.success("about deleted successfully!");
@@ -85,6 +92,8 @@ export default function AboutusList() {
     } catch (error) {
       console.error("Delete error:", error);
       toast.error(error.response.data.message || "Failed to delete about.");
+    } finally {
+      setDeleteLoadingId(null);
     }
   };
 
@@ -147,7 +156,10 @@ export default function AboutusList() {
           <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
             Aboutus List
           </h1>
-          <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center">
+          <button
+            onClick={() => navigate("/dashboard/aboutus/add")}
+            className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center"
+          >
             <Plus size={18} />
             Add Aboutus
           </button>
@@ -217,7 +229,21 @@ export default function AboutusList() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {currentaboutus.length === 0 ? (
+              {loading ? (
+                <tr>
+                  <td colSpan="9" className="px-4 py-4 text-center">
+                    <div className="flex justify-center items-center w-full h-20">
+                      <RotatingLines
+                        strokeColor="#1E1E1E"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="20"
+                        visible={true}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ) : currentaboutus.length === 0 ? (
                 <tr>
                   <td colSpan="9" className="px-4 py-4 text-center">
                     No aboutus found
@@ -235,9 +261,11 @@ export default function AboutusList() {
                     <td className="px-4 py-4 text-sm text-gray-800">
                       {about.title}
                     </td>
-                    <td className="px-4 py-4 text-sm text-gray-800">
-                      {about.summary}
-                    </td>
+
+                    <td
+                      className="max-w-xs truncate text-sm "
+                      dangerouslySetInnerHTML={{ __html: about?.summary }}
+                    ></td>
                     <td className="px-4 py-4 text-sm text-gray-800">
                       {about.companies_count}
                     </td>
@@ -247,7 +275,10 @@ export default function AboutusList() {
                     <td className="px-4 py-4 text-sm text-gray-800">
                       {about.employee_count}
                     </td>
-                    <td className="max-w-xs truncate">{about.description}</td>
+                    <td
+                      className="max-w-xs truncate text-sm "
+                      dangerouslySetInnerHTML={{ __html: about?.description }}
+                    ></td>
 
                     <td className="px-4 py-4">
                       <div className="image-zoom-container">
@@ -265,15 +296,37 @@ export default function AboutusList() {
                           onClick={() =>
                             navigate(`/dashboard/aboutus/edit?id=${about.id}`)
                           }
-                          className="bg-gray-900 text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
+                          className="bg-gray-900 cursor-pointer  text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
                         >
                           <Edit size={16} />
                         </button>
-                        <button
+                        {/* <button
                           onClick={() => handleDeleteabout(about.id)}
                           className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
                         >
                           <Trash2 size={16} />
+                        </button> */}
+
+                        <button
+                          className={`bg-red-500  h-8 w-8 cursor-pointer flex items-center justify-center  text-white p-2 rounded-full hover:bg-red-600 transition-colors
+                        ${
+                          deleteLoadingId === about.id
+                            ? "opacity-50 cursor-not-allowed"
+                            : ""
+                        }`}
+                          disabled={deleteLoadingId === about.id}
+                          onClick={() => handleDeleteabout(about.id)}
+                        >
+                          {deleteLoadingId === about.id ? (
+                            <RotatingLines
+                              width="20"
+                              strokeColor="#fff"
+                              visible={true}
+                              strokeWidth="5"
+                            />
+                          ) : (
+                            <Trash2 size={16} />
+                          )}
                         </button>
                       </div>
                     </td>

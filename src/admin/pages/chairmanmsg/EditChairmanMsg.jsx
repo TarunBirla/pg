@@ -8,13 +8,11 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { toast } from "react-toastify";
 
-const EditArchitech = () => {
+const EditChairmanMsg = () => {
   const { id } = useParams();
 
   const [formData, setFormData] = useState({
     title: "",
-    name: "",
-    designation: "",
     description: "",
     status: 1,
   });
@@ -29,20 +27,18 @@ const EditArchitech = () => {
   useEffect(() => {
     const loadBanner = async () => {
       try {
-        const res = await http.get(`/architech/${id}`);
+        const res = await http.get(`/chairmanmsg/${id}`);
         const data = res.data;
 
         setFormData({
           title: data.title || "",
-          name: data.name || "",
-          designation: data.designation || "",
           description: data.description || "",
           status: data.active ? 1 : 0,
         });
 
         setPreview(data.image_url);
       } catch (error) {
-        console.error("Error loading banner:", error);
+        console.error("Error loading chairmanmsg:", error);
       }
     };
 
@@ -70,7 +66,7 @@ const EditArchitech = () => {
   // SUBMIT UPDATE
   // ---------------------------------------
   const handleSubmit = async () => {
-    if (!formData.name || !formData.designation || !formData.description) {
+    if (!formData.title || !formData.description) {
       toast.error("Please fill all required fields");
       return;
     }
@@ -81,24 +77,23 @@ const EditArchitech = () => {
       const formDataToSend = new FormData();
       formDataToSend.append("title", formData.title);
 
-      formDataToSend.append("name", formData.name);
-      formDataToSend.append("designation", formData.designation);
-
       formDataToSend.append("description", formData.description);
       formDataToSend.append("active", formData.status);
 
       if (photo) formDataToSend.append("image", photo);
 
-      const res = await http.put(`/architech/${id}`, formDataToSend, {
+      const res = await http.put(`/chairmanmsg/${id}`, formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       if (res.status === 200) {
-        toast.success("Architech updated successfully!");
+        toast.success("Chairmanmsg updated successfully!");
       }
     } catch (error) {
       console.error("Error updating:", error);
-      toast.error(error.response.data.message || "Failed to update banner");
+      toast.error(
+        error.response.data.message || "Failed to update chairmanmsg"
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -109,46 +104,18 @@ const EditArchitech = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Edit Service
+            Edit Chairman Message
           </h1>
 
           {/* Title */}
-          {/* <div className="mb-6">
-            <label className="block text-sm text-gray-600 mb-2">
-              Title <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:ring-1"
-            />
-          </div> */}
-
-          {/* Name */}
           <div className="mb-6">
             <label className="block text-sm text-gray-600 mb-2">
               Name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:ring-1"
-            />
-          </div>
-
-          {/* Designation */}
-          <div className="mb-6">
-            <label className="block text-sm text-gray-600 mb-2">
-              Designation <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="designation"
-              value={formData.designation}
+              name="title"
+              value={formData.title}
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:ring-1"
             />
@@ -230,4 +197,4 @@ const EditArchitech = () => {
   );
 };
 
-export default EditArchitech;
+export default EditChairmanMsg;

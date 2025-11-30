@@ -7,12 +7,15 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { toast } from "react-toastify";
 
-const AddBusiness = () => {
+const AddJourneySteps = () => {
   const [formData, setFormData] = useState({
+    year_range: "",
+    step_number: "",
     title: "",
     description: "",
-    status: 1,
+    status: 1, // or true (backend accepts both)
   });
+
   const [photo, setPhoto] = useState(null);
   const [mobileImage, setMobileImage] = useState(null);
   const [photoName, setPhotoName] = useState("No file chosen");
@@ -52,7 +55,12 @@ const AddBusiness = () => {
   };
 
   const handleSubmit = async () => {
-    if (!formData.title || !photo) {
+    if (
+      !formData.title ||
+      !formData.description ||
+      !formData.year_range ||
+      !formData.step_number
+    ) {
       toast.error("Please fill all required fields");
       return;
     }
@@ -63,26 +71,32 @@ const AddBusiness = () => {
       const formDataToSend = new FormData();
       formDataToSend.append("title", formData.title);
       formDataToSend.append("description", formData.description);
-
+      formDataToSend.append("year_range", formData.year_range);
+      formDataToSend.append("step_number", formData.step_number);
+      formDataToSend.append("subtitle", formData.subtitle);
       formDataToSend.append("active", formData.status);
-
-      if (photo) {
-        formDataToSend.append("image", photo);
-      }
 
       const token = localStorage.getItem("authToken");
 
-      const response = await http.post("/business", formDataToSend, {
-        headers: { "Content-Type": "multipart/form-data" },
+      const response = await http.post("/journeysteps", {
+        title: formData.title,
+        description: formData.description,
+        year_range: formData.year_range,
+        step_number: formData.step_number,
+        active: formData.status,
       });
 
       if (response.status == 201) {
         const result = await response.data;
-        toast.success("Business created successfully!");
+        toast.success(
+          response.data.message || "Journey Steps created successfully!"
+        );
         handleReset();
       } else {
         const error = await response.data;
-        toast.error(`Error: ${error.message || "Failed to create Business."}`);
+        toast.error(
+          `Error: ${error.message || "Failed to create Journey Steps."}`
+        );
       }
     } catch (error) {
       console.error("Error submitting:", error);
@@ -99,6 +113,8 @@ const AddBusiness = () => {
     setFormData({
       title: "",
       description: "",
+      year_range: "",
+      step_number: "",
       status: 1,
     });
     setPhoto(null);
@@ -115,7 +131,7 @@ const AddBusiness = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Add Business
+            Add Journey Steps
           </h1>
 
           <div>
@@ -134,8 +150,38 @@ const AddBusiness = () => {
               />
             </div>
 
+            {/* Year Range Field */}
+            <div className="mb-6">
+              <label className="block text-sm text-gray-600 mb-2">
+                Year Range <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="year_range"
+                value={formData.year_range}
+                onChange={handleInputChange}
+                placeholder="Enter year range"
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            {/* Step Number Field */}
+            <div className="mb-6">
+              <label className="block text-sm text-gray-600 mb-2">
+                Step Number <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="step_number"
+                value={formData.step_number}
+                onChange={handleInputChange}
+                placeholder="Enter step number"
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
             {/* Description Field */}
-            {/* <div className="mb-6">
+            <div className="mb-6">
               <label className="block text-sm text-gray-600 mb-2">
                 Description
               </label>
@@ -151,30 +197,6 @@ const AddBusiness = () => {
                   setFormData({ ...formData, description: e.htmlValue })
                 }
               />
-            </div> */}
-
-            {/* Photo Field */}
-            <div className="mb-6">
-              <label className="block text-sm text-gray-600 mb-2">
-                Photo <span className="text-red-500">*</span>
-              </label>
-              <div className="flex items-center">
-                <input
-                  type="file"
-                  ref={photoInputRef}
-                  onChange={handlePhotoChange}
-                  accept="image/*"
-                  className="hidden"
-                  id="photo-upload"
-                />
-                <label
-                  htmlFor="photo-upload"
-                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded cursor-pointer hover:bg-gray-300 transition-colors"
-                >
-                  Choose File
-                </label>
-                <span className="ml-3 text-sm text-gray-500">{photoName}</span>
-              </div>
             </div>
 
             {/* Status Field */}
@@ -248,4 +270,4 @@ const AddBusiness = () => {
   );
 };
 
-export default AddBusiness;
+export default AddJourneySteps;

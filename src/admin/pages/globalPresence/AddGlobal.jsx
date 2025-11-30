@@ -72,7 +72,7 @@ const AddGlobal = () => {
 
       const token = localStorage.getItem("authToken");
 
-      const response = await http.post("/globalPresence", formDataToSend, {
+      const response = await http.post("/globalpresence", formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

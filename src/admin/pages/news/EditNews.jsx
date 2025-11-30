@@ -101,9 +101,7 @@ const EditNews = () => {
     <div className="w-full min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
-          <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Edit Service
-          </h1>
+          <h1 className="text-2xl font-normal text-gray-700 mb-6">Edit News</h1>
 
           {/* Title */}
           <div className="mb-6">
@@ -187,7 +185,7 @@ const EditNews = () => {
             disabled={isSubmitting}
             className="px-6 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 disabled:bg-teal-300"
           >
-            {isSubmitting ? "Updating..." : "Update Service"}
+            {isSubmitting ? "Updating..." : "Update"}
           </button>
         </div>
       </div>

@@ -66,7 +66,7 @@ const EditBusiness = () => {
   // SUBMIT UPDATE
   // ---------------------------------------
   const handleSubmit = async () => {
-    if (!formData.title || !formData.description) {
+    if (!formData.title) {
       toast.error("Please fill all required fields");
       return;
     }
@@ -102,7 +102,7 @@ const EditBusiness = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Edit Service
+            Edit Business
           </h1>
 
           {/* Title */}
@@ -120,7 +120,7 @@ const EditBusiness = () => {
           </div>
 
           {/* Description */}
-          <div className="mb-6">
+          {/* <div className="mb-6">
             <label className="block text-sm text-gray-600 mb-2">
               Description <span className="text-red-500">*</span>
             </label>
@@ -132,7 +132,7 @@ const EditBusiness = () => {
                 setFormData({ ...formData, description: e.htmlValue })
               }
             />
-          </div>
+          </div> */}
 
           {/* Photo */}
           <div className="mb-6">
@@ -187,7 +187,7 @@ const EditBusiness = () => {
             disabled={isSubmitting}
             className="px-6 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 disabled:bg-teal-300"
           >
-            {isSubmitting ? "Updating..." : "Update Service"}
+            {isSubmitting ? "Updating..." : "Update"}
           </button>
         </div>
       </div>

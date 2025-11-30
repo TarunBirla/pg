@@ -3,6 +3,7 @@ import { Pencil, Trash2, Plus, Edit } from "lucide-react";
 import http from "../../../service/http";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { RotatingLines } from "react-loader-spinner";
 
 export default function ServiceSectionList() {
   const [entries, setEntries] = useState(10);
@@ -10,13 +11,18 @@ export default function ServiceSectionList() {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const [service, setService] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const fetchService = async () => {
     try {
+      setLoading(true);
       const res = await http.get("service");
       setService(res.data);
       console.log(res.data);
     } catch (error) {
       console.error("Error fetching service:", error);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -74,11 +80,14 @@ export default function ServiceSectionList() {
     return pages;
   };
 
+  const [deleteLoadingId, setDeleteLoadingId] = useState(null);
+
   const handleDeleteService = async (id) => {
     if (!window.confirm("Are you sure you want to delete this service?"))
       return;
 
     try {
+      setDeleteLoadingId(id);
       await http.delete(`/service/${id}`);
 
       toast.success("Service deleted successfully!");
@@ -86,6 +95,8 @@ export default function ServiceSectionList() {
     } catch (error) {
       console.error("Delete error:", error);
       toast.error(error.response.data.message || "Failed to delete service.");
+    } finally {
+      setDeleteLoadingId(null);
     }
   };
 
@@ -148,7 +159,10 @@ export default function ServiceSectionList() {
           <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
             Service List
           </h1>
-          <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center">
+          <button
+            onClick={() => navigate("/dashboard/service/add")}
+            className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center"
+          >
             <Plus size={18} />
             Add Service
           </button>
@@ -208,7 +222,21 @@ export default function ServiceSectionList() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {currentservice.length === 0 ? (
+              {loading ? (
+                <tr>
+                  <td colSpan="9" className="px-4 py-4 text-center">
+                    <div className="flex justify-center items-center w-full h-20">
+                      <RotatingLines
+                        strokeColor="#1E1E1E"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="20"
+                        visible={true}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ) : currentservice.length === 0 ? (
                 <tr>
                   <td colSpan="6" className="px-4 py-4 text-center">
                     No data available
@@ -227,7 +255,10 @@ export default function ServiceSectionList() {
                       {service.title}
                     </td>
 
-                    <td className="max-w-xs truncate">{service.description}</td>
+                    <td
+                      className="max-w-xs truncate text-sm "
+                      dangerouslySetInnerHTML={{ __html: service?.description }}
+                    ></td>
 
                     <td className="px-4 py-4">
                       <div className="image-zoom-container">
@@ -256,15 +287,37 @@ export default function ServiceSectionList() {
                           onClick={() =>
                             navigate(`/dashboard/service/edit/${service.id}`)
                           }
-                          className="bg-gray-900 text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
+                          className="bg-gray-900 cursor-pointer text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
                         >
                           <Edit size={16} />
                         </button>
-                        <button
+                        {/* <button
                           onClick={() => handleDeleteService(service.id)}
                           className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
                         >
                           <Trash2 size={16} />
+                        </button> */}
+
+                        <button
+                          className={`bg-red-500  h-8 w-8 cursor-pointer flex items-center justify-center  text-white p-2 rounded-full hover:bg-red-600 transition-colors
+                                                ${
+                                                  deleteLoadingId === service.id
+                                                    ? "opacity-50 cursor-not-allowed"
+                                                    : ""
+                                                }`}
+                          disabled={deleteLoadingId === service.id}
+                          onClick={() => handleDeleteService(service.id)}
+                        >
+                          {deleteLoadingId === service.id ? (
+                            <RotatingLines
+                              width="20"
+                              strokeColor="#fff"
+                              visible={true}
+                              strokeWidth="5"
+                            />
+                          ) : (
+                            <Trash2 size={16} />
+                          )}
                         </button>
                       </div>
                     </td>

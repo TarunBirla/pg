@@ -186,7 +186,7 @@ const EditService = () => {
             disabled={isSubmitting}
             className="px-6 py-2 bg-teal-500 text-white rounded hover:bg-teal-600 disabled:bg-teal-300"
           >
-            {isSubmitting ? "Updating..." : "Update Service"}
+            {isSubmitting ? "Updating..." : "Update"}
           </button>
         </div>
       </div>

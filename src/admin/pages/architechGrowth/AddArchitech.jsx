@@ -10,6 +10,8 @@ import { toast } from "react-toastify";
 const AddArchitech = () => {
   const [formData, setFormData] = useState({
     title: "",
+    name: "",
+    designation: "",
     description: "",
     status: 1,
   });
@@ -52,7 +54,12 @@ const AddArchitech = () => {
   };
 
   const handleSubmit = async () => {
-    if (!formData.title || !photo || !formData.description) {
+    if (
+      !formData.name ||
+      !formData.designation ||
+      !photo ||
+      !formData.description
+    ) {
       toast.error("Please fill all required fields");
       return;
     }
@@ -63,6 +70,8 @@ const AddArchitech = () => {
       const formDataToSend = new FormData();
       formDataToSend.append("title", formData.title);
       formDataToSend.append("description", formData.description);
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("designation", formData.designation);
 
       formDataToSend.append("active", formData.status);
 
@@ -98,6 +107,8 @@ const AddArchitech = () => {
   const handleReset = () => {
     setFormData({
       title: "",
+      name: "",
+      designation: "",
       description: "",
       status: 1,
     });
@@ -120,7 +131,7 @@ const AddArchitech = () => {
 
           <div>
             {/* Title Field */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <label className="block text-sm text-gray-600 mb-2">
                 Title <span className="text-red-500">*</span>
               </label>
@@ -130,6 +141,36 @@ const AddArchitech = () => {
                 value={formData.title}
                 onChange={handleInputChange}
                 placeholder="Enter title"
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div> */}
+
+            {/* Name Field */}
+            <div className="mb-6">
+              <label className="block text-sm text-gray-600 mb-2">
+                Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="Enter name"
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            {/* Designation Field */}
+            <div className="mb-6">
+              <label className="block text-sm text-gray-600 mb-2">
+                Designation <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="designation"
+                value={formData.designation}
+                onChange={handleInputChange}
+                placeholder="Enter designation"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>

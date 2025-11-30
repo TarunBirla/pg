@@ -5,41 +5,41 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RotatingLines } from "react-loader-spinner";
 
-export default function ServiceBarList() {
+export default function ChairmanMsgList() {
   const [entries, setEntries] = useState(10);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const [servicebar, setServicebar] = useState([]);
+  const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchservicebar = async () => {
+  const fetchnews = async () => {
     try {
       setLoading(true);
-      const res = await http.get("/servicebar");
-      setServicebar(res.data);
+      const res = await http.get("/chairmanmsg");
+      setNews(res.data);
       console.log(res.data);
     } catch (error) {
-      console.error("Error fetching servicebar:", error);
+      console.error("Error fetching chairmanmsg:", error);
     } finally {
       setLoading(false);
     }
   };
   useEffect(() => {
-    fetchservicebar();
+    fetchnews();
   }, []);
 
-  const filteredservicebar =
-    servicebar?.data?.filter((item) =>
+  const filterednews =
+    news?.filter((item) =>
       item.title.toLowerCase().includes(search.toLowerCase())
     ) || [];
 
   // Pagination calculations
-  const totalEntries = filteredservicebar.length;
+  const totalEntries = filterednews.length;
   const totalPages = Math.ceil(totalEntries / entries);
   const startIndex = (currentPage - 1) * entries;
   const endIndex = Math.min(startIndex + entries, totalEntries);
-  const currentservicebar = filteredservicebar.slice(startIndex, endIndex);
+  const currentnews = filterednews.slice(startIndex, endIndex);
 
   // Reset to first page when search or entries change
   React.useEffect(() => {
@@ -79,20 +79,24 @@ export default function ServiceBarList() {
     }
     return pages;
   };
+
   const [deleteLoadingId, setDeleteLoadingId] = useState(null);
 
-  const handleDeleteBanner = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this banner?")) return;
+  const handleDeletenews = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this chairmanmsg?"))
+      return;
 
     try {
       setDeleteLoadingId(id);
-      await http.delete(`/servicebar/${id}`);
+      await http.delete(`/chairmanmsg/${id}`);
 
-      toast.success("Banner deleted successfully!");
-      fetchservicebar();
+      toast.success("chairmanmsg deleted successfully!");
+      fetchnews();
     } catch (error) {
       console.error("Delete error:", error);
-      toast.error(error.response.data.message || "Failed to delete banner.");
+      toast.error(
+        error.response.data.message || "Failed to delete chairmanmsg."
+      );
     } finally {
       setDeleteLoadingId(null);
     }
@@ -155,14 +159,14 @@ export default function ServiceBarList() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-4 md:p-6 border-b border-gray-200">
           <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
-            Service Bar List
+            Chairman Message List
           </h1>
           <button
-            onClick={() => navigate("/dashboard/servicebar/add")}
+            onClick={() => navigate("/dashboard/chairmanmsg/add")}
             className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center"
           >
             <Plus size={18} />
-            Add Service Bar
+            Add Message
           </button>
         </div>
 
@@ -203,17 +207,14 @@ export default function ServiceBarList() {
                   S.N.
                 </th>
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Title
+                  Name
                 </th>
-
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Description
                 </th>
-
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Photo
                 </th>
-
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Status
                 </th>
@@ -237,34 +238,34 @@ export default function ServiceBarList() {
                     </div>
                   </td>
                 </tr>
-              ) : currentservicebar.length === 0 ? (
+              ) : currentnews.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="px-4 py-4 text-center">
+                  <td colSpan="6" className="px-4 py-4 text-center">
                     No data available
                   </td>
                 </tr>
               ) : (
-                currentservicebar.map((banner) => (
+                currentnews.map((news) => (
                   <tr
-                    key={banner.id}
+                    key={news.id}
                     className="hover:bg-gray-50 transition-colors"
                   >
                     <td className="px-4 py-4 text-sm text-gray-600">
-                      {banner.id}
+                      {news.id}
                     </td>
                     <td className="px-4 py-4 text-sm text-gray-800">
-                      {banner.title}
+                      {news.title}
                     </td>
 
                     <td
                       className="max-w-xs truncate text-sm "
-                      dangerouslySetInnerHTML={{ __html: banner.description }}
+                      dangerouslySetInnerHTML={{ __html: news.description }}
                     ></td>
                     <td className="px-4 py-4">
                       <div className="image-zoom-container">
                         <img
-                          src={banner.image_url}
-                          alt={banner.title}
+                          src={news.image_url}
+                          alt={news.title}
                           className="image-zoom h-10 w-auto object-cover"
                         />
                       </div>
@@ -273,42 +274,41 @@ export default function ServiceBarList() {
                       <span
                         className={`text-xs px-3 py-1 rounded-full font-semibold 
                       ${
-                        banner.active === true
+                        news.active === true
                           ? "bg-emerald-100 text-emerald-700 border border-emerald-300"
                           : "bg-red-100 text-red-700 border border-red-300"
                       }`}
                       >
-                        {banner.active === true ? "Active" : "Inactive"}
+                        {news.active === true ? "Active" : "Inactive"}
                       </span>
                     </td>
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() =>
-                            navigate(`/dashboard/servicebar/edit/${banner.id}`)
+                            navigate(`/dashboard/chairmanmsg/edit/${news.id}`)
                           }
                           className="bg-gray-900 cursor-pointer text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
                         >
                           <Edit size={16} />
                         </button>
                         {/* <button
-                          onClick={() => handleDeleteBanner(banner.id)}
+                          onClick={() => handleDeletenews(news.id)}
                           className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
                         >
                           <Trash2 size={16} />
                         </button> */}
-
                         <button
                           className={`bg-red-500  h-8 w-8 cursor-pointer flex items-center justify-center  text-white p-2 rounded-full hover:bg-red-600 transition-colors
                                                 ${
-                                                  deleteLoadingId === banner.id
+                                                  deleteLoadingId === news.id
                                                     ? "opacity-50 cursor-not-allowed"
                                                     : ""
                                                 }`}
-                          disabled={deleteLoadingId === banner.id}
-                          onClick={() => handleDeleteBanner(banner.id)}
+                          disabled={deleteLoadingId === news.id}
+                          onClick={() => handleDeletenews(news.id)}
                         >
-                          {deleteLoadingId === banner.id ? (
+                          {deleteLoadingId === news.id ? (
                             <RotatingLines
                               width="20"
                               strokeColor="#fff"
@@ -331,7 +331,7 @@ export default function ServiceBarList() {
                   S.N.
                 </th>
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Title
+                  Name
                 </th>
 
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
@@ -340,7 +340,6 @@ export default function ServiceBarList() {
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Photo
                 </th>
-
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Status
                 </th>

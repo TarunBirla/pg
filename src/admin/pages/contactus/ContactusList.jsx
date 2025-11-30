@@ -1,45 +1,47 @@
 import React, { useEffect, useState } from "react";
-import { Pencil, Trash2, Plus, Edit } from "lucide-react";
+import { Pencil, Trash2, Eye } from "lucide-react";
 import http from "../../../service/http";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RotatingLines } from "react-loader-spinner";
 
-export default function ServiceBarList() {
+export default function ContactusList() {
   const [entries, setEntries] = useState(10);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const [servicebar, setServicebar] = useState([]);
+  const [aboutus, setAboutus] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const fetchservicebar = async () => {
+  const fetchaboutus = async () => {
     try {
       setLoading(true);
-      const res = await http.get("/servicebar");
-      setServicebar(res.data);
+      const res = await http.get("/contacus");
+      setAboutus(res.data?.data);
       console.log(res.data);
     } catch (error) {
-      console.error("Error fetching servicebar:", error);
+      console.error("Error fetching aboutus:", error);
     } finally {
       setLoading(false);
     }
   };
   useEffect(() => {
-    fetchservicebar();
+    fetchaboutus();
   }, []);
 
-  const filteredservicebar =
-    servicebar?.data?.filter((item) =>
-      item.title.toLowerCase().includes(search.toLowerCase())
+  const filteredaboutus =
+    aboutus?.filter(
+      (about) =>
+        about?.name?.toLowerCase().includes(search.toLowerCase()) ||
+        about?.email?.toLowerCase().includes(search.toLowerCase()) ||
+        about?.phone_number?.toLowerCase().includes(search.toLowerCase())
     ) || [];
 
   // Pagination calculations
-  const totalEntries = filteredservicebar.length;
+  const totalEntries = filteredaboutus.length;
   const totalPages = Math.ceil(totalEntries / entries);
   const startIndex = (currentPage - 1) * entries;
   const endIndex = Math.min(startIndex + entries, totalEntries);
-  const currentservicebar = filteredservicebar.slice(startIndex, endIndex);
+  const currentaboutus = filteredaboutus.slice(startIndex, endIndex);
 
   // Reset to first page when search or entries change
   React.useEffect(() => {
@@ -81,20 +83,52 @@ export default function ServiceBarList() {
   };
   const [deleteLoadingId, setDeleteLoadingId] = useState(null);
 
-  const handleDeleteBanner = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this banner?")) return;
+  const handleDeleteabout = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this contactus?"))
+      return;
 
     try {
       setDeleteLoadingId(id);
-      await http.delete(`/servicebar/${id}`);
+      await http.delete(`/contacus/${id}`);
 
-      toast.success("Banner deleted successfully!");
-      fetchservicebar();
+      toast.success("Contactus deleted successfully!");
+      fetchaboutus();
     } catch (error) {
       console.error("Delete error:", error);
-      toast.error(error.response.data.message || "Failed to delete banner.");
+      toast.error(error.response.data.message || "Failed to delete Contactus.");
     } finally {
       setDeleteLoadingId(null);
+    }
+  };
+
+  const [showReplyModal, setShowReplyModal] = useState(false);
+  const [replyMessage, setReplyMessage] = useState("");
+  const [replyLoading, setReplyLoading] = useState(false);
+  const [showRepliesModal, setShowRepliesModal] = useState(false);
+  const [selectedReplies, setSelectedReplies] = useState([]);
+
+  const [selectedContactId, setSelectedContactId] = useState(null);
+  const handleSubmitReply = async () => {
+    try {
+      setReplyLoading(true);
+
+      await http.post("contacus/reply", {
+        contact_id: selectedContactId,
+        reply_message: replyMessage,
+      });
+
+      toast.success("Reply sent successfully!");
+
+      setReplyLoading(false);
+      setShowReplyModal(false);
+      setReplyMessage("");
+
+      // Refresh list if needed
+      fetchaboutus();
+    } catch (error) {
+      console.error("Reply Error:", error);
+      toast.error(error.response.data.message || "Failed to send reply.");
+      setReplyLoading(false);
     }
   };
 
@@ -155,15 +189,8 @@ export default function ServiceBarList() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-4 md:p-6 border-b border-gray-200">
           <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
-            Service Bar List
+            Contact Us List
           </h1>
-          <button
-            onClick={() => navigate("/dashboard/servicebar/add")}
-            className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center"
-          >
-            <Plus size={18} />
-            Add Service Bar
-          </button>
         </div>
 
         {/* Controls */}
@@ -203,20 +230,18 @@ export default function ServiceBarList() {
                   S.N.
                 </th>
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Title
+                  Name
+                </th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Email
+                </th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Phone
+                </th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Message
                 </th>
 
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Description
-                </th>
-
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Photo
-                </th>
-
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Status
-                </th>
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Action
                 </th>
@@ -237,78 +262,74 @@ export default function ServiceBarList() {
                     </div>
                   </td>
                 </tr>
-              ) : currentservicebar.length === 0 ? (
+              ) : currentaboutus.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="px-4 py-4 text-center">
-                    No data available
+                  <td colSpan="9" className="px-4 py-4 text-center">
+                    No queries found
                   </td>
                 </tr>
               ) : (
-                currentservicebar.map((banner) => (
+                currentaboutus.map((about, index) => (
                   <tr
-                    key={banner.id}
+                    key={about.id}
                     className="hover:bg-gray-50 transition-colors"
                   >
                     <td className="px-4 py-4 text-sm text-gray-600">
-                      {banner.id}
+                      {index + 1}
                     </td>
                     <td className="px-4 py-4 text-sm text-gray-800">
-                      {banner.title}
+                      {about.name}
+                    </td>
+
+                    <td className="px-4 py-4 text-sm text-gray-800">
+                      {about.email}
+                    </td>
+                    <td className="px-4 py-4 text-sm text-gray-800">
+                      {about.phone_number}
                     </td>
 
                     <td
                       className="max-w-xs truncate text-sm "
-                      dangerouslySetInnerHTML={{ __html: banner.description }}
+                      dangerouslySetInnerHTML={{ __html: about?.message }}
                     ></td>
-                    <td className="px-4 py-4">
-                      <div className="image-zoom-container">
-                        <img
-                          src={banner.image_url}
-                          alt={banner.title}
-                          className="image-zoom h-10 w-auto object-cover"
-                        />
-                      </div>
-                    </td>
-                    <td className="px-4 py-4">
-                      <span
-                        className={`text-xs px-3 py-1 rounded-full font-semibold 
-                      ${
-                        banner.active === true
-                          ? "bg-emerald-100 text-emerald-700 border border-emerald-300"
-                          : "bg-red-100 text-red-700 border border-red-300"
-                      }`}
-                      >
-                        {banner.active === true ? "Active" : "Inactive"}
-                      </span>
-                    </td>
+
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <button
-                          onClick={() =>
-                            navigate(`/dashboard/servicebar/edit/${banner.id}`)
-                          }
-                          className="bg-gray-900 cursor-pointer text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
+                          className="bg-blue-500 cursor-pointer text-xs font-normal text-white px-3 py-1 rounded hover:bg-blue-600 transition-colors"
+                          onClick={() => {
+                            setSelectedContactId(about.id);
+                            setShowReplyModal(true);
+                          }}
                         >
-                          <Edit size={16} />
+                          Reply
                         </button>
-                        {/* <button
-                          onClick={() => handleDeleteBanner(banner.id)}
-                          className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
-                        >
-                          <Trash2 size={16} />
-                        </button> */}
+
+                        {about.replies && about.replies.length > 0 && (
+                          // Show View Task button if tasks exist
+                          <button
+                            className="bg-green-500 cursor-pointer text-xs font-normal text-white px-3 py-1 rounded hover:bg-green-600 transition-colors"
+                            onClick={() => {
+                              setSelectedContactId(about.id);
+                              setSelectedReplies(about.replies);
+                              setShowRepliesModal(true);
+                            }}
+                          >
+                            <Eye size={16} />
+                          </button>
+                        )}
 
                         <button
                           className={`bg-red-500  h-8 w-8 cursor-pointer flex items-center justify-center  text-white p-2 rounded-full hover:bg-red-600 transition-colors
-                                                ${
-                                                  deleteLoadingId === banner.id
-                                                    ? "opacity-50 cursor-not-allowed"
-                                                    : ""
-                                                }`}
-                          disabled={deleteLoadingId === banner.id}
-                          onClick={() => handleDeleteBanner(banner.id)}
+                        ${
+                          deleteLoadingId === about.id
+                            ? "opacity-50 cursor-not-allowed"
+                            : ""
+                        }`}
+                          disabled={deleteLoadingId === about.id}
+                          onClick={() => handleDeleteabout(about.id)}
                         >
-                          {deleteLoadingId === banner.id ? (
+                          {deleteLoadingId === about.id ? (
                             <RotatingLines
                               width="20"
                               strokeColor="#fff"
@@ -331,19 +352,18 @@ export default function ServiceBarList() {
                   S.N.
                 </th>
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Title
+                  Name
+                </th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Email
+                </th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Phone
+                </th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
+                  Message
                 </th>
 
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Description
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Photo
-                </th>
-
-                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
-                  Status
-                </th>
                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">
                   Action
                 </th>
@@ -402,6 +422,92 @@ export default function ServiceBarList() {
           )}
         </div>
       </div>
+      {showReplyModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white p-6 rounded shadow-lg w-full  md:max-w-xl  max-h-[90vh] overflow-y-auto">
+            <h2 className="text-lg font-medium mb-4">Reply to Contact</h2>
+
+            {/* Reply Editor */}
+            <textarea
+              value={replyMessage}
+              onChange={(e) => setReplyMessage(e.target.value)}
+              placeholder="Write your reply..."
+              className="w-full border border-gray-300 rounded p-3 h-50 text-sm font-normal"
+            />
+
+            {/* Buttons */}
+            <div className="flex justify-end gap-2 mt-4">
+              <button
+                className="px-4 py-1 cursor-pointer bg-gray-300 rounded hover:bg-gray-400"
+                onClick={() => {
+                  setShowReplyModal(false);
+                  setReplyMessage("");
+                }}
+              >
+                Cancel
+              </button>
+
+              <button
+                className="px-4 py-1 h-8 w-32 cursor-pointer flex justify-center items-center bg-blue-500 text-white rounded hover:bg-blue-600"
+                onClick={handleSubmitReply}
+                disabled={!replyMessage || replyLoading}
+              >
+                {replyLoading ? (
+                  <RotatingLines
+                    strokeColor="#ffffff"
+                    strokeWidth="5"
+                    animationDuration="0.75"
+                    width="20"
+                    visible={true}
+                  />
+                ) : (
+                  "Send Reply"
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showRepliesModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white p-5 rounded shadow-lg w-full max-w-xl max-h-[90vh] overflow-y-auto">
+            <h2 className="text-lg font-semibold mb-4">Replies</h2>
+
+            {selectedReplies.length === 0 ? (
+              <p className="text-gray-500 text-sm">No replies found.</p>
+            ) : (
+              selectedReplies.map((rep, index) => (
+                <div
+                  key={index}
+                  className="border border-gray-200 rounded py-3 px-3 mb-3 shadow-sm "
+                >
+                  <div className="flex justify-between mb-1">
+                    <span className="text-xs text-gray-500">
+                      {new Date(rep.createdAt).toLocaleString()}
+                    </span>
+                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">
+                      {rep.replied_by}
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-gray-700 whitespace-pre-line">
+                    {rep.reply_message}
+                  </p>
+                </div>
+              ))
+            )}
+
+            <div className="flex justify-end mt-4">
+              <button
+                className="px-4 py-1 bg-gray-300 rounded cursor-pointer hover:bg-gray-400"
+                onClick={() => setShowRepliesModal(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
