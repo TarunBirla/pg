@@ -1,12 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Thumbs, Controller } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Thumbs,
+  Controller,
+  Autoplay,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Header from "./Header";
@@ -16,6 +23,7 @@ import NewsSection from "./NewsSection";
 import http from "../service/http";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const mainSwiperRef = useRef(null);
   const thumbSwiperRef = useRef(null);
@@ -27,6 +35,7 @@ const Home = () => {
   const scrollRight = () => {
     sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
   };
+  const [hoverTab, setHoverTab] = useState(null);
 
   const [slides, setSlider] = useState([]);
   const [abouts, setAbouts] = useState([]);
@@ -59,7 +68,15 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const activeTab = tabsall.find((t) => t.id === active);
+  useEffect(() => {
+    if (mainSwiperRef.current && thumbSwiperRef.current) {
+      mainSwiperRef.current.controller.control = thumbSwiperRef.current;
+      thumbSwiperRef.current.controller.control = mainSwiperRef.current;
+    }
+  }, [slides]);
+
+  // const activeTab = tabsall.find((t) => t.id === active);
+  const activeTab = tabsall.find((t) => t.id === (hoverTab ?? active));
 
   // Show loader until data arrives
   if (!activeTab) {
@@ -73,16 +90,25 @@ const Home = () => {
       <section className="relative w-full h-[90vh]">
         {/* MAIN SWIPER */}
         <Swiper
-          modules={[Navigation, Pagination, Thumbs, Controller]}
+          modules={[Navigation, Pagination, Thumbs, Controller, Autoplay]}
           navigation={false}
           pagination={false}
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          loop={true}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          speed={900}
           onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
-          controller={{ control: thumbSwiperRef.current }}
+          // controller={{ control: thumbSwiperRef.current }}
           onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
           className="w-full h-full"
         >
           {slides.map((slide, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={slide.id ?? index}>
               <div
                 className="relative w-full h-full bg-cover bg-center"
                 style={{ backgroundImage: `url(${slide.image_url})` }}
@@ -91,24 +117,47 @@ const Home = () => {
 
                 <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
                   <div className="max-w-xl text-white">
-                    <h1 className="text-4xl md:text-6xl font-bold ">
+                    {/* <h1 className="text-4xl md:text-6xl font-bold ">
+                      {slide.heading}
+                    </h1> */}
+
+                    <h1
+                      className="text-white font-[Syne] font-[700] tracking-[0.01em]
+                        text-[42px] leading-[46px]
+                        sm:text-[56px] sm:leading-[58px]
+                        md:text-[72px] md:leading-[70px]
+                        lg:text-[72px] lg:leading-[70px]"
+                    >
                       {slide.heading}
                     </h1>
 
-                    <div className="flex gap-4 mb-6">
-                      <div className="w-[3px] bg-[#40BD02] h-20 mt-2"></div>
-                      <p
-                        className="text-gray-200 mt-2 text-sm md:text-base leading-relaxed max-w-md"
-                        dangerouslySetInnerHTML={{ __html: slide?.description }}
-                      ></p>
-                    </div>
+                    <div className="flex items-start gap-4 ml-8 mt-6 ">
+                      {/* Green vertical line */}
+                      <div className="w-[3px] bg-[#C1FF00] self-stretch"></div>
 
-                    <Link
-                      to="/business"
-                      className="inline-block px-6 py-2 ml-4  text-sm font-semibold text-white  bg-gradient-to-r from-[#40BD02] to-[#37B8E1] hover:scale-105 transition"
-                    >
-                      Know More
-                    </Link>
+                      {/* Right content (text + button) */}
+                      <div className="flex flex-col">
+                        <p
+                          className="text-white/90 font-[Poppins] font-[400] tracking-[0.01em]
+                            text-[16px] leading-[26px]
+                            sm:text-[18px] sm:leading-[30px]
+                            md:text-[20px] md:leading-[32px]
+                            lg:text-[20px] lg:leading-[32px]"
+                          dangerouslySetInnerHTML={{
+                            __html: slide?.description,
+                          }}
+                        />
+
+                        <Link
+                          to="/business"
+                          className="mt-6 inline-block w-fit px-6 py-2 text-sm font-semibold text-white
+                 bg-gradient-to-r from-[#40BD02] to-[#37B8E1]
+                 hover:scale-105 transition"
+                        >
+                          Know More
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -117,7 +166,7 @@ const Home = () => {
         </Swiper>
 
         {/* CENTERED NEXT / PREV BUTTONS */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-4">
+        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-4">
           <button
             onClick={() => mainSwiperRef.current.slidePrev()}
             className="bg-[#C1FF00] hover:bg-white/40 p-3 rounded-full text-white transition"
@@ -131,10 +180,35 @@ const Home = () => {
           >
             <FaChevronRight size={22} />
           </button>
+        </div> */}
+
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex items-center gap-5">
+          {/* White horizontal line */}
+          <div className="w-[220px] h-[2px] bg-white/80"></div>
+
+          {/* Prev (circle outline) */}
+          <button
+            onClick={() => mainSwiperRef.current.slidePrev()}
+            className="w-10 h-10 flex items-center justify-center 
+               rounded-full border border-white/60 
+               text-white hover:bg-white/20 transition"
+          >
+            <FaChevronLeft size={16} />
+          </button>
+
+          {/* Next (solid neon green) */}
+          <button
+            onClick={() => mainSwiperRef.current.slideNext()}
+            className="w-10 h-10 flex items-center justify-center 
+               rounded-full bg-[#C1FF00] 
+               text-black hover:scale-105 transition"
+          >
+            <FaChevronRight size={16} />
+          </button>
         </div>
 
         {/* THUMBNAILS */}
-        <div className="hidden lg:block absolute bottom-8 right-8 w-[500px] z-20">
+        {/* <div className="hidden lg:block absolute bottom-8 right-8 w-[500px] z-20">
           <Swiper
             modules={[Navigation, Thumbs, Controller]}
             slidesPerView={3}
@@ -166,6 +240,38 @@ const Home = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div> */}
+
+        <div className="hidden lg:block absolute bottom-8 right-8 w-[520px] z-20">
+          <Swiper
+            modules={[Navigation, Thumbs, Controller]}
+            slidesPerView={3}
+            spaceBetween={18}
+            onSwiper={(swiper) => (thumbSwiperRef.current = swiper)}
+            // controller={{ control: mainSwiperRef.current }}
+            watchSlidesProgress
+            slideToClickedSlide
+          >
+            {slides.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  onClick={() => mainSwiperRef.current.slideTo(index)}
+                  className={`p-[3px] rounded-2xl transition cursor-pointer
+            ${
+              currentIndex === index
+                ? "bg-gradient-to-r from-[#40BD02] to-[#37B8E1]"
+                : "border border-white/40"
+            }`}
+                >
+                  <img
+                    src={item.image_url}
+                    alt=""
+                    className="w-full h-[110px] object-cover rounded-xl"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         <div className="block lg:hidden absolute bottom-8 right-8 w-[105px] z-20">
@@ -179,9 +285,9 @@ const Home = () => {
             slideToClickedSlide={true}
           >
             {slides.map((item, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={item.id}>
                 <div
-                  onClick={() => mainSwiperRef.current.slideTo(index)}
+                  onClick={() => mainSwiperRef.current.slideTo(item.id)}
                   className={`cursor-pointer p-[3px] rounded-xl transition 
           ${
             currentIndex === index
@@ -286,7 +392,10 @@ const Home = () => {
             ></p>
 
             {/* BUTTON */}
-            <button className="bg-gradient-to-r from-[#40BD02] to-[#37B8E1] hover:bg-[#2FA000] text-white px-6 py-3 rounded-sm text-sm font-semibold w-fit shadow-md transition">
+            <button
+              onClick={() => navigate("/abouts")}
+              className="bg-gradient-to-r from-[#40BD02] to-[#37B8E1] hover:bg-[#2FA000] text-white px-6 py-3 rounded-sm text-sm font-semibold w-fit shadow-md transition"
+            >
               READ MORE
             </button>
           </div>
@@ -295,8 +404,8 @@ const Home = () => {
 
       {/* Busness SECTION */}
 
-      <section className="w-full py-10">
-        {/* Heading */}
+      {/* <section className="w-full py-10">
+        
         <div className="max-w-6xl mx-auto px-6 lg:px-0 grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10">
           <div className="flex flex-col justify-center">
             <p className="text-[#40BD02] font-semibold text-sm tracking-widest">
@@ -323,27 +432,25 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Main Section */}
+        
         <div className="flex w-full max-w-7xl mx-auto px-6">
-          {/* Left Tabs */}
+          
         </div>
-      </section>
+      </section> */}
 
-      <section className="relative h-[300px] md:h-[550px] w-full">
-        {/* BACKGROUND */}
+      {/* <section className="relative h-[300px] md:h-[550px] w-full">
+        
         <div
           className="absolute inset-0 bg-cover bg-center hidden md:block"
           style={{ backgroundImage: `url(${activeTab?.image_url})` }}
         ></div>
 
-        {/* Overlay */}
+        
         <div className="absolute inset-0 bg-black/30 hidden md:block"></div>
 
-        {/* DESKTOP */}
-        {/* Desktop code here */}
-        {/* DESKTOP VIEW */}
+       
         <div className="hidden md:flex relative z-10 h-full">
-          {/* LEFT TABS */}
+          
           <div className="flex h-full">
             {tabsall.map((tab) => (
               <div
@@ -360,7 +467,7 @@ const Home = () => {
           }
         `}
               >
-                {/* Vertical Title */}
+                
                 <div
                   className="text-white text-sm font-medium rotate-180"
                   style={{ writingMode: "vertical-rl" }}
@@ -368,7 +475,7 @@ const Home = () => {
                   {tab.title}
                 </div>
 
-                {/* Bottom Number */}
+                
                 <div className="w-full py-3 flex items-center justify-center">
                   <span
                     className={`text-white text-xs px-3 py-1 rounded-full
@@ -381,7 +488,7 @@ const Home = () => {
             ))}
           </div>
 
-          {/* RIGHT CONTENT */}
+         
           <div className="flex-1 flex items-end p-10">
             <div className="bg-black/50 text-white p-6 rounded-lg max-w-md">
               <p
@@ -392,16 +499,14 @@ const Home = () => {
           </div>
         </div>
 
-        {/* MOBILE */}
-        {/* Mobile code here */}
-        {/* MOBILE VIEW */}
-         <div
+        
+        <div
           className="absolute inset-0 bg-cover bg-center block md:hidden"
           style={{ backgroundImage: `url(${activeTab?.image_url})` }}
         ></div>
         <div className="block md:hidden relative z-10 h-full">
           <div className="flex h-full">
-            {/* LEFT COLOR STRIPS */}
+            
             <div className="flex h-full">
               {tabsall.map((tab) => (
                 <div
@@ -414,13 +519,13 @@ const Home = () => {
             border-r border-white/30
             transition-all duration-300
              ${
-                active === tab.id
-                  ? "bg-transparent" 
-                  : "bg-gradient-to-b from-[#40BD02] to-[#37B8E1]"
-              }
+               active === tab.id
+                 ? "bg-transparent"
+                 : "bg-gradient-to-b from-[#40BD02] to-[#37B8E1]"
+             }
             `}
                 >
-                  {/* VERTICAL TEXT */}
+                  
                   <div
                     className="text-white text-xs font-semibold mt-4"
                     style={{
@@ -431,7 +536,7 @@ const Home = () => {
                     {tab.title}
                   </div>
 
-                  {/* NUMBER */}
+                 
                   <div className="mb-4">
                     <span className="bg-black/40 text-white text-[10px] px-2 py-1 rounded-full">
                       0{tab.id}
@@ -440,13 +545,137 @@ const Home = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section> */}
 
-           
+      {/* BUSINESS SECTION */}
+      <section className="w-full bg-white">
+        {/* HEADER */}
+        <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <p className="text-[#40BD02] font-semibold tracking-widest text-sm mb-3">
+              BUSINESS
+            </p>
+
+            <h2 className="text-5xl font-bold leading-tight">
+              {section?.title?.split(" ").map((word, i) => (
+                <span key={i}>
+                  {(i + 1) % 3 === 0 ? (
+                    <>
+                      {word} <br />
+                    </>
+                  ) : (
+                    word + " "
+                  )}
+                </span>
+              ))}
+            </h2>
+          </div>
+
+          <div className="flex items-center">
+            <p
+              className="text-gray-600 max-w-lg"
+              dangerouslySetInnerHTML={{ __html: section?.description }}
+            />
+          </div>
+        </div>
+
+        {/* IMAGE + TABS */}
+        <div className="relative w-full h-[550px] overflow-hidden">
+          {/* Background image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${activeTab?.image_url})` }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+
+          {/* CONTENT */}
+          <div className="relative z-10 flex h-full max-w-7xl mx-auto">
+            {/* LEFT STRIPS */}
+            <div className="flex h-full">
+              {/* {tabsall.map((tab) => (
+                <div
+                  key={tab.id}
+                  onClick={() => setActive(tab.id)}
+                  className={`w-[90px] h-full cursor-pointer flex flex-col justify-between border-r border-white/30
+            transition-all duration-300
+            ${
+              active === tab.id
+                ? "bg-transparent"
+                : "bg-gradient-to-b from-[#40BD02] to-[#37B8E1]"
+            }`}
+                >
+                 
+                  <div
+                    className="text-white font-medium text-sm mt-6 rotate-180"
+                    style={{ writingMode: "vertical-rl" }}
+                  >
+                    {tab.title}
+                  </div>
+
+                 
+                  <div className="mb-5 flex justify-center">
+                    <span
+                      className={`text-xs px-3 py-1 rounded-full text-white
+                ${active === tab.id ? "bg-white/30" : "bg-black/40"}`}
+                    >
+                      0{tab.id}
+                    </span>
+                  </div>
+                </div>
+              ))} */}
+              {tabsall.map((tab) => {
+                const isActive = (hoverTab ?? active) === tab.id;
+
+                return (
+                  <div
+                    key={tab.id}
+                    onClick={() => setActive(tab.id)}
+                    onMouseEnter={() => setHoverTab(tab.id)}
+                    onMouseLeave={() => setHoverTab(null)}
+                    className={`w-[90px] h-full cursor-pointer flex flex-col justify-between border-r border-white/30
+      transition-all duration-300
+      ${
+        isActive
+          ? "bg-transparent"
+          : "bg-gradient-to-b from-[#40BD02] to-[#37B8E1]"
+      }`}
+                  >
+                    {/* Vertical Text */}
+                    <div
+                      className="text-white font-medium text-sm mt-6 rotate-180"
+                      style={{ writingMode: "vertical-rl" }}
+                    >
+                      {tab.title}
+                    </div>
+
+                    {/* Number */}
+                    <div className="mb-5 flex justify-center">
+                      <span
+                        className={`text-xs px-3 py-1 rounded-full text-white
+          ${isActive ? "bg-white/30" : "bg-black/40"}`}
+                      >
+                        0{tab.id - 1}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* RIGHT CONTENT */}
+            <div className="flex-1 flex items-end p-10">
+              <div className="bg-black/60 backdrop-blur-sm text-white p-6 max-w-md rounded-lg">
+                <p
+                  className="text-sm leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: activeTab?.description }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      
-
 
       {/* Chairman's Message */}
       <section className="w-full bg-white pb-20 relative">
@@ -512,7 +741,7 @@ const Home = () => {
       </section>
 
       {/* Architects of Growth */}
-      <section className="w-full bg-white py-6 px-6 md:px-12 lg:px-20">
+      <section className="w-full bg-white py-6 px-6 md:px-12 lg:px-40">
         {/* Heading */}
         <div className="mb-12">
           <p className="text-green-600 font-semibold tracking-wide">COMPANY</p>

@@ -33,7 +33,7 @@ const Header = () => {
             <img
               src="/img/Logo.png"
               alt="PG Logo"
-              className="h-[80px] w-[150px]"
+              className="h-[80px] w-[152px]"
             />
           </Link>
         </div>
@@ -75,61 +75,58 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-    {menuOpen && (
-  <div className="md:hidden bg-black text-white px-6 py-6 flex flex-col gap-4">
-    
-    <Link 
-      to="/" 
-      onClick={() => setMenuOpen(false)} 
-      className="block text-lg font-medium"
-    >
-      Home
-    </Link>
+      {menuOpen && (
+        <div className="md:hidden bg-black text-white px-6 py-6 flex flex-col gap-4">
+          <Link
+            to="/"
+            onClick={() => setMenuOpen(false)}
+            className="block text-lg font-medium"
+          >
+            Home
+          </Link>
 
-    <Link 
-      to="/abouts" 
-      onClick={() => setMenuOpen(false)} 
-      className="block text-lg font-medium"
-    >
-      About
-    </Link>
+          <Link
+            to="/abouts"
+            onClick={() => setMenuOpen(false)}
+            className="block text-lg font-medium"
+          >
+            About
+          </Link>
 
-    <Link 
-      to="/besiness" 
-      onClick={() => setMenuOpen(false)} 
-      className="block text-lg font-medium"
-    >
-      Businesses
-    </Link>
+          <Link
+            to="/besiness"
+            onClick={() => setMenuOpen(false)}
+            className="block text-lg font-medium"
+          >
+            Businesses
+          </Link>
 
-    <Link 
-      to="/news" 
-      onClick={() => setMenuOpen(false)} 
-      className="block text-lg font-medium"
-    >
-      News & Updates
-    </Link>
+          <Link
+            to="/news"
+            onClick={() => setMenuOpen(false)}
+            className="block text-lg font-medium"
+          >
+            News & Updates
+          </Link>
 
-    <Link 
-      to="/contact" 
-      onClick={() => setMenuOpen(false)} 
-      className="block text-lg font-medium"
-    >
-      Contact Us
-    </Link>
+          <Link
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+            className="block text-lg font-medium"
+          >
+            Contact Us
+          </Link>
 
-    {/* Gradient Button */}
-    <Link
-      to="/besiness"
-      onClick={() => setMenuOpen(false)}
-      className="mt-4 block text-center py-2 rounded-md bg-gradient-to-r from-[#40BD02] to-[#37B8E1] font-semibold"
-    >
-      Businesses
-    </Link>
-
-  </div>
-)}
-
+          {/* Gradient Button */}
+          <Link
+            to="/besiness"
+            onClick={() => setMenuOpen(false)}
+            className="mt-4 block text-center py-2 rounded-md bg-gradient-to-r from-[#40BD02] to-[#37B8E1] font-semibold"
+          >
+            Businesses
+          </Link>
+        </div>
+      )}
     </header>
   );
 };

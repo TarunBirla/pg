@@ -1,4 +1,4 @@
-import { Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, X, Youtube, Mail } from "lucide-react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const Footer = () => {
         {/* TOP FOOTER WITH BG IMAGE */}
         <div
           className="w-full bg-cover bg-center bg-no-repeat py-16"
-          style={{ backgroundImage: 'url("/img/footerbgimg.png")' }}
+          style={{ backgroundImage: 'url("/footer.png")' }}
         >
           <div className="max-w-6xl mb-20  mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
             {/* LEFT LARGE COLUMN - COL 4 */}
@@ -21,7 +21,7 @@ const Footer = () => {
                 className="h-[80px] w-[150px] mb-4"
               />
 
-              <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
+              <p className="text-[#CCCCCC] text-sm leading-relaxed max-w-xs">
                 Premier Group unites under a shared vision to drive sustainable
                 growth, empower communities, and inspire progress for future
                 generations.
@@ -32,8 +32,10 @@ const Footer = () => {
             <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-4 gap-10 items-start">
               {/* QUICK LINK */}
               <div>
-                <h4 className="text-lg font-semibold mb-4">Quick Link</h4>
-                <ul className="space-y-2 text-gray-700 text-sm">
+                <h4 className="text-lg font-semibold text-white mb-4">
+                  Quick Link
+                </h4>
+                <ul className="space-y-2 text-[#CCCCCC] text-sm">
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     <Link to="/">Home</Link>
                   </li>
@@ -58,8 +60,8 @@ const Footer = () => {
 
               {/* LEGAL */}
               <div>
-                <h4 className="text-lg font-semibold mb-4">Legal</h4>
-                <ul className="space-y-2 text-gray-700 text-sm">
+                <h4 className="text-lg font-semibold text-white mb-4">Legal</h4>
+                <ul className="space-y-2 text-[#CCCCCC] text-sm">
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     Terms & Conditions
                   </li>
@@ -69,52 +71,32 @@ const Footer = () => {
                 </ul>
               </div>
 
-              {/* CONTACT INFO */}
-              <div>
-                <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
+              {/* SOCIAL + SUBSCRIBE */}
+              <div className=" flex items-center border-l pl-4 border-[#98C20B]">
+                {/* <div className="h-30 w-[1px] bg-[#98C20B] " /> */}
 
-                <div className="text-gray-700 text-sm space-y-4">
-                  <div>
-                    <p className="text-[#2295CA]">Phone :</p>
-                    <p className=" font-semibold">+9103340896344</p>
+                <div>
+                  <h4 className="font-semibold text-white mb-4">
+                    Social Media Link
+                  </h4>
+
+                  <div className="flex space-x-4 mb-6 text-white">
+                    <Facebook size={18} />
+                    <Instagram size={18} />
+                    <Linkedin size={18} />
+                    <X size={18} />
+                    <Youtube size={18} />
+                    <Mail size={18} />
                   </div>
 
-                  <div>
-                    <p className="text-[#2295CA]">Email :</p>
-                    <p className="font-semibold">contact@premiergroup.co</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* DIVIDER + SOCIAL ICONS */}
-              <div className="flex items-center space-x-6">
-                {/* VERTICAL LINE */}
-                <div className="h-30 w-[1px] bg-black/40"></div>
-
-                {/* SOCIAL ICONS */}
-
-                {/* <div className="flex space-x-1">
-      <div className="p-2 rounded">
-        <Instagram
-          size={24}
-          className=" text-gradient-to-br from-[#37B8E1] to-[#40BD02]"
-        />
-      </div>
-
-      <div className="p-2 rounded">
-        <Linkedin
-          size={24}
-          className=" text-gradient-to-br from-[#37B8E1] to-[#40BD02]"
-        />
-      </div>
-    </div> */}
-                <div className="flex space-x-1">
-                  <div className="p-2 rounded">
-                    <Instagram size={24} className="text-[#37B8E1] " />
-                  </div>
-
-                  <div className="p-2 rounded">
-                    <Linkedin size={24} className="text-[#37B8E1]  " />
+                  <div className="flex border border-[#98C20B]">
+                    <input
+                      placeholder="Enter your email to subscribe"
+                      className="bg-transparent px-3 py-2 text-sm outline-none text-white w-full"
+                    />
+                    <button className="bg-[#98C20B] px-4 flex items-center justify-center">
+                      →
+                    </button>
                   </div>
                 </div>
               </div>

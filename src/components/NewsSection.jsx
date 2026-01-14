@@ -53,28 +53,23 @@ export default function NewsSection() {
   //     desc: "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
   //   }
   // ];
-   const [news,setNews] = useState([])
-  
-     const fetchData = async () => {
-        try {
-          const response = await http.get(
-            `/common`
-          );
-          console.log("Fetched data:", response.data);
-          const Alldata = response.data?.data;
- 
-  setNews(Alldata?.news)
-         
-        } catch (err) {
-          console.error("Error fetching commen data:", err);
-        }
-      };
-  
-     useEffect(() => {
-     
-  
-      fetchData();
-    }, []);
+  const [news, setNews] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await http.get(`/common`);
+      console.log("Fetched data:", response.data);
+      const Alldata = response.data?.data;
+
+      setNews(Alldata?.news);
+    } catch (err) {
+      console.error("Error fetching commen data:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const scrollLeft = () => {
     sliderRef.current.scrollBy({ left: -350, behavior: "smooth" });
@@ -85,8 +80,7 @@ export default function NewsSection() {
   };
 
   return (
-    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-20">
-      
+    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-40">
       {/* Heading */}
       <div className="mb-12">
         <p className="text-green-600 font-semibold tracking-wide">BLOG</p>
@@ -122,32 +116,31 @@ export default function NewsSection() {
             </div>
           ))} */}
           {news.map((item) => (
-  <div
-    key={item.id}
-    className="min-w-[360px] bg-white rounded-xl transition p-4"
-  >
-    <img
-      src={item.image_url}
-      alt={item.title}
-      className="w-full h-48 object-cover rounded-lg mb-4"
-    />
+            <div
+              key={item.id}
+              className="min-w-[360px] bg-white rounded-xl transition p-4"
+            >
+              <img
+                src={item.image_url}
+                alt={item.title}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
 
-    <p className="text-gray-500 text-sm mb-2">
-      {new Date(item.createdAt).toLocaleDateString()}
-    </p>
+              <p className="text-gray-500 text-sm mb-2">
+                {new Date(item.createdAt).toLocaleDateString()}
+              </p>
 
-    <h3 className="font-bold text-lg mb-3 leading-tight">
-      {item.title}
-    </h3>
+              <h3 className="font-bold text-lg mb-3 leading-tight">
+                {item.title}
+              </h3>
 
-    {/* FIX — Render HTML + clamp */}
-    <div
-      className="text-gray-600 text-sm leading-relaxed line-clamp-3"
-      dangerouslySetInnerHTML={{ __html: item.description }}
-    ></div>
-  </div>
-))}
-
+              {/* FIX — Render HTML + clamp */}
+              <div
+                className="text-gray-600 text-sm leading-relaxed line-clamp-3"
+                dangerouslySetInnerHTML={{ __html: item.description }}
+              ></div>
+            </div>
+          ))}
         </div>
 
         {/* Buttons */}
@@ -168,7 +161,7 @@ export default function NewsSection() {
         </div>
       </div>
 
-       <style>
+      <style>
         {`
             /* Hide scrollbar for Chrome, Safari, Edge */
 
