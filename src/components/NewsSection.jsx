@@ -80,7 +80,7 @@ export default function NewsSection() {
   };
 
   return (
-    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-40">
+    <section className="w-full bg-white py-16  max-w-6xl mx-auto px-5">
       {/* Heading */}
       <div className="mb-12">
         <p className="text-green-600 font-semibold tracking-wide">BLOG</p>

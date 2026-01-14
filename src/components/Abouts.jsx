@@ -8,6 +8,7 @@ import http from "../service/http";
 const Abouts = () => {
     const [abouts, setAbouts] = useState([]);
     const [aboutsdeco, setAboutsdeco] = useState([]);
+    const [journey, setJourney] = useState(null);
   
     const fetchData = async () => {
       try {
@@ -16,6 +17,7 @@ const Abouts = () => {
         const Alldata = response.data?.data;
         setAbouts(Alldata?.chairmanmsg[0]);
         setAboutsdeco(Alldata?.lastdecade[0]);
+        setJourney(Alldata?.journey?.[0]); // setJourney(Alldata?.journey);
         
       } catch (err) {
         console.error("Error fetching commen data:", err);
@@ -49,16 +51,16 @@ const Abouts = () => {
 
       <section className="w-full flex flex-col md:flex-row mt-10">
   {/* LEFT SIDE IMAGE WITH BLUE BACKGROUND */}
-  <div className="md:w-1/2 bg-blue-700 flex items-center justify-center p-0 md:h-[550px]">
+  <div className="md:w-1/2 bg-blue-700 flex items-center justify-center p-0 md:h-[800px]">
     <img
-      src={abouts?.image_url || "/img/chairman.png"}
+      src={ abouts?.image_url ||"/chairman2.png"}
       alt="Mohammad Jamaluddin"
-      className="w-full h-full "
+      className="w-full h-full object-cover"
     />
   </div>
 
   {/* RIGHT SIDE CONTENT */}
-  <div className="md:w-1/2 bg-[#EEF5D7] p-10 md:p-16 flex flex-col justify-center md:h-[550px]">
+  <div className="md:w-1/2 bg-[#EEF5D7] p-10 md:p-16 flex flex-col justify-center md:h-[800px]">
     <p className="text-green-600 font-semibold tracking-wide mb-2">
       CHAIRMAN
     </p>
@@ -83,7 +85,7 @@ const Abouts = () => {
     <img src="/img/line.png" className=""/>
 
 
-    <section className="w-full py-16 px-6 md:px-12 lg:px-20">
+    <section className="w-full py-16 mx-auto px-5 max-w-6xl">
       {/* Heading */}
       <p className="text-[#98C20B] font-semibold tracking-wide">GROWTH</p>
       <h2 className="text-4xl font-bold mt-2 mb-12">
@@ -115,158 +117,180 @@ const Abouts = () => {
 
 
 
-<section className="w-full py-16 px-6 md:px-12 lg:px-20">
 
-  {/* TOP TIMELINE */}
-   <p className="text-[#98C20B] font-semibold tracking-wide">JOURNEY</p>
-  <h2 className="text-4xl font-bold mt-2 mb-12">Our 25-Year Journey</h2>
+
+{journey && (
+<section className="w-full py-16 mx-auto px-5 max-w-6xl">
+
+  {/* HEADING */}
+  <p className="text-[#98C20B] font-semibold tracking-wide">JOURNEY</p>
+  <h2 className="text-4xl font-bold mt-2 mb-12">
+    {journey.title}
+  </h2>
+
+  {/* TIMELINE */}
   <div className="w-full flex justify-between items-center relative mb-20">
+    <div className="absolute top-16 left-0 w-full border-t border-dashed border-gray-400"></div>
 
-  {/* Dotted Line */}
-  <div className="absolute top-16 left-0 w-full border-t border-dashed border-gray-400"></div>
-
-  {/* Ribbon 1 */}
-  <div className="flex flex-col items-center">
-    <img
-      src="/img/iconb.png"
-      alt="ribbon"
-      className="w-20 mb-4"
-    />
-    <div className="w-4 h-4 bg-[#0789D3] rounded-full"></div>
+    {journey.steps.slice(0, 3).map((step, index) => (
+      <div
+        key={step.id}
+        className={`flex flex-col items-center ${
+          index === 0 ? "ml-[130px]" : index === 2 ? "mr-[130px]" : ""
+        }`}
+      >
+        <img src="/img/iconb.png" alt="ribbon" className="w-20 mb-4" />
+        <div
+          className={`w-4 h-4 rounded-full ${
+            index === 1 ? "bg-[#96B80A]" : "bg-[#0789D3]"
+          }`}
+        />
+      </div>
+    ))}
   </div>
 
-  {/* Ribbon 2 */}
-  <div className="flex flex-col items-center">
-    <img
-      src="/img/iconb.png"
-      alt="ribbon"
-      className="w-20 mb-4"
-    />
-    <div className="w-4 h-4 bg-[#96B80A] rounded-full"></div>
-  </div>
-
-  {/* Ribbon 3 */}
-  <div className="flex flex-col items-center">
-    <img
-      src="/img/iconb.png"
-      alt="ribbon"
-      className="w-20 mb-4"
-    />
-    <div className="w-4 h-4 bg-[#0789D3] rounded-full"></div>
-  </div>
-
-</div>
-
-
-  {/* 3 CARDS */}
+  {/* CARDS */}
   <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-    {/* CARD 1 */}
-    <div className="relative bg-[#0789D3] text-white rounded-xl pb-20 pt-24 px-6">
+    {journey.steps.slice(0, 3).map((step, index) => {
+      const isGreen = index === 1;
 
-      {/* TRIANGLE NOTCH */}
-      <div className="absolute -top-12 left-1/2 -translate-x-1/2">
-        <div className="relative w-36 h-24">
+      return (
+        <div
+          key={step.id}
+          className={`relative text-white rounded-xl pb-20 pt-24 px-6 ${
+            isGreen ? "bg-[#96B80A]" : "bg-[#0789D3]"
+          }`}
+        >
+
+          {/* NOTCH */}
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2">
+            <div className="relative w-36 h-24">
+              <div className="absolute inset-0 bg-white clip-triangle shadow-lg"></div>
+              <p className="absolute top-10 left-1/2 -translate-x-1/2 text-black font-bold text-xl">
+                {String(step.step_number).padStart(2, "0")}
+              </p>
+            </div>
+          </div>
+
+          {/* CONTENT */}
+          <h3 className="text-xl font-semibold mb-3 mt-10">
+            {step.title}
+          </h3>
+
           <div
-            className="absolute inset-0 bg-white clip-triangle 
-                       shadow-[6px_6px_10px_rgba(0,0,0,0.25),-6px_6px_10px_rgba(0,0,0,0.25)]"
-          ></div>
+            className="text-sm opacity-90 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: step.description }}
+          />
 
-          <p className="absolute top-10 left-1/2 -translate-x-1/2 text-black font-bold text-xl">
-            01
-          </p>
+          {/* BOTTOM ICON */}
+          <div className="absolute -bottom-7 left-1/2 -translate-x-1/2">
+            <div
+              className={`w-14 h-14 rounded-full bg-white flex items-center justify-center text-xl font-bold ${
+                isGreen ? "text-[#96B80A]" : "text-[#0789D3]"
+              }`}
+            >
+              ⌄
+            </div>
+          </div>
+
         </div>
-      </div>
-
-      {/* CONTENT */}
-      <h3 className="text-xl font-semibold mb-3 mt-10">
-        Weaving a Global Tapestry (2000–2025)
-      </h3>
-
-      <p className="text-sm opacity-90 leading-relaxed">
-        From humble beginnings to a global footprint, our journey reflects 
-        resilience, strategic foresight, and unwavering commitment to excellence.
-      </p>
-
-      {/* BOTTOM CIRCLE */}
-      <div className="absolute -bottom-7 left-1/2 -translate-x-1/2">
-        <div className="w-14 h-14 rounded-full bg-white text-[#0789D3] 
-                        flex items-center justify-center text-xl font-bold">
-          ⌄
-        </div>
-      </div>
-    </div>
-
-    {/* CARD 2 */}
-    <div className="relative bg-[#96B80A] text-white rounded-xl pb-20 pt-24 px-6">
-
-      <div className="absolute -top-12 left-1/2 -translate-x-1/2">
-        <div className="relative w-36 h-24">
-          <div
-            className="absolute inset-0 bg-white clip-triangle 
-                       shadow-[6px_6px_10px_rgba(0,0,0,0.25),-6px_6px_10px_rgba(0,0,0,0.25)]"
-          ></div>
-
-          <p className="absolute top-10 left-1/2 -translate-x-1/2 text-black font-bold text-xl">
-            02
-          </p>
-        </div>
-      </div>
-
-      <h3 className="text-xl font-semibold mb-3 mt-10">
-        2000–2004: The Roots of Resilience
-      </h3>
-
-      <ul className="text-sm opacity-90 leading-relaxed space-y-2">
-        <li>
-          <strong>2000–2001:</strong> Inspired by entrepreneurial spirit from Nepal,
-          leadership laid the groundwork for international expansion.
-        </li>
-      </ul>
-
-      <div className="absolute -bottom-7 left-1/2 -translate-x-1/2">
-        <div className="w-14 h-14 rounded-full bg-white text-[#96B80A] 
-                        flex items-center justify-center text-xl font-bold">
-          ⌄
-        </div>
-      </div>
-    </div>
-
-    {/* CARD 3 */}
-    <div className="relative bg-[#0789D3] text-white rounded-xl  pb-20 pt-24 px-6">
-
-      <div className="absolute -top-12 left-1/2 -translate-x-1/2">
-        <div className="relative w-36 h-24">
-          <div
-            className="absolute inset-0 bg-white clip-triangle 
-                       shadow-[6px_6px_10px_rgba(0,0,0,0.25),-6px_6px_10px_rgba(0,0,0,0.25)]"
-          ></div>
-
-          <p className="absolute top-10 left-1/2 -translate-x-1/2 text-black font-bold text-xl">
-            03
-          </p>
-        </div>
-      </div>
-
-      <h3 className="text-xl font-semibold mb-3 mt-10">
-        2005–2010: Laying the Foundation
-      </h3>
-
-      <p className="text-sm opacity-90 leading-relaxed">
-        <strong>2005:</strong> Launch of Premier Exim HK—marking our entry into
-        international trade.
-      </p>
-
-      <div className="absolute -bottom-7 left-1/2 -translate-x-1/2">
-        <div className="w-14 h-14 rounded-full bg-white text-[#0789D3] 
-                        flex items-center justify-center text-xl font-bold">
-          ⌄
-        </div>
-      </div>
-    </div>
-
+      );
+    })}
   </div>
 </section>
+)}
+
+{journey && (
+<section className="w-full py-10 mx-auto px-5 max-w-6xl">
+
+  
+
+  {/* TIMELINE */}
+  <div className="w-full flex justify-between items-center relative mb-20">
+    <div className="absolute top-16 left-0 w-full border-t border-dashed border-gray-400"></div>
+
+    {journey.steps.slice(3, 6).map((step, index) => (
+      <div
+        key={step.id}
+        className={`flex flex-col items-center ${
+          index === 0 ? "ml-[130px]" : index === 2 ? "mr-[130px]" : ""
+        }`}
+      >
+        <img src="/img/iconb.png" alt="ribbon" className="w-20 mb-4" />
+        <div
+          className={`w-4 h-4 rounded-full ${
+            index === 1 ? "bg-[#96B80A]" : "bg-[#0789D3]"
+          }`}
+        />
+      </div>
+    ))}
+  </div>
+
+  {/* CARDS */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+    {journey.steps.slice(3, 6).map((step, index) => {
+      const isGreen = index === 1;
+
+      return (
+        <div
+          key={step.id}
+          className={`relative text-white rounded-xl pb-20 pt-24 px-6 ${
+            isGreen ? "bg-[#96B80A]" : "bg-[#0789D3]"
+          }`}
+        >
+
+          {/* NOTCH */}
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2">
+            <div className="relative w-36 h-24">
+              <div className="absolute inset-0 bg-white clip-triangle shadow-lg"></div>
+              <p className="absolute top-10 left-1/2 -translate-x-1/2 text-black font-bold text-xl">
+                {String(step.step_number).padStart(2, "0")}
+              </p>
+            </div>
+          </div>
+
+          {/* CONTENT */}
+          <h3 className="text-xl font-semibold mb-3 mt-10">
+            {step.title}
+          </h3>
+
+          <div
+            className="text-sm opacity-90 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: step.description }}
+          />
+
+          {/* BOTTOM ICON */}
+          <div className="absolute -bottom-7 left-1/2 -translate-x-1/2">
+            <div
+              className={`w-14 h-14 rounded-full bg-white flex items-center justify-center text-xl font-bold ${
+                isGreen ? "text-[#96B80A]" : "text-[#0789D3]"
+              }`}
+            >
+              ⌄
+            </div>
+          </div>
+
+        </div>
+      );
+    })}
+  </div>
+</section>
+)}
+
+<section className="w-full py-16 mx-auto px-5 max-w-6xl">
+  <div className=" text-center bg-gradient-to-b
+    from-[#FFFFFF]
+    to-[#CCCCCC] p-10 px-20">
+    <p className="text-lg md:text-lg font-semibold font-weight-600 text-gray-700 leading-relaxed">
+      This 25-year journey—from resilient roots to global leadership—is a testament
+      to our team’s spirit and our legacy of excellence. As we celebrate this
+      milestone, we honor the past and boldly shape the next quarter-century.
+    </p>
+  </div>
+</section>
+
 
 
 {/* Tailwind triangle helper */}

@@ -320,7 +320,7 @@ const Home = () => {
 
       {/* Abouts SECTION */}
 
-      <section className="w-full py-20  relative">
+      <section className="w-full py-20  max-w-6xl mx-auto px-5  relative">
         <div className="max-w-6xl mx-auto px-6 lg:px-0 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="flex flex-col justify-center">
             <p className="text-[#40BD02] font-semibold text-sm tracking-widest">
@@ -552,7 +552,7 @@ const Home = () => {
       {/* BUSINESS SECTION */}
       <section className="w-full bg-white">
         {/* HEADER */}
-        <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto px-5 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <p className="text-[#40BD02] font-semibold tracking-widest text-sm mb-3">
               BUSINESS
@@ -741,7 +741,7 @@ const Home = () => {
       </section>
 
       {/* Architects of Growth */}
-      <section className="w-full bg-white py-6 px-6 md:px-12 lg:px-40">
+      <section className="w-full bg-white py-6 max-w-6xl mx-auto px-5">
         {/* Heading */}
         <div className="mb-12">
           <p className="text-green-600 font-semibold tracking-wide">COMPANY</p>

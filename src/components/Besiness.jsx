@@ -73,7 +73,7 @@ const Besiness = () => {
       </section>
 
       {/* BUSINESSES SECTION */}
-      <section className="w-full py-12 mb-5 px-6 md:px-12 lg:px-20">
+      <section className="w-full py-12 mb-5 mx-auto px-5 max-w-6xl">
   <div className="mb-10">
     <p className="text-[#86C200] font-semibold tracking-wide">BUSINESS</p>
     <h2 className="text-4xl md:text-5xl font-bold">Businesses</h2>
@@ -146,7 +146,7 @@ const Besiness = () => {
 
 
       {/* JOIN US SECTION */}
-<section className="w-full py-12 mb-5 px-6 md:px-12 lg:px-20">
+<section className="w-full py-12 mb-5 mx-auto px-5 max-w-6xl">
   {/* Heading */}
   <div className="mb-10">
     <p className="text-[#86C200] font-semibold tracking-wide">CAREERS</p>
