@@ -13,6 +13,8 @@ import {
   Search,
   Menu,
   X,
+  LayoutDashboard,
+  Phone,
 } from "lucide-react";
 
 const Sidebar = ({ isOpen, setIsOpen, user }) => {
@@ -24,132 +26,117 @@ const Sidebar = ({ isOpen, setIsOpen, user }) => {
     {
       id: "dashboard",
       label: "Dashboard",
-      icon: Home,
+      icon: LayoutDashboard,
       options: [
         { name: "Overview", link: "/dashboard/home" },
         { name: "Analytics", link: "/dashboard/analytics" },
         { name: "Reports", link: "/dashboard/reports" },
       ],
     },
+
+    // ✅ HOME GROUPED SECTION
     {
-      id: "banners",
-      label: "Banners",
-      icon: Image,
+      id: "home",
+      label: "Home",
+      icon: Home,
       options: [
+        { type: "title", name: "Banner Options" },
         { name: "All Banners", link: "/dashboard/banners" },
         { name: "Add Banner", link: "/dashboard/banners/add" },
-      ],
-    },
-    {
-      id: "aboutus",
-      label: "About Us",
-      icon: FileText,
-      options: [
+        { type: "hr" },
+
+        { type: "title", name: "About Us Options" },
         { name: "Content", link: "/dashboard/aboutus" },
         { name: "Add Content", link: "/dashboard/aboutus/add" },
-      ],
-    },
-    {
-      id: "service",
-      label: "Services",
-      icon: Wrench,
-      options: [
+        { type: "hr" },
+
+        { type: "title", name: "Service Options" },
         { name: "All Services", link: "/dashboard/service" },
         { name: "Add Service", link: "/dashboard/service/add" },
         { name: "Service Bar", link: "/dashboard/servicebar" },
         { name: "Add Service Bar", link: "/dashboard/servicebar/add" },
+        { type: "hr" },
+
+        { type: "title", name: "Chairman Message" },
+        { name: "All Messages", link: "/dashboard/chairmanmsg" },
+        { name: "Add Message", link: "/dashboard/chairmanmsg/add" },
+        { type: "hr" },
+
+        { type: "title", name: "Architech Options" },
+        { name: "All Architech", link: "/dashboard/architech" },
+        { name: "Add Architech", link: "/dashboard/architech/add" },
+        { type: "hr" },
+
+        { type: "title", name: "News Options" },
+        { name: "All News", link: "/dashboard/news" },
+        { name: "Add News", link: "/dashboard/news/add" },
+        { type: "hr" },
+
+        { type: "title", name: "Global Presence" },
+        { name: "All Global Presence", link: "/dashboard/globalPresence" },
+        { name: "Add Global Presence", link: "/dashboard/globalPresence/add" },
+
+        // { type: "title", name: "Business Options" },
+        // { name: "All Business", link: "/dashboard/business" },
+        // { name: "Add Business", link: "/dashboard/business/add" },
+        // { type: "hr" },
+
+        // { type: "title", name: "Journey Options" },
+        // { name: "Journey", link: "/dashboard/journey" },
+        // { name: "Add Journey", link: "/dashboard/journey/add" },
+        // { name: "Journey Steps", link: "/dashboard/journeysteps" },
+        // { name: "Add Journey Steps", link: "/dashboard/journeysteps/add" },
+        // { type: "hr" },
+
+        // { type: "title", name: "Lastdecade Options" },
+        // { name: "All Lastdecades", link: "/dashboard/lastdecade" },
+        // { name: "Add Lastdecade", link: "/dashboard/lastdecade/add" },
+        // { type: "hr" },
       ],
     },
 
     {
-      id: "architech",
-      label: "Architech",
-      icon: Wrench,
+      id: "aboutus",
+      label: "About",
+      icon: FileText,
       options: [
-        { name: "All Architech", link: "/dashboard/architech" },
-        { name: "Add Architech", link: "/dashboard/architech/add" },
+        { type: "title", name: "Journey Options" },
+        { name: "Journey", link: "/dashboard/journey" },
+        { name: "Add Journey", link: "/dashboard/journey/add" },
+        { name: "Journey Steps", link: "/dashboard/journeysteps" },
+        { name: "Add Journey Steps", link: "/dashboard/journeysteps/add" },
+        { type: "hr" },
+
+        { type: "title", name: "Lastdecade Options" },
+        { name: "All Lastdecades", link: "/dashboard/lastdecade" },
+        { name: "Add Lastdecade", link: "/dashboard/lastdecade/add" },
+        // { type: "hr" },
       ],
     },
     {
       id: "business",
       label: "Business",
-      icon: Wrench,
+      icon: Users,
       options: [
+        { type: "title", name: "Business Options" },
         { name: "All Business", link: "/dashboard/business" },
         { name: "Add Business", link: "/dashboard/business/add" },
+        // { type: "hr" },
       ],
     },
 
-    {
-      id: "journey",
-      label: "Journey",
-      icon: Wrench,
-      options: [
-        { name: "Journey", link: "/dashboard/journey" },
-        { name: "Add Journey", link: "/dashboard/journey/add" },
-        { name: "Journey Steps", link: "/dashboard/journeysteps" },
-        { name: "Add Journey Steps", link: "/dashboard/journeysteps/add" },
-      ],
-    },
-
-    {
-      id: "news",
-      label: "News",
-      icon: Wrench,
-      options: [
-        { name: "All News", link: "/dashboard/news" },
-        { name: "Add News", link: "/dashboard/news/add" },
-      ],
-    },
-
-    {
-      id: "chairmanmsg",
-      label: "Chairman Message",
-      icon: Wrench,
-      options: [
-        { name: "All Messages", link: "/dashboard/chairmanmsg" },
-        { name: "Add Message", link: "/dashboard/chairmanmsg/add" },
-      ],
-    },
-
-    {
-      id: "lastdecade",
-      label: "Lastdecade",
-      icon: Wrench,
-      options: [
-        { name: "All Lastdecades", link: "/dashboard/lastdecade" },
-        { name: "Add Lastdecade", link: "/dashboard/lastdecade/add" },
-      ],
-    },
-
-    {
-      id: "globalPresence",
-      label: "Global Presence",
-      icon: Wrench,
-      options: [
-        { name: "All Global Presence", link: "/dashboard/globalPresence" },
-        { name: "Add Global Presence", link: "/dashboard/globalPresence/add" },
-      ],
-    },
     {
       id: "contactus",
       label: "Contactus",
-      icon: Settings,
-      options: [
-        // { name: "Profile", link: "/dashboard/settings/profile" },
-        { name: "All Contactus", link: "/dashboard/contactus" },
-        // { name: "Security", link: "/dashboard/settings/security" },
-      ],
+      icon: Phone,
+      options: [{ name: "All Contactus", link: "/dashboard/contactus" }],
     },
+
     {
       id: "settings",
       label: "Settings",
       icon: Settings,
-      options: [
-        // { name: "Profile", link: "/dashboard/settings/profile" },
-        { name: "All Settings", link: "/dashboard/settings" },
-        // { name: "Security", link: "/dashboard/settings/security" },
-      ],
+      options: [{ name: "All Settings", link: "/dashboard/settings" }],
     },
   ];
 
@@ -169,15 +156,28 @@ const Sidebar = ({ isOpen, setIsOpen, user }) => {
     .map((item) => {
       const matchMain = item.label.toLowerCase().includes(search.toLowerCase());
 
-      const filteredOptions = item.options.filter((opt) =>
-        opt.name.toLowerCase().includes(search.toLowerCase())
+      // const filteredOptions = item.options.filter((opt) =>
+      //   opt.name.toLowerCase().includes(search.toLowerCase()),
+      // );
+      const filteredOptions = item.options.filter(
+        (opt) =>
+          opt.name && opt.name.toLowerCase().includes(search.toLowerCase()),
       );
 
       // If search matches main menu OR any submenu — include item
       if (matchMain || filteredOptions.length > 0) {
         return {
           ...item,
-          options: search ? filteredOptions : item.options,
+          // options: search ? filteredOptions : item.options,
+          options: search
+            ? item.options.filter(
+                (opt) =>
+                  opt.type === "title" ||
+                  opt.type === "hr" ||
+                  (opt.name &&
+                    opt.name.toLowerCase().includes(search.toLowerCase())),
+              )
+            : item.options,
         };
       }
 
@@ -204,53 +204,65 @@ const Sidebar = ({ isOpen, setIsOpen, user }) => {
         <style>
           {`
           /* Sidebar Scrollbar */
-aside nav::-webkit-scrollbar {
-  width: 4px;      /* thin */
-}
+        aside nav::-webkit-scrollbar {
+          width: 4px;      /* thin */
+        }
 
-aside nav::-webkit-scrollbar-track {
-  background: transparent;
-}
+        aside nav::-webkit-scrollbar-track {
+          background: transparent;
+        }
 
-aside nav::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.20);
-  border-radius: 10px;
-}
+        aside nav::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.20);
+          border-radius: 10px;
+        }
 
-aside nav::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
-}
+        aside nav::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 255, 255, 0.35);
+        }
 
-/* Firefox */
-aside nav {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
-}
+        /* Firefox */
+        aside nav {
+          scrollbar-width: thin;
+          scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+        }
+
+
+        /* Submenu Scrollbar */
+        .submenu-scroll {
+          max-height: calc(100vh - 320px); /* keeps it inside sidebar */
+          overflow-y: auto;
+        }
+
+        .submenu-scroll::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        .submenu-scroll::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .submenu-scroll::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.25);
+          border-radius: 10px;
+        }
+
+        .submenu-scroll::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Firefox */
+        .submenu-scroll {
+          scrollbar-width: thin;
+          scrollbar-color: rgba(255,255,255,0.25) transparent;
+        }
+
 
           `}
         </style>
         <div className="flex flex-col h-full">
           {/* Header with Logo */}
           <div className="p-6 border-b border-slate-700/50 backdrop-blur-sm bg-slate-800/50">
-            {/* <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
-                  <span className="text-xl font-bold">A</span>
-                </div>
-                <div>
-                  <h1 className="text-lg font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                    Admin Panel
-                  </h1>
-                  <p className="text-xs text-slate-400">Management System</p>
-                </div>
-              </div>
-              <button
-                className="lg:hidden p-2 hover:bg-slate-700 rounded-lg transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                <X size={20} />
-              </button>
-            </div> */}
             <img
               src="/img/Logo.png"
               alt=""
@@ -314,12 +326,12 @@ aside nav {
 
                   {/* Submenu with Animation */}
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      openMenu === id ? "max-h-96 mt-1" : "max-h-0"
+                    className={`overflow-y-auto transition-all duration-300 ${
+                      openMenu === id ? "max-h-screen mt-1" : "max-h-0"
                     }`}
                   >
                     <div className="bg-slate-800/30 rounded-xl p-2 ml-4 border-l-2 border-blue-500/30">
-                      {options.map((opt) => (
+                      {/* {options.map((opt) => (
                         <Link
                           to={opt.link}
                           key={opt.name}
@@ -341,7 +353,54 @@ aside nav {
                             {opt.name}
                           </div>
                         </Link>
-                      ))}
+                      ))} */}
+                      <div className="submenu-scroll p-2">
+                        {options.map((opt, i) => {
+                          if (opt.type === "title") {
+                            return (
+                              <p
+                                key={i}
+                                className="px-4 py-2 text-xs uppercase tracking-wide text-blue-400 font-semibold"
+                              >
+                                {opt.name}
+                              </p>
+                            );
+                          }
+
+                          if (opt.type === "hr") {
+                            return (
+                              <hr
+                                key={i}
+                                className="border-slate-600/40 my-2 mx-3"
+                              />
+                            );
+                          }
+
+                          return (
+                            <Link
+                              to={opt.link}
+                              key={opt.name}
+                              onClick={() => handleLinkClick(opt.link)}
+                              className={`block px-4 py-2.5 rounded-lg text-sm transition-all duration-200 ${
+                                activeLink === opt.link
+                                  ? "bg-blue-500/20 text-blue-300 font-medium"
+                                  : "text-slate-300 hover:text-white hover:bg-slate-700/50"
+                              }`}
+                            >
+                              <div className="flex items-center text-xs gap-2">
+                                <div
+                                  className={`w-1.5 h-1.5 rounded-full ${
+                                    activeLink === opt.link
+                                      ? "bg-blue-400"
+                                      : "bg-slate-500"
+                                  }`}
+                                />
+                                {opt.name}
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </li>
