@@ -12,7 +12,7 @@ const Footer = () => {
           className="w-full bg-cover bg-center bg-no-repeat py-16"
           style={{ backgroundImage: 'url("/footer.png")' }}
         >
-          <div className="max-w-6xl mb-20  mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
+          <div className="max-w-6xl mb-5 md:mb-20 mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
             {/* LEFT LARGE COLUMN - COL 4 */}
             <div className="md:col-span-4">
               <img
@@ -21,7 +21,7 @@ const Footer = () => {
                 className="h-[80px] w-[150px] mb-4"
               />
 
-              <p className="text-[#CCCCCC] text-sm leading-relaxed max-w-xs">
+              <p className="text-[#CCCCCC]  mb-20 md:mb-0 text-sm leading-relaxed max-w-xs">
                 Premier Group unites under a shared vision to drive sustainable
                 growth, empower communities, and inspire progress for future
                 generations.
@@ -31,7 +31,8 @@ const Footer = () => {
             {/* RIGHT COLUMNS (Quick Links + Legal + Contact) - COL 8 */}
             <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-4 gap-10 items-start">
               {/* QUICK LINK */}
-              <div>
+        
+              <div className="hidden lg:block">
                 <h4 className="text-lg font-semibold text-white mb-4">
                   Quick Link
                 </h4>
@@ -59,7 +60,7 @@ const Footer = () => {
               </div>
 
               {/* LEGAL */}
-              <div>
+              <div className="hidden lg:block">
                 <h4 className="text-lg font-semibold text-white mb-4">Legal</h4>
                 <ul className="space-y-2 text-[#CCCCCC] text-sm">
                   <li className="hover:text-[#40BD02] cursor-pointer">
@@ -100,6 +101,8 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
+
+           
             </div>
           </div>
         </div>

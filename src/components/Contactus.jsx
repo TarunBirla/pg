@@ -85,13 +85,16 @@ const Contactus = () => {
           </div>
 
           <div>
-            <h2 className="text-4xl font-bold mb-3">Need more help?</h2>
+            <h2 className="text-4xl  mb-3">Need more help?</h2>
             <p className="text-gray-600 mb-8">
-              We'd love to hear from you! Contact us anytime.
+              We’d love to hear from you! Whether you’re looking to buy, sell, or invest in real estate, our team is here to guide you every step of the way.
             </p>
 
             <form className="space-y-5" onSubmit={handleSubmit}>
               {/* NAME */}
+              <h5 className="text-2xl  tracking-widest mb-2">
+                Get in touch with us.
+              </h5>
               <div>
                 <label className="block text-sm mb-1">
                   Name <span className="text-red-500">*</span>
