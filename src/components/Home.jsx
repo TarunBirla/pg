@@ -596,19 +596,21 @@ const Home = () => {
 
       {/* Chairman's Message */}
       {/* desktop */}
-      <section className="w-full hidden lg:block bg-white pb-20 relative">
+      <section className="w-full hidden lg:block bg-white  pb-20 relative">
         {/* Background subtle vertical lines */}
         <div className="absolute inset-0 pointer-events-none bg-[url('/img/vertical-lines.png')] opacity-20"></div>
 
         {/* TOP BLUE BAR */}
-        <div className="w-full bg-[#0A5A9C] py-10 px-6 md:px-14">
+        <div className=" w-full bg-[#0A5A9C]">
+        <div className="max-w-6xl mx-auto py-10 px-2">
           <h2 className="text-white text-3xl md:text-[32px] font-bold tracking-wide uppercase">
             CHAIRMAN’S MESSAGE
           </h2>
         </div>
+        </div>
 
         {/* CONTENT SECTION */}
-        <div className="relative max-w-6xl mx-auto px-6 md:px-14 mt-14 grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="relative max-w-6xl mx-auto px-4 mt-14 grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* LEFT SIDE TEXT */}
           <div className="flex flex-col justify-center">
             <p

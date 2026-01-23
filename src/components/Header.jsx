@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 
-      ${isScrolled ? "bg-black shadow-lg" : "bg-transparent"}`}
+      ${isScrolled ? "bg-black/50 shadow-lg" : "bg-transparent"}`}
     >
     <div className="relative max-w-6xl mx-auto flex items-center px-4 py-3">
   {/* LEFT: LOGO */}
