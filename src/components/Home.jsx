@@ -223,14 +223,14 @@ const Home = () => {
                   className={` transition cursor-pointer
             ${
               currentIndex === index
-                ? " p-[3px] rounded-lg bg-[#C1FF00] "
+                ? " p-[2px]  bg-[#C1FF00] "
                 : "border border-white/40"
             }`}
                 >
                   <img
                     src={item.image_url}
                     alt=""
-                    className="w-full h-[110px] object-cover rounded-lg"
+                    className="w-full h-[110px] object-cover "
                   />
                 </div>
               </SwiperSlide>
