@@ -108,7 +108,7 @@ const Footer = () => {
         </div>
 
         {/* COPYRIGHT BAR */}
-        <div className="w-full bg-black text-center py-4 text-gray-400 text-sm">
+        <div className="w-full bg-[#0C0C0C] text-center py-4 text-gray-400 text-sm">
           Copyright © 2025{" "}
           <span className="text-[#40BD02] font-semibold cursor-pointer">
             Premier Group

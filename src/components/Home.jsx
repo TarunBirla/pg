@@ -179,11 +179,11 @@ const Home = () => {
 
        
 
-        <div className=" hidden md:flex absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex items-center gap-5">
-          {/* White horizontal line */}
-          <div className="w-[220px] h-[2px] bg-white/80"></div>
+        <div className=" hidden md:flex absolute bottom-20 left-2/5 -translate-x-1/2 z-20 flex items-center gap-5">
+         
+          <div className="w-[200px] h-[2px] bg-white/80"></div>
 
-          {/* Prev (circle outline) */}
+          
           <button
             onClick={() => mainSwiperRef.current.slidePrev()}
             className="w-10 h-10 flex items-center justify-center 
@@ -193,7 +193,7 @@ const Home = () => {
             <FaChevronLeft size={16} />
           </button>
 
-          {/* Next (solid neon green) */}
+          
           <button
             onClick={() => mainSwiperRef.current.slideNext()}
             className="w-10 h-10 flex items-center justify-center 
@@ -206,7 +206,7 @@ const Home = () => {
 
        
 
-        <div className="hidden lg:block absolute bottom-8 right-8 w-[520px] z-20">
+        <div className="hidden lg:block absolute bottom-8 right-[-5px] w-[520px] z-20">
           <Swiper
             modules={[Navigation, Thumbs, Controller]}
             slidesPerView={3}
@@ -223,14 +223,14 @@ const Home = () => {
                   className={` transition cursor-pointer
             ${
               currentIndex === index
-                ? " p-[1px] bg-gradient-to-r from-[#40BD02] to-[#37B8E1]"
+                ? " p-[3px] rounded-lg bg-[#C1FF00] "
                 : "border border-white/40"
             }`}
                 >
                   <img
                     src={item.image_url}
                     alt=""
-                    className="w-full h-[110px] object-cover"
+                    className="w-full h-[110px] object-cover rounded-lg"
                   />
                 </div>
               </SwiperSlide>
@@ -325,7 +325,7 @@ const Home = () => {
             {/* BUTTON */}
             <button
               onClick={() => navigate("/abouts")}
-              className="bg-gradient-to-r from-[#40BD02] to-[#37B8E1] hover:bg-[#2FA000] text-white px-6 py-3 rounded-sm text-sm font-semibold w-fit shadow-md transition"
+              className="bg-gradient-to-r from-[#40BD02] to-[#37B8E1] hover:bg-[#2FA000] text-white px-6 py-3  text-sm font-semibold w-fit shadow-md transition"
             >
               READ MORE
             </button>
@@ -400,7 +400,7 @@ const Home = () => {
               <button
                 onClick={() => navigate("/abouts")}
                 className="bg-gradient-to-r from-[#40BD02] to-[#37B8E1] hover:bg-[#2FA000] 
-               text-white px-6 py-3 rounded-sm text-sm font-semibold 
+               text-white px-6 py-3  text-sm font-semibold 
                shadow-md transition"
               >
                 READ MORE
@@ -741,7 +741,7 @@ const Home = () => {
                 className={`p-6 text-white flex flex-col justify-center
     ${
       index === 0 || index === 3
-        ? "bg-[#0A70B1]"
+        ? "bg-[#0a70b1]"
         : index === 1 || index === 2
           ? "bg-[#85AC02]"
           : "bg-gray-900"

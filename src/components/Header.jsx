@@ -39,7 +39,7 @@ const Header = () => {
   </div>
 
   {/* CENTER: NAV */}
- <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-8 text-white bg-black/20 rounded-md px-5 py-3 font-medium">
+ <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-6 text-white uppercase rounded-md px-5 py-3 font-medium">
   <NavLink
     to="/"
     className={({ isActive }) =>
@@ -91,7 +91,7 @@ const Header = () => {
   <div className="ml-auto hidden md:block">
     <Link
       to="/admin/login"
-      className="px-5 py-2 rounded-md text-white font-semibold 
+      className="px-5 py-2  text-white font-semibold 
       bg-gradient-to-r from-[#40BD02] to-[#37B8E1] 
       hover:scale-105 transition"
     >
