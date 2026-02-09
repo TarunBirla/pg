@@ -11,7 +11,7 @@ const JourneyTimeline = ({ journey }) => {
           {journey.title}
         </h2>
       </div>
-    <div className="w-full py-16 bg-[#0A5AA3]">
+    <div className="w-full py-16 bg-[#052842]">
   <div className="max-w-6xl mx-auto px-5">
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16">
