@@ -190,7 +190,10 @@ const Contactus = () => {
         </div>
       </section>
 
-      <GlobalMap />
+    <section className="w-full">
+        <img src="/image 104.png" className="w-full" alt="Banner" />
+      </section>
+      {/* <GlobalMap /> */}
       <Footer />
     </>
   );
