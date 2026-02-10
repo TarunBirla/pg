@@ -39,7 +39,7 @@ const Header = () => {
   </div>
 
   {/* CENTER: NAV */}
- <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-6 text-white uppercase rounded-md px-5 py-3 font-medium">
+ <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center space-x-6 text-white uppercase bg-black/30 rounded-md px-5 py-3 font-medium">
   <NavLink
     to="/"
     className={({ isActive }) =>
