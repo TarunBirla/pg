@@ -232,6 +232,7 @@ const Home = () => {
                     alt=""
                     className="w-full h-[110px] object-cover "
                   />
+
                 </div>
               </SwiperSlide>
             ))}
@@ -755,7 +756,20 @@ const Home = () => {
                 ></div>
 
                 {/* DESIGNATION */}
-                <p className="mt-4 font-bold text-green-400">
+                {/* <p className="mt-4 font-bold text-green-400">
+                  {item?.designation}
+                </p> */}
+
+                  <p 
+                   className={`mt-4 font-bold text-sm 
+    ${
+      index === 0 || index === 3
+        ? "text-[#CAFF00]"
+        : index === 1 || index === 2
+          ? "text-[#034570]"
+          : "text-gray-900"
+    }
+  `}>
                   {item?.designation}
                 </p>
 
