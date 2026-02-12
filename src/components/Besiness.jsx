@@ -36,7 +36,7 @@ const Besiness = () => {
           <div className="max-w-xl text-white">
             <div className="flex items-center gap-2">
               <span className="w-15 h-[2px] bg-[#40BD02]"></span>
-              <p className="text-sm text-gray-200">Home / Businesses</p>
+              <p className="text-sm text-gray-200">Businesses</p>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Businesses</h1>
