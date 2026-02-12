@@ -28,8 +28,8 @@ function App() {
         {/* <Route path="/" element={<LandingPage />} /> */}
         <Route path="/" element={<Home />} />
         <Route path="/abouts" element={<Abouts />} />
-        <Route path="/besiness" element={<Besiness />} />
-        <Route path="/news" element={<NewUpdate />} />
+        <Route path="/business" element={<Besiness />} />
+        <Route path="/news-updates" element={<NewUpdate />} />
         <Route path="/contact" element={<Contactus />} />
         <Route path="/admin/login" element={<Login />} />
 

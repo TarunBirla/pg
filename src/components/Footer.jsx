@@ -31,7 +31,7 @@ const Footer = () => {
             {/* RIGHT COLUMNS (Quick Links + Legal + Contact) - COL 8 */}
             <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-4 gap-10 items-start">
               {/* QUICK LINK */}
-        
+
               <div className="hidden lg:block">
                 <h4 className="text-lg font-semibold text-white mb-4">
                   Quick Link
@@ -46,11 +46,11 @@ const Footer = () => {
                   </li>
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     {" "}
-                    <Link to="/besiness">Businesses</Link>
+                    <Link to="/business">Businesses</Link>
                   </li>
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     {" "}
-                    <Link to="/news">News & Updates</Link>
+                    <Link to="/news-updates">News & Updates</Link>
                   </li>
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     {" "}
@@ -64,7 +64,7 @@ const Footer = () => {
                 <h4 className="text-lg font-semibold text-white mb-4">Legal</h4>
                 <ul className="space-y-2 text-[#CCCCCC] text-sm">
                   <li className="hover:text-[#40BD02] cursor-pointer">
-                    Terms & Conditions
+                    <Link to="/admin/login">Terms & Conditions </Link>
                   </li>
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     Privacy Policy
@@ -101,8 +101,6 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-
-           
             </div>
           </div>
         </div>

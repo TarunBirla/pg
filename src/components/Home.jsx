@@ -177,13 +177,9 @@ const Home = () => {
           ))}
         </Swiper>
 
-       
-
         <div className=" hidden md:flex absolute bottom-20 left-2/5 -translate-x-1/2 z-20 flex items-center gap-5">
-         
           <div className="w-[200px] h-[2px] bg-white/80"></div>
 
-          
           <button
             onClick={() => mainSwiperRef.current.slidePrev()}
             className="w-10 h-10 flex items-center justify-center 
@@ -193,7 +189,6 @@ const Home = () => {
             <FaChevronLeft size={16} />
           </button>
 
-          
           <button
             onClick={() => mainSwiperRef.current.slideNext()}
             className="w-10 h-10 flex items-center justify-center 
@@ -203,8 +198,6 @@ const Home = () => {
             <FaChevronRight size={16} />
           </button>
         </div>
-
-       
 
         <div className="hidden lg:block absolute bottom-8 right-[-5px] w-[520px] z-20">
           <Swiper
@@ -232,7 +225,6 @@ const Home = () => {
                     alt=""
                     className="w-full h-[110px] object-cover "
                   />
-
                 </div>
               </SwiperSlide>
             ))}
@@ -603,11 +595,11 @@ const Home = () => {
 
         {/* TOP BLUE BAR */}
         <div className=" w-full bg-[#0A5A9C]">
-        <div className="max-w-6xl mx-auto py-10 px-2">
-          <h2 className="text-white text-3xl md:text-[32px] font-bold tracking-wide uppercase">
-            CHAIRMAN’S MESSAGE
-          </h2>
-        </div>
+          <div className="max-w-6xl mx-auto py-10 px-2">
+            <h2 className="text-white text-3xl md:text-[32px] font-bold tracking-wide uppercase">
+              CHAIRMAN’S MESSAGE
+            </h2>
+          </div>
         </div>
 
         {/* CONTENT SECTION */}
@@ -635,7 +627,7 @@ const Home = () => {
               </div>
 
               {/* NAME */}
-              <p className="text-[22px] font-semibold tracking-wide text-[#000000]">
+              <p className="text-[22px] font-[Syne] font-semibold tracking-wide text-[#000000]">
                 {abouts1?.title}
               </p>
             </div>
@@ -647,7 +639,7 @@ const Home = () => {
               <img
                 src={abouts1?.image_url || "/chairman2.png"}
                 alt="Chairman"
-                className="w-[420px] h-auto object-cover rounded-md"
+                className="w-[420px] h-auto object-cover "
               />
             </div>
           </div>
@@ -760,8 +752,8 @@ const Home = () => {
                   {item?.designation}
                 </p> */}
 
-                  <p 
-                   className={`mt-4 font-bold text-sm 
+                <p
+                  className={`mt-4 font-bold text-sm 
     ${
       index === 0 || index === 3
         ? "text-[#CAFF00]"
@@ -769,7 +761,8 @@ const Home = () => {
           ? "text-[#034570]"
           : "text-gray-900"
     }
-  `}>
+  `}
+                >
                   {item?.designation}
                 </p>
 

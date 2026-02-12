@@ -52,7 +52,11 @@ const Abouts = () => {
         {/* LEFT SIDE IMAGE WITH BLUE BACKGROUND */}
         <div className="md:w-1/2 bg-blue-700 flex items-center justify-center p-0 md:h-[800px]">
           <img
-            src={abouts?.image_url || "/chairman2.png"}
+            //   src={abouts?.image_url || "/chairman2.png"}
+            //   alt="Mohammad Jamaluddin"
+            //   className="w-full h-full object-cover"
+            // />
+            src={"/chairman2.png"}
             alt="Mohammad Jamaluddin"
             className="w-full h-full object-cover"
           />
@@ -81,23 +85,16 @@ const Abouts = () => {
         </div>
       </section>
 
-       <section className="w-full block lg:hidden flex flex-col md:flex-row px-5 bg-[#EEF5D7] ">
-
+      <section className="w-full block lg:hidden flex flex-col md:flex-row px-5 bg-[#EEF5D7] ">
         <div className="md:w-1/2 bg-[#EEF5D7] mt-20  flex flex-col justify-center ">
-          <p className="text-green-600 font-semibold tracking-wide">
-            CHAIRMAN
-          </p>
+          <p className="text-green-600 font-semibold tracking-wide">CHAIRMAN</p>
 
-          <h2 className="text-2xl  mb-4">
-            {abouts?.title}
-          </h2>
+          <h2 className="text-2xl  mb-4">{abouts?.title}</h2>
 
           <p
             className="text-gray-700 leading-relaxed mb-6"
             dangerouslySetInnerHTML={{ __html: abouts?.description }}
           ></p>
-
-         
         </div>
         <div className="md:w-1/2  flex items-center justify-center p-0 ">
           <img
@@ -108,7 +105,6 @@ const Abouts = () => {
         </div>
 
         {/* RIGHT SIDE CONTENT */}
-        
       </section>
 
       <img src="/img/line.png" className="" />
@@ -137,11 +133,7 @@ const Abouts = () => {
         </div>
       </section>
 
-     <JourneyTimeline journey={journey} />
-
-
-
-      
+      <JourneyTimeline journey={journey} />
 
       <section className="w-full py-16 mx-auto px-5 max-w-6xl">
         <div
@@ -149,7 +141,7 @@ const Abouts = () => {
     from-[#FFFFFF]
     to-[#CCCCCC] p-10 px-20"
         >
-          <p className="text-lg md:text-lg font-semibold font-weight-600 text-gray-700 leading-relaxed">
+          <p className="text-lg md:text-lg font-semibold font-[Syne] font-weight-600 text-gray-700 leading-relaxed">
             This 25-year journey—from resilient roots to global leadership—is a
             testament to our team’s spirit and our legacy of excellence. As we
             celebrate this milestone, we honor the past and boldly shape the
