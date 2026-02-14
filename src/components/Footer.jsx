@@ -18,7 +18,7 @@ const Footer = () => {
               <img
                 src="/img/Logo.png"
                 alt="PG Logo"
-                className="h-[80px] w-[150px] mb-4"
+                className="h-10 md:h-14 w-auto object-contain  mb-4"
               />
 
               <p className="text-[#CCCCCC]  mb-20 md:mb-0 text-sm leading-relaxed max-w-xs">
