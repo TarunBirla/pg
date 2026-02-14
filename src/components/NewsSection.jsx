@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import http from "../service/http";
+import { useNavigate } from "react-router-dom";
 
 export default function NewsSection() {
   const sliderRef = useRef(null);
@@ -79,6 +80,8 @@ export default function NewsSection() {
     sliderRef.current.scrollBy({ left: 350, behavior: "smooth" });
   };
 
+ 
+
   return (
     <section className="w-full bg-white py-16  max-w-6xl mx-auto px-5">
       {/* Heading */}
@@ -118,8 +121,12 @@ export default function NewsSection() {
           {news.map((item) => (
             <div
               key={item.id}
+              
               className="min-w-[360px] bg-white rounded-xl transition p-4"
             >
+              
+
+
               <img
                 src={item.image_url}
                 alt={item.title}

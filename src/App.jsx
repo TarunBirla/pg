@@ -10,6 +10,7 @@ import Abouts from "./components/Abouts";
 import Besiness from "./components/Besiness";
 import NewUpdate from "./components/NewUpdate";
 import Contactus from "./components/Contactus";
+import NewsDetail from "./components/NewsDetail";
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +33,7 @@ function App() {
         <Route path="/news-updates" element={<NewUpdate />} />
         <Route path="/contact" element={<Contactus />} />
         <Route path="/admin/login" element={<Login />} />
+        <Route path="/news/:id" element={<NewsDetail />} />
 
         <Route
           path="/dashboard/*"

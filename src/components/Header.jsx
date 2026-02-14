@@ -108,7 +108,6 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden fixed h-[90%] inset-0 bg-white z-50">
           {/* TOP BAR */}

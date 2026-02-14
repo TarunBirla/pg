@@ -27,7 +27,7 @@ const Besiness = () => {
       <Header />
 
       <section
-        className="relative w-full h-[85vh] bg-cover bg-center"
+        className="relative w-full h-[85vh] bg-cover md:bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/img/besiness.png')" }}
       >
         <div className="absolute inset-0 bg-black/60"></div>

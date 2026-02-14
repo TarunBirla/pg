@@ -3,6 +3,7 @@ import { Calendar, Search, Instagram, Linkedin } from "lucide-react";
 import Header from "./Header";
 import Footer from "./Footer";
 import http from "../service/http";
+import { useNavigate } from "react-router-dom";
 
 const NewUpdate = () => {
   const [news, setNews] = useState([]);
@@ -21,15 +22,43 @@ const NewUpdate = () => {
     fetchData();
   }, []);
 
+   const navigate=useNavigate();
   return (
     <>
       <Header />
 
       {/* Hero Banner */}
       <section
-        className="w-full h-[85vh] bg-cover bg-center"
+        className="hidden md:block relative w-full h-[85vh] bg-cover bg-center"
         style={{ backgroundImage: "url('/img/newupdate.png')" }}
       />
+
+      <section
+        className="block md:hidden relative w-full h-[85vh] bg-cover md:bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/news.png')" }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
+          <div className="max-w-xl text-white">
+            <div className="flex items-center gap-2">
+              <span className="w-15 h-[2px] bg-[#40BD02]"></span>
+              <p className="text-sm text-gray-200">News & Updates</p>
+            </div>
+
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">News & Updates</h1>
+
+            {/* <div className="flex gap-3 items-start">
+              <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div>
+
+              <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
+               Building a future where progress meets responsibility Premier Group leads with purpose, innovation, and a commitment to sustainable growth.
+              </p>
+            </div> */}
+          </div>
+        </div>
+      </section>
+
 
       {/* Middle Image */}
       <section>
@@ -44,7 +73,9 @@ const NewUpdate = () => {
 
           {/* TOP: FIRST NEWS ITEM AS FEATURED */}
           {news.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+            <div 
+             onClick={() => navigate(`/news/${news[0]?.id}`, { state: news[0] })}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
 
               {/* Left Text Side */}
               <div>
@@ -83,7 +114,7 @@ const NewUpdate = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-3">
 
             {news.slice(1, 4).map((item, index) => (
-              <div key={index} className="rounded-xl">
+              <div key={index}  onClick={() => navigate(`/news/${item.id}`, { state: item })} className="rounded-xl">
                 <img src={item.image_url} className="rounded-lg mb-3 w-full h-32 object-cover" />
 
                 <h3 className="font-semibold text-[15px] leading-snug">
