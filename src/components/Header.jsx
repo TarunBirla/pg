@@ -117,7 +117,7 @@ const Header = () => {
             <img
               src="/img/Logo.png"
               alt="PG Logo"
-              className="h-[80px] w-[152px]"
+              className="h-10 md:h-14 w-auto object-contain"
             />
 
             {/* CLOSE ICON */}
