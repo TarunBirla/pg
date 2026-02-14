@@ -145,7 +145,7 @@ the present</h1>
         <div className="grid md:grid-cols-2 gap-2">
           {/* LEFT BLUE BOX */}
           <div
-            className="bg-[#0B5394] text-white p-8 md:p-12 rounded-md flex flex-col justify-center"
+            className="bg-[#0B5394] text-white p-8 md:p-12  flex flex-col justify-center"
             dangerouslySetInnerHTML={{ __html: aboutsdeco?.description }}
           ></div>
 
@@ -154,7 +154,7 @@ the present</h1>
             <img
               src="/img/Group 230.png"
               alt="Growth illustration"
-              className="w-full h-full object-cover rounded-md"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>

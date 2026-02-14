@@ -80,6 +80,7 @@ export default function NewsSection() {
     sliderRef.current.scrollBy({ left: 350, behavior: "smooth" });
   };
 
+  const navigate=useNavigate()
  
 
   return (
@@ -121,7 +122,7 @@ export default function NewsSection() {
           {news.map((item) => (
             <div
               key={item.id}
-              
+              onClick={() => navigate(`/news/${item.id}`, { state: item })} 
               className="min-w-[360px] bg-white rounded-xl transition p-4"
             >
               
