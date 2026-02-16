@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 
-      ${isScrolled ? "bg-black/50 shadow-lg" : "bg-transparent"}`}
+      ${isScrolled ? "bg-black/90 shadow-lg" : "bg-black/90 shadow-lg"}`}
     >
       <div className="relative max-w-6xl mx-auto flex items-center px-4 py-3">
         {/* LEFT: LOGO */}
@@ -109,109 +109,109 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-  <>
-    {/* BACKDROP */}
-    <div
-        className="fixed inset-0 bg-black/70  z-40"
-        onClick={() => setMenuOpen(false)}
-      />
+        <>
+          {/* BACKDROP */}
+          <div
+            className="fixed inset-0 bg-black/70  z-40"
+            onClick={() => setMenuOpen(false)}
+          />
 
-    {/* SIDE DRAWER */}
-    <div className="fixed top-0 right-0 h-full w-[85%] max-w-[280px]
+          {/* SIDE DRAWER */}
+          <div
+            className="fixed top-0 right-0 h-full w-[85%] max-w-[280px]
           bg-gradient-to-b from-black via-black/95 to-black/90
           z-50 shadow-2xl
           border-l border-white/10
-          transition-all duration-500 ease-out">
-      
-      {/* TOP BAR */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-        <img
-          src="/img/Logo.png"
-          alt="PG Logo"
-          className="h-10 w-auto object-contain"
-        />
+          transition-all duration-500 ease-out"
+          >
+            {/* TOP BAR */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+              <img
+                src="/img/Logo.png"
+                alt="PG Logo"
+                className="h-10 w-auto object-contain"
+              />
 
-        <button onClick={() => setMenuOpen(false)}>
-          <X size={28} className="text-white" />
-        </button>
-      </div>
+              <button onClick={() => setMenuOpen(false)}>
+                <X size={28} className="text-white" />
+              </button>
+            </div>
 
-      {/* MENU */}
-      <nav className="flex flex-col divide-y divide-white/10 px-6">
-        <NavLink
-          to="/"
-          onClick={() => setMenuOpen(false)}
-          className={({ isActive }) =>
-            `py-4 uppercase tracking-wide transition-all duration-300 ${
-              isActive
-                ? "text-[#40BD02]"
-                : "text-white/80 hover:text-white"
-            }`
-          }
-        >
-          Home
-        </NavLink>
+            {/* MENU */}
+            <nav className="flex flex-col divide-y divide-white/10 px-6">
+              <NavLink
+                to="/"
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `py-4 uppercase tracking-wide transition-all duration-300 ${
+                    isActive
+                      ? "text-[#40BD02]"
+                      : "text-white/80 hover:text-white"
+                  }`
+                }
+              >
+                Home
+              </NavLink>
 
-        <NavLink
-          to="/abouts"
-          onClick={() => setMenuOpen(false)}
-          className={({ isActive }) =>
-            `py-4 uppercase tracking-wide transition-all duration-300 ${
-              isActive
-                ? "text-[#40BD02]"
-                : "text-white/80 hover:text-white"
-            }`
-          }
-        >
-          About
-        </NavLink>
+              <NavLink
+                to="/abouts"
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `py-4 uppercase tracking-wide transition-all duration-300 ${
+                    isActive
+                      ? "text-[#40BD02]"
+                      : "text-white/80 hover:text-white"
+                  }`
+                }
+              >
+                About
+              </NavLink>
 
-        <NavLink
-          to="/business"
-          onClick={() => setMenuOpen(false)}
-          className={({ isActive }) =>
-            `py-4 uppercase tracking-wide transition-all duration-300 ${
-              isActive
-                ? "text-[#40BD02]"
-                : "text-white/80 hover:text-white"
-            }`
-          }
-        >
-          Businesses
-        </NavLink>
+              <NavLink
+                to="/business"
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `py-4 uppercase tracking-wide transition-all duration-300 ${
+                    isActive
+                      ? "text-[#40BD02]"
+                      : "text-white/80 hover:text-white"
+                  }`
+                }
+              >
+                Businesses
+              </NavLink>
 
-        <NavLink
-          to="/news-updates"
-          onClick={() => setMenuOpen(false)}
-            className={({ isActive }) =>
-              `py-4 uppercase tracking-wide transition-all duration-300 ${
-                isActive
-                  ? "text-[#40BD02]"
-                  : "text-white/80 hover:text-white"
-              }`
-          }
-        >
-          News & Updates
-        </NavLink>
+              <NavLink
+                to="/news-updates"
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `py-4 uppercase tracking-wide transition-all duration-300 ${
+                    isActive
+                      ? "text-[#40BD02]"
+                      : "text-white/80 hover:text-white"
+                  }`
+                }
+              >
+                News & Updates
+              </NavLink>
 
-        <NavLink
-          to="/contact"
-          onClick={() => setMenuOpen(false)}
-          className={({ isActive }) =>
-            `py-4 uppercase tracking-wide transition-all duration-300 ${
-              isActive
-                ? "text-[#40BD02]"
-                : "text-white/80 hover:text-white"
-            }`
-          }
-        >
-          Contact Us
-        </NavLink>
-      </nav>
-    </div>
-  </>
-)}
-
+              <NavLink
+                to="/contact"
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `py-4 uppercase tracking-wide transition-all duration-300 ${
+                    isActive
+                      ? "text-[#40BD02]"
+                      : "text-white/80 hover:text-white"
+                  }`
+                }
+              >
+                Contact Us
+              </NavLink>
+            </nav>
+          </div>
+        </>
+      )}
     </header>
   );
 };

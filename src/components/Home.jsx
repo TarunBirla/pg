@@ -276,7 +276,7 @@ const Home = () => {
             <img
               src={abouts?.image_url || "/img/Free Assessment.png"}
               alt="About"
-              className="rounded-lg shadow-lg w-full h-[400px] object-cover"
+              className="shadow-lg w-full h-[400px] object-cover"
             />
           </div>
 
@@ -405,82 +405,45 @@ const Home = () => {
 
       {/* BUSINESS SECTION */}
       {/* desktop */}
-      <section className="w-full  hidden lg:block bg-white">
+      <section className="w-full hidden lg:block bg-white">
         {/* HEADER */}
-        <div className="max-w-6xl mx-auto px-5 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 gap-12">
           <div>
-            <p className="text-[#40BD02] font-semibold tracking-widest text-sm mb-3">
+            <p className="text-[#7ED321] font-semibold tracking-[3px] text-sm mb-4">
               BUSINESS
             </p>
 
-            <h2 className="text-5xl font-bold leading-tight">
-              {section?.title?.split(" ").map((word, i) => (
-                <span key={i}>
-                  {(i + 1) % 3 === 0 ? (
-                    <>
-                      {word} <br />
-                    </>
-                  ) : (
-                    word + " "
-                  )}
-                </span>
-              ))}
+            <h2 className="text-5xl font-semibold leading-tight text-black">
+              {section?.title}
             </h2>
           </div>
 
           <div className="flex items-center">
             <p
-              className="text-gray-600 max-w-lg"
+              className="text-gray-500 max-w-md text-lg leading-relaxed"
               dangerouslySetInnerHTML={{ __html: section?.description }}
             />
           </div>
         </div>
 
-        {/* IMAGE + TABS */}
-        <div className="relative w-full h-[550px] overflow-hidden">
-          {/* Background image */}
+        {/* IMAGE + TABS AREA */}
+        <div className="relative w-full h-[560px] overflow-hidden">
+          {/* Background Image */}
           <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${activeTab?.image_url})` }}
+            className="absolute inset-0 bg-cover bg-center transition-all duration-700"
+            style={{
+              backgroundImage: `url(${activeTab?.image_url})`,
+            }}
           />
-          <div className="absolute inset-0 bg-black/40" />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/35" />
 
           {/* CONTENT */}
-          <div className="relative z-10 flex h-full max-w-7xl mx-auto">
+          <div className="relative z-10 flex h-full max-w-[1500px] mx-auto">
             {/* LEFT STRIPS */}
             <div className="flex h-full">
-              {/* {tabsall.map((tab) => (
-                <div
-                  key={tab.id}
-                  onClick={() => setActive(tab.id)}
-                  className={`w-[90px] h-full cursor-pointer flex flex-col justify-between border-r border-white/30
-            transition-all duration-300
-            ${
-              active === tab.id
-                ? "bg-transparent"
-                : "bg-gradient-to-b from-[#40BD02] to-[#37B8E1]"
-            }`}
-                >
-                 
-                  <div
-                    className="text-white font-medium text-sm mt-6 rotate-180"
-                    style={{ writingMode: "vertical-rl" }}
-                  >
-                    {tab.title}
-                  </div>
-
-                 
-                  <div className="mb-5 flex justify-center">
-                    <span
-                      className={`text-xs px-3 py-1 rounded-full text-white
-                ${active === tab.id ? "bg-white/30" : "bg-black/40"}`}
-                    >
-                      0{tab.id}
-                    </span>
-                  </div>
-                </div>
-              ))} */}
-              {tabsall.map((tab) => {
+              {tabsall?.map((tab, index) => {
                 const isActive = (hoverTab ?? active) === tab.id;
 
                 return (
@@ -489,29 +452,36 @@ const Home = () => {
                     onClick={() => setActive(tab.id)}
                     onMouseEnter={() => setHoverTab(tab.id)}
                     onMouseLeave={() => setHoverTab(null)}
-                    className={`w-[90px] h-full cursor-pointer flex flex-col justify-between border-r border-white/30
-      transition-all duration-300
-      ${
-        isActive
-          ? "bg-transparent"
-          : "bg-gradient-to-b from-[#40BD02] to-[#37B8E1]"
-      }`}
+                    className={`w-[95px] h-full cursor-pointer flex flex-col justify-between
+                      border-t border-b border-l-0  border-white border-3
+                      
+                      transition-all duration-500 ease-out
+                      ${
+                        isActive
+                          ? "bg-transparent"
+                          : "bg-gradient-to-b from-[#7ED321] via-[#46B5C7] to-[#1E6FA3]"
+                      }`}
                   >
-                    {/* Vertical Text */}
-                    <div
-                      className="text-white font-medium text-sm mt-6 rotate-180"
-                      style={{ writingMode: "vertical-rl" }}
-                    >
-                      {tab.title}
+                    {/* CENTER VERTICAL TEXT */}
+                    <div className="flex justify-center mb-2 border-b-3 pb-2 px-2 border-white  items-end flex-1">
+                      <div
+                        className="text-white font-medium text-[15px] tracking-wide text-center"
+                        style={{
+                          writingMode: "vertical-rl",
+                          transform: "rotate(180deg)",
+                        }}
+                      >
+                        {tab.title}
+                      </div>
                     </div>
 
-                    {/* Number */}
-                    <div className="mb-5 flex justify-center">
+                    {/* NUMBER */}
+                    <div className="mb-6 flex justify-center ">
                       <span
-                        className={`text-xs px-3 py-1 rounded-full text-white
-          ${isActive ? "bg-white/30" : "bg-black/40"}`}
+                        className={`text-xs px-3 py-1 rounded-full  text-white
+                    ${isActive ? "bg-white/30" : "bg-black/40"}`}
                       >
-                        0{tab.id - 1}
+                        {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
@@ -519,12 +489,25 @@ const Home = () => {
               })}
             </div>
 
-            {/* RIGHT CONTENT */}
-            <div className="flex-1 flex items-end p-10">
-              <div className="bg-black/60 backdrop-blur-sm text-white p-6 max-w-md rounded-lg">
+            {/* RIGHT DESCRIPTION BOX */}
+            <div className="flex-1 flex items-end p-12">
+              <div
+                className="
+                bg-black/55 
+                backdrop-blur-md 
+                text-white 
+                p-7 
+                max-w-md 
+                rounded-xl
+                border border-white/10
+                shadow-xl
+              "
+              >
                 <p
-                  className="text-sm leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: activeTab?.description }}
+                  className="text-sm leading-relaxed text-white/90"
+                  dangerouslySetInnerHTML={{
+                    __html: activeTab?.description,
+                  }}
                 />
               </div>
             </div>
