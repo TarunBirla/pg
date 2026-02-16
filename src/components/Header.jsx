@@ -128,18 +128,18 @@ const Header = () => {
         />
 
         <button onClick={() => setMenuOpen(false)}>
-          <X size={28} className="text-black" />
+          <X size={28} className="text-white" />
         </button>
       </div>
 
       {/* MENU */}
-      <nav className="flex flex-col divide-y divide-gray-200 px-6">
+      <nav className="flex flex-col divide-y divide-white-200 px-6">
         <NavLink
           to="/"
           onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             `py-4 uppercase font-semibold ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
+              isActive ? "text-[#40BD02]" : "text-white-800"
             }`
           }
         >
@@ -151,7 +151,7 @@ const Header = () => {
           onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             `py-4 uppercase font-medium ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
+              isActive ? "text-[#40BD02]" : "text-white-800"
             }`
           }
         >
@@ -163,7 +163,7 @@ const Header = () => {
           onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             `py-4 uppercase font-medium ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
+              isActive ? "text-[#40BD02]" : "text-white-800"
             }`
           }
         >
@@ -175,7 +175,7 @@ const Header = () => {
           onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             `py-4 uppercase font-medium ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
+              isActive ? "text-[#40BD02]" : "text-white-800"
             }`
           }
         >
@@ -187,7 +187,7 @@ const Header = () => {
           onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             `py-4 uppercase font-medium ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
+              isActive ? "text-[#40BD02]" : "text-white-800"
             }`
           }
         >
