@@ -440,7 +440,7 @@ const Home = () => {
           <div className="absolute inset-0 bg-black/35" />
 
           {/* CONTENT */}
-          <div className="relative z-10 flex h-full max-w-[1500px] mx-auto">
+          <div className="relative z-10 flex h-full  mx-auto">
             {/* LEFT STRIPS */}
             <div className="flex h-full">
               {tabsall?.map((tab, index) => {
@@ -453,7 +453,7 @@ const Home = () => {
                     onMouseEnter={() => setHoverTab(tab.id)}
                     onMouseLeave={() => setHoverTab(null)}
                     className={`w-[95px] h-full cursor-pointer flex flex-col justify-between
-                      border-t border-b border-l-0  border-white border-3
+                      border-t border-b   border-white border-3
                       
                       transition-all duration-500 ease-out
                       ${
