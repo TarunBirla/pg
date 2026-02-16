@@ -117,7 +117,7 @@ const Header = () => {
     />
 
     {/* SIDE DRAWER */}
-    <div className="fixed top-0 right-0 h-full w-[85%] max-w-[280px] bg-white z-50 shadow-xl transform transition-transform duration-300">
+    <div className="fixed top-0 right-0 h-full w-[85%] max-w-[280px] bg-black z-50 shadow-xl transform transition-transform duration-300">
       
       {/* TOP BAR */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
