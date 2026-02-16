@@ -117,9 +117,8 @@ const Header = () => {
       />
 
     {/* SIDE DRAWER */}
-    <div className="fixed top-0 right-0 h-full w-[85%] max-w-[300px]
+    <div className="fixed top-0 right-0 h-full w-[85%] max-w-[280px]
           bg-gradient-to-b from-black via-black/95 to-black/90
-          backdrop-blur-md
           z-50 shadow-2xl
           border-l border-white/10
           transition-all duration-500 ease-out">
