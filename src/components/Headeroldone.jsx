@@ -109,95 +109,86 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-  <>
-    {/* BACKDROP */}
-    <div
-      className="fixed inset-0 bg-black/50 z-40"
-      onClick={() => setMenuOpen(false)}
-    />
+        <div className="md:hidden fixed h-[90%] inset-0 bg-white z-50">
+          {/* TOP BAR */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+            {/* LOGO */}
+            <img
+              src="/img/Logo.png"
+              alt="PG Logo"
+              className="h-10 md:h-14 w-auto object-contain"
+            />
 
-    {/* SIDE DRAWER */}
-    <div className="fixed top-0 right-0 h-full w-[85%] max-w-[280px] bg-white z-50 shadow-xl transform transition-transform duration-300">
-      
-      {/* TOP BAR */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-        <img
-          src="/img/Logo.png"
-          alt="PG Logo"
-          className="h-10 w-auto object-contain"
-        />
+            {/* CLOSE ICON */}
+            <button onClick={() => setMenuOpen(false)}>
+              <X size={28} className="text-black" />
+            </button>
+          </div>
 
-        <button onClick={() => setMenuOpen(false)}>
-          <X size={28} className="text-black" />
-        </button>
-      </div>
+          {/* MENU */}
+          <nav className="flex flex-col divide-y divide-gray-200 px-6">
+            <NavLink
+              to="/"
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `py-4 uppercase font-semibold ${
+                  isActive ? "text-[#40BD02]" : "text-gray-800"
+                }`
+              }
+            >
+              Home
+            </NavLink>
 
-      {/* MENU */}
-      <nav className="flex flex-col divide-y divide-gray-200 px-6">
-        <NavLink
-          to="/"
-          onClick={() => setMenuOpen(false)}
-          className={({ isActive }) =>
-            `py-4 uppercase font-semibold ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
-            }`
-          }
-        >
-          Home
-        </NavLink>
+            <NavLink
+              to="/abouts"
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `py-4 uppercase font-medium ${
+                  isActive ? "text-[#40BD02]" : "text-gray-800"
+                }`
+              }
+            >
+              About
+            </NavLink>
 
-        <NavLink
-          to="/abouts"
-          onClick={() => setMenuOpen(false)}
-          className={({ isActive }) =>
-            `py-4 uppercase font-medium ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
-            }`
-          }
-        >
-          About
-        </NavLink>
+            <NavLink
+              to="/business"
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `py-4 uppercase font-medium ${
+                  isActive ? "text-[#40BD02]" : "text-gray-800"
+                }`
+              }
+            >
+              Businesses
+            </NavLink>
 
-        <NavLink
-          to="/business"
-          onClick={() => setMenuOpen(false)}
-          className={({ isActive }) =>
-            `py-4 uppercase font-medium ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
-            }`
-          }
-        >
-          Businesses
-        </NavLink>
+            <NavLink
+              to="/news-updates"
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `py-4 uppercase font-medium ${
+                  isActive ? "text-[#40BD02]" : "text-gray-800"
+                }`
+              }
+            >
+              News & Updates
+            </NavLink>
 
-        <NavLink
-          to="/news-updates"
-          onClick={() => setMenuOpen(false)}
-          className={({ isActive }) =>
-            `py-4 uppercase font-medium ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
-            }`
-          }
-        >
-          News & Updates
-        </NavLink>
-
-        <NavLink
-          to="/contact"
-          onClick={() => setMenuOpen(false)}
-          className={({ isActive }) =>
-            `py-4 uppercase font-medium ${
-              isActive ? "text-[#40BD02]" : "text-gray-800"
-            }`
-          }
-        >
-          Contact Us
-        </NavLink>
-      </nav>
-    </div>
-  </>
-)}
-
+            <NavLink
+              to="/contact"
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `py-4 uppercase font-medium ${
+                  isActive ? "text-[#40BD02]" : "text-gray-800"
+                }`
+              }
+            >
+              Contact Us
+            </NavLink>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
