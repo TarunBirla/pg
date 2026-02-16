@@ -116,7 +116,8 @@ const Home = () => {
           speed={900}
           onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
           // controller={{ control: thumbSwiperRef.current }}
-          onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
+          // onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
+          onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
           className="w-full h-full"
         >
           {slides.map((slide, index) => (
