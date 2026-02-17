@@ -104,7 +104,13 @@ const Footer = () => {
                     </a>
                     <X size={18} />
                     <Youtube size={18} />
-                    <Mail size={18} />
+                    
+                      <a
+                        href="mailto:contact@premiergroup.co"
+                        className="hover:text-[#40BD02] transition-colors"
+                      >
+                        <Mail size={18} />
+                      </a>
                   </div>
 
                   <div className="flex border border-[#98C20B]">
