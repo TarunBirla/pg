@@ -60,7 +60,7 @@ const Footer = () => {
               </div>
 
               {/* LEGAL */}
-              <div className="hidden lg:block">
+              <div className="">
                 <h4 className="text-lg font-semibold text-white mb-4">Legal</h4>
                 <ul className="space-y-2 text-[#CCCCCC] text-sm">
                   <li className="hover:text-[#40BD02] cursor-pointer">

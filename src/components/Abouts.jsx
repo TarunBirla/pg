@@ -164,18 +164,24 @@ the present</h1>
 
       <section className="w-full py-16 mx-auto px-5 max-w-6xl">
         <div
-          className=" text-center bg-gradient-to-b
-    from-[#FFFFFF]
-    to-[#CCCCCC] p-10 px-20"
+          className="
+            text-center 
+            bg-gradient-to-b from-[#FFFFFF] to-[#CCCCCC] 
+            p-6 md:p-10 
+            px-6 md:px-20
+            max-w-3xl
+            mx-auto
+          "
         >
-          <p className="text-lg md:text-lg font-semibold font-[Syne] font-weight-600 text-gray-700 leading-relaxed">
+          <p className="text-base md:text-lg font-semibold font-[Syne] text-gray-700 leading-relaxed">
             This 25-year journey—from resilient roots to global leadership—is a
             testament to our team’s spirit and our legacy of excellence. As we
-            celebrate this milestone, we honor the past and boldly shape the
-            next quarter-century.
+            celebrate this milestone, we honor the past and boldly shape the next
+            quarter-century.
           </p>
         </div>
-      </section>
+</section>
+
 
       {/* Tailwind triangle helper */}
       <style>
