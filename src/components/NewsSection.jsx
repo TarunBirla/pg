@@ -123,7 +123,7 @@ export default function NewsSection() {
             <div
               key={item.id}
               onClick={() => navigate(`/news/${item.id}`, { state: item })} 
-              className="min-w-[360px] bg-white rounded-xl transition p-4"
+              className="min-w-[360px] bg-white  transition p-4"
             >
               
 
@@ -131,7 +131,7 @@ export default function NewsSection() {
               <img
                 src={item.image_url}
                 alt={item.title}
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="w-full h-48 object-cover  mb-4"
               />
 
               <p className="text-gray-500 text-sm mb-2">
@@ -155,14 +155,14 @@ export default function NewsSection() {
         <div className="flex justify-end gap-1 mt-6">
           <button
             onClick={scrollLeft}
-            className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100"
+            className="w-10 h-10 flex items-center justify-center border border-gray-300 text-gray-600 hover:bg-gray-100"
           >
             <FaChevronLeft />
           </button>
 
           <button
             onClick={scrollRight}
-            className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100"
+            className="w-10 h-10 flex items-center justify-center border border-gray-300 text-gray-600 hover:bg-gray-100"
           >
             <FaChevronRight />
           </button>
