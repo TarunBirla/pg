@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Phone, Mail, Instagram, Linkedin } from "lucide-react";
 import Header from "./Header";
 import Footer from "./Footer";
 import GlobalMap from "./GlobalMap";
+import { Facebook, Instagram, Linkedin, X, Youtube, Mail } from "lucide-react";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Contactus = () => {
   const [form, setForm] = useState({
@@ -215,10 +216,50 @@ const Contactus = () => {
               </button>
             </form>
 
-            <div>
-                  <img src="/img/email.png" className=" shadow-lg" />
-                  <h3>Email Address</h3>
-                  <span>contact@pr</span>
+            <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+
+              {/* LEFT — Email Section */}
+              <div className="flex items-center gap-4">
+                
+                {/* Circle Icon */}
+                <div className="w-12 h-12 rounded-full border-2 border-[#37B8E1] flex items-center justify-center">
+                  <Mail className="text-[#37B8E1]" size={22} />
+                </div>
+
+                {/* Email Text */}
+                <div>
+                  <h4 className="font-semibold text-lg">Email Address</h4>
+                  <p className="text-gray-600">contact@premiergroup.co</p>
+                </div>
+              </div>
+
+              {/* RIGHT — Social Icons */}
+              <div>
+                <h4 className="text-lg font-semibold mb-3 md:text-right">
+                  Connect with us
+                </h4>
+
+                <div className="flex md:justify-start gap-5">
+                  <Facebook size={18} />
+                    <a
+                      href="https://www.instagram.com/premiergroup.co?igsh=MTlkM2FsYzJpdTdsMg%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#40BD02] transition-colors"
+                    >
+                      <Instagram size={18} />
+                    </a>
+
+                    <a
+                      href="https://www.linkedin.com/company/premiergroup-co/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#40BD02] transition-colors"
+                    >
+                      <Linkedin size={18} />
+                    </a>
+                </div>
+              </div>
             </div>
           </div>
           
