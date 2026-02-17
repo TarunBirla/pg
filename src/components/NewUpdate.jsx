@@ -178,14 +178,7 @@ const NewUpdate = () => {
             </div>
           </div>
 
-          {/* Follow Me */}
-          <div>
-            <h4 className="font-semibold mb-3">Follow Me</h4>
-            <div className="flex gap-2">
-              <Instagram size={22} className="text-[#37B8E1]" />
-              <Linkedin size={22} className="text-[#37B8E1]" />
-            </div>
-          </div>
+          
 
         </div>
       </section>

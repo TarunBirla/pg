@@ -67,7 +67,7 @@ the present</h1>
       </section>
 
       {/* SECOND IMAGE */}
-      <section className="w-full">
+      <section className="w-full ">
         <img
           src="/img/image.png"
           alt="Contact Banner"
@@ -75,7 +75,7 @@ the present</h1>
         />
       </section>
 
-      <section className=" w-full hidden lg:flex flex-row">
+      <section className=" w-full hidden lg:flex flex-row  pt-12">
         {/* LEFT SIDE IMAGE WITH BLUE BACKGROUND */}
         <div className="md:w-1/2 bg-blue-700 flex items-center justify-center p-0 md:h-[800px]">
           <img
@@ -169,7 +169,7 @@ the present</h1>
               bg-gradient-to-b from-[#FFFFFF] to-[#CCCCCC] 
               p-6 md:p-10 
               px-6 md:px-20
-              max-w-3xl
+              max-w-8xl
               mx-auto
             "
           >

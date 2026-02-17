@@ -214,14 +214,20 @@ const Contactus = () => {
                 SUBMIT
               </button>
             </form>
+
+            <div>
+                  <img src="/img/email.png" className=" shadow-lg" />
+                  <h3>Email Address</h3>
+                  <span>contact@pr</span>
+            </div>
           </div>
+          
         </div>
       </section>
 
     <section className="w-full">
         <img src="/image 104.png" className="w-full" alt="Banner" />
       </section>
-      {/* <GlobalMap /> */}
       <Footer />
     </>
   );

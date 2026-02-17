@@ -113,7 +113,7 @@ const Footer = () => {
                       </a> */}
                   </div>
 
-                  <div className="flex border border-[#98C20B]">
+                  <div className="flex border border-[#98C20B] w-80" >
                     <input
                       placeholder="Enter your email to subscribe"
                       className="bg-transparent px-3 py-2 text-sm outline-none text-white w-full"
