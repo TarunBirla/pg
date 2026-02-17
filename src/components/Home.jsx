@@ -499,7 +499,6 @@ const Home = () => {
                 text-white 
                 p-7 
                 max-w-md 
-                rounded-xl
                 border border-white/10
                 shadow-xl
               "
@@ -549,7 +548,7 @@ const Home = () => {
           {tabsall.map((item, index) => (
             <div
               key={item.id}
-              className={`relative rounded-lg overflow-hidden ${
+              className={`relative  overflow-hidden ${
                 index === tabsall.length - 1 ? "col-span-2" : ""
               }`}
             >
@@ -774,12 +773,12 @@ const Home = () => {
             {architech.map((item, index) => (
               <div
                 key={item.id}
-                className="min-w-[360px] bg-white rounded-xl transition p-4"
+                className="min-w-[360px] bg-white  transition p-4"
               >
                 <img
                   src={item.image_url}
                   alt={item.title}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className="w-full h-48 object-cover  mb-4"
                 />
 
                 <div

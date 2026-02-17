@@ -24,10 +24,12 @@ const Header = () => {
   return (
     <header
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 
-      ${isScrolled ? "bg-black/90 shadow-lg" : "bg-black/90 shadow-lg"}`}
+      ${isScrolled ? "transparent shadow-lg" : "bg-black/10 shadow-lg"}`}
     >
       <div className="relative max-w-6xl mx-auto flex items-center px-4 py-3">
+
         {/* LEFT: LOGO */}
+
         <div className="flex items-center">
           <Link to="/">
             <img
@@ -39,7 +41,7 @@ const Header = () => {
         </div>
 
         {/* CENTER: NAV */}
-        <nav className="hidden md:flex text-sm bg-[#00000033] absolute left-1/2 -translate-x-1/2 items-center space-x-6 text-white uppercase bg-black/30 rounded-md px-5 py-3 font-medium">
+        <nav className="hidden md:flex text-sm bg-[#00000033] absolute left-1/2 -translate-x-1/2 items-center space-x-6 text-white uppercase bg-black/30 px-5 py-3 font-medium">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -91,8 +93,8 @@ const Header = () => {
           <Link
             to="/admin/login"
             className="px-5 py-2  text-white font-semibold 
-      bg-gradient-to-r from-[#40BD02] to-[#37B8E1] 
-      hover:scale-105 transition"
+              bg-gradient-to-r from-[#40BD02] to-[#37B8E1] 
+              hover:scale-105 transition"
           >
             Businesses
           </Link>
@@ -112,18 +114,18 @@ const Header = () => {
         <>
           {/* BACKDROP */}
           <div
-            className="fixed inset-0 bg-black/70  z-40"
+            className="fixed inset-0   z-40"
             onClick={() => setMenuOpen(false)}
           />
 
           {/* SIDE DRAWER */}
           <div
             className="fixed top-0 right-0 h-full w-[85%] max-w-[280px]
-          bg-gradient-to-b from-black via-black/95 to-black/90
-          z-50 shadow-2xl
-          border-l border-white/10
-          transition-all duration-500 ease-out"
-          >
+                bg-gradient-to-b from-white via-white/95 to-white/90
+                z-50 shadow-2xl
+                border-l border-black/10
+                transition-all duration-500 ease-out"
+                >
             {/* TOP BAR */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
               <img
@@ -133,12 +135,12 @@ const Header = () => {
               />
 
               <button onClick={() => setMenuOpen(false)}>
-                <X size={28} className="text-white" />
+                <X size={28} className="text-black" />
               </button>
             </div>
 
             {/* MENU */}
-            <nav className="flex flex-col divide-y divide-white/10 px-6">
+            <nav className="flex flex-col divide-y divide-black/10 px-6">
               <NavLink
                 to="/"
                 onClick={() => setMenuOpen(false)}
@@ -146,7 +148,7 @@ const Header = () => {
                   `py-4 uppercase tracking-wide transition-all duration-300 ${
                     isActive
                       ? "text-[#40BD02]"
-                      : "text-white/80 hover:text-white"
+                      : "text-black/80 hover:text-black"
                   }`
                 }
               >
@@ -160,7 +162,7 @@ const Header = () => {
                   `py-4 uppercase tracking-wide transition-all duration-300 ${
                     isActive
                       ? "text-[#40BD02]"
-                      : "text-white/80 hover:text-white"
+                      : "text-black/80 hover:text-black"
                   }`
                 }
               >
@@ -174,7 +176,7 @@ const Header = () => {
                   `py-4 uppercase tracking-wide transition-all duration-300 ${
                     isActive
                       ? "text-[#40BD02]"
-                      : "text-white/80 hover:text-white"
+                      : "text-black/80 hover:text-black"
                   }`
                 }
               >
@@ -188,7 +190,7 @@ const Header = () => {
                   `py-4 uppercase tracking-wide transition-all duration-300 ${
                     isActive
                       ? "text-[#40BD02]"
-                      : "text-white/80 hover:text-white"
+                      : "text-black/80 hover:text-black"
                   }`
                 }
               >
@@ -202,7 +204,7 @@ const Header = () => {
                   `py-4 uppercase tracking-wide transition-all duration-300 ${
                     isActive
                       ? "text-[#40BD02]"
-                      : "text-white/80 hover:text-white"
+                      : "text-black/80 hover:text-black"
                   }`
                 }
               >

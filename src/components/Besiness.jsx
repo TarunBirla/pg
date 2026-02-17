@@ -156,18 +156,32 @@ const Besiness = () => {
           <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] "></div>
 
           <div className="col-span-12 md:col-span-4 h-[220px] bg-[#1E6FB6] text-white flex flex-col items-center justify-center text-center p-6">
-            <img src="/img/iconusers.png" className="w-12 mb-3" />
+            <img src="/img/Group.png" className="w-12 mb-3" />
             <h3 className="text-3xl font-bold">200+</h3>
             <p className="text-sm mt-1">Employees at the Premier Group</p>
           </div>
 
-          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] text-white  p-6 flex flex-col justify-center">
-            <h3 className="text-xl font-semibold mb-2">Featured Jobs</h3>
-            <p className="text-sm leading-relaxed">
-              Building upon its international expertise, Premier Group has
-              diversified its presence.
-            </p>
+          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] text-white p-8 flex flex-col justify-center">
+            <h3 className="text-2xl font-semibold mb-4">
+              Featured Jobs
+            </h3>
+
+            <div className="flex gap-4">
+              
+              {/* Vertical Line */}
+              <div className="w-[2px] opacity-80 bg-[#C1FF00]"></div>
+
+              {/* Text */}
+              <p className="text-sm leading-relaxed">
+                Building upon its <br />
+                international expertise, <br />
+                Premier Group has <br />
+                diversified its presence.
+              </p>
+
+            </div>
           </div>
+
         </div>
       </section>
 

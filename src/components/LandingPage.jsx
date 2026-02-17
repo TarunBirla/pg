@@ -377,7 +377,7 @@ const InsightsSlider = () => {
                       <span className="text-[#767676] text-sm font-medium">
                         {insight.category}
                       </span>
-                      <span className="w-[0.3rem] h-[0.3rem] bg-[#D9D9D9] rounded-full" />
+                      <span className="w-[0.3rem] h-[0.3rem] bg-[#D9D9D9]" />
                       <span className="text-[#767676] text-sm font-medium">
                         {insight.timeAgo}
                       </span>

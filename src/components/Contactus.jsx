@@ -107,7 +107,7 @@ const Contactus = () => {
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4">
           <div>
-            <img src="/img/Needhelp.png" className="rounded-md shadow-lg" />
+            <img src="/img/Needhelp.png" className=" shadow-lg" />
           </div>
 
           <div>
@@ -126,14 +126,14 @@ const Contactus = () => {
                 <label className="block text-sm mb-1">
                   Name <span className="text-red-500">*</span>
                 </label>
-                <div className="p-[2px] rounded bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
+                <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
                   <input
                     type="text"
                     name="name"
                     value={form.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    className="w-full bg-white px-4 py-2 rounded outline-none"
+                    className="w-full bg-white px-4 py-2  outline-none"
                   />
                 </div>
                 {errors.name && (
@@ -146,14 +146,14 @@ const Contactus = () => {
                 <label className="block text-sm mb-1">
                   Email <span className="text-red-500">*</span>
                 </label>
-                <div className="p-[2px] rounded bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
+                <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
                   <input
                     type="email"
                     name="email"
                     value={form.email}
                     onChange={handleChange}
                     placeholder="your@email.com"
-                    className="w-full bg-white px-4 py-2 rounded outline-none"
+                    className="w-full bg-white px-4 py-2  outline-none"
                   />
                 </div>
                 {errors.email && (
@@ -167,7 +167,7 @@ const Contactus = () => {
                 <label className="block text-sm mb-1">
                   Phone Number <span className="text-red-500">*</span>
                 </label>
-                <div className="p-[2px] rounded bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
+                <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
                   <input
                     type="tel"
                     name="phone_number"
@@ -178,7 +178,7 @@ const Contactus = () => {
                       if (/^[0-9]*$/.test(e.target.value)) handleChange(e);
                     }}
                     placeholder="10 Digit Number"
-                    className="w-full bg-white px-4 py-2 rounded outline-none"
+                    className="w-full bg-white px-4 py-2  outline-none"
                   />
                 </div>
                 {errors.phone_number && (
@@ -193,13 +193,13 @@ const Contactus = () => {
                 <label className="block text-sm mb-1">
                   Message <span className="text-red-500">*</span>
                 </label>
-                <div className="p-[2px] rounded bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
+                <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
                   <textarea
                     name="message"
                     value={form.message}
                     onChange={handleChange}
                     placeholder="Message..."
-                    className="w-full bg-white px-4 py-2 rounded outline-none h-[80px]"
+                    className="w-full bg-white px-4 py-2  outline-none h-[80px]"
                   />
                 </div>
                 {errors.message && (
@@ -209,7 +209,7 @@ const Contactus = () => {
 
               <button
                 type="submit"
-                className="px-6 py-2 text-white font-semibold rounded bg-gradient-to-r from-[#37B8E1] to-[#40BD02] hover:scale-105 transition"
+                className="px-6 py-2 text-white font-semibold  bg-gradient-to-r from-[#37B8E1] to-[#40BD02] hover:scale-105 transition"
               >
                 SUBMIT
               </button>

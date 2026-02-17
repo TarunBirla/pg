@@ -64,7 +64,7 @@ const NewsDetail = () => {
         <img
           src={news.image_url}
           alt={news.title}
-          className="w-full rounded-xl mb-8"
+          className="w-full  mb-8"
         />
 
         <h3 className="font-bold text-2xl leading-snug">

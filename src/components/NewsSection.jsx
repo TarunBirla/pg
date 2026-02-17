@@ -77,7 +77,7 @@ export default function NewsSection() {
         </div>
 
         {/* Buttons */}
-        <div className="flex justify-end gap-1 mt-6">
+        <div className="flex justify-center gap-1 mt-6">
           <button
             onClick={scrollLeft}
             className="w-10 h-10 flex items-center justify-center border border-gray-300 text-gray-600 hover:bg-gray-100"

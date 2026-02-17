@@ -16,7 +16,7 @@ const JourneyTimeline = ({ journey }) => {
               <div key={step.id} className="text-white">
                 {/* IMAGE MATCHED TOP BAR */}
                 <div className="relative flex items-center mb-6">
-                  <span className="w-4 h-4 bg-[#9AD000] rounded-full"></span>
+                  <span className="w-4 h-4 bg-[#9AD000] "></span>
 
                   <div className="relative flex-1 ml-4">
                     {/* <div className="border-t-2 border-[#9AD000]"></div> */}

@@ -104,7 +104,7 @@ const NewUpdate = () => {
               <div>
                 <img
                   src={news[0]?.image_url}
-                  className="rounded-xl w-full h-70 object-cover"
+                  className=" w-full h-70 object-cover"
                 />
               </div>
             </div>
@@ -114,8 +114,8 @@ const NewUpdate = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-3">
 
             {news.slice(1, 4).map((item, index) => (
-              <div key={index}  onClick={() => navigate(`/news/${item.id}`, { state: item })} className="rounded-xl">
-                <img src={item.image_url} className="rounded-lg mb-3 w-full h-32 object-cover" />
+              <div key={index}  onClick={() => navigate(`/news/${item.id}`, { state: item })} className="">
+                <img src={item.image_url} className=" mb-3 w-full h-32 object-cover" />
 
                 <h3 className="font-semibold text-[15px] leading-snug">
                   {item.title}
@@ -145,7 +145,7 @@ const NewUpdate = () => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full border border-gray-300 rounded-md px-3 py-2"
+                className="w-full border border-gray-300 px-3 py-2"
               />
               <Search className="absolute right-3 top-2.5 text-gray-500" size={18} />
             </div>
@@ -160,7 +160,7 @@ const NewUpdate = () => {
                 <div key={index} className="flex gap-3">
                   <img
                     src={item.image_url}
-                    className="w-20 h-16 rounded-md object-cover"
+                    className="w-20 h-16  object-cover"
                   />
                   <div>
                     <p className="text-sm font-medium leading-tight">{item.title}</p>
