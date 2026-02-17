@@ -83,8 +83,25 @@ const Footer = () => {
 
                   <div className="flex space-x-4 mb-6 text-white">
                     <Facebook size={18} />
-                    <Instagram size={18} />
-                    <Linkedin size={18} />
+                    {/* <Instagram size={18} />
+                    <Linkedin size={18} /> */}
+                    <a
+                      href="https://www.instagram.com/premiergroup.co?igsh=MTlkM2FsYzJpdTdsMg%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#40BD02] transition-colors"
+                    >
+                      <Instagram size={18} />
+                    </a>
+
+                    <a
+                      href="https://www.linkedin.com/company/premiergroup-co/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#40BD02] transition-colors"
+                    >
+                      <Linkedin size={18} />
+                    </a>
                     <X size={18} />
                     <Youtube size={18} />
                     <Mail size={18} />
