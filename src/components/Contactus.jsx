@@ -121,6 +121,7 @@ const Contactus = () => {
               <h5 className="text-2xl  tracking-widest mb-2">
                 Get in touch with us.
               </h5>
+              <div className="grid grid-cols-2 gap-4  ">
               <div>
                 <label className="block text-sm mb-1">
                   Name <span className="text-red-500">*</span>
@@ -158,6 +159,7 @@ const Contactus = () => {
                 {errors.email && (
                   <p className="text-red-500 text-xs mt-1">{errors.email}</p>
                 )}
+              </div>
               </div>
 
               {/* PHONE */}

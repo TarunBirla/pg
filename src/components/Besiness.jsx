@@ -141,11 +141,11 @@ const Besiness = () => {
             <img
               src="/img/b.png"
               alt=""
-              className="w-full h-full object-cover rounded"
+              className="w-full h-full object-cover"
             />
           </div>
 
-          <div className="col-span-12 md:col-span-7 h-[220px] bg-[#1E6FB6] text-white p-10 rounded flex flex-col justify-center">
+          <div className="col-span-12 md:col-span-7 h-[220px] bg-[#1E6FB6] text-white p-10  flex flex-col justify-center">
             <h3 className="text-2xl font-semibold mb-3">Businesses in India</h3>
             <p className="text-sm leading-relaxed max-w-md">
               Building upon its international expertise, Premier Group has
@@ -153,15 +153,15 @@ const Besiness = () => {
             </p>
           </div>
 
-          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] rounded"></div>
+          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] "></div>
 
-          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#1E6FB6] text-white rounded flex flex-col items-center justify-center text-center p-6">
+          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#1E6FB6] text-white flex flex-col items-center justify-center text-center p-6">
             <img src="/img/iconusers.png" className="w-12 mb-3" />
             <h3 className="text-3xl font-bold">200+</h3>
             <p className="text-sm mt-1">Employees at the Premier Group</p>
           </div>
 
-          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] text-white rounded p-6 flex flex-col justify-center">
+          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] text-white  p-6 flex flex-col justify-center">
             <h3 className="text-xl font-semibold mb-2">Featured Jobs</h3>
             <p className="text-sm leading-relaxed">
               Building upon its international expertise, Premier Group has
@@ -171,7 +171,7 @@ const Besiness = () => {
         </div>
       </section>
 
-      <GlobalMap />
+      {/* <GlobalMap /> */}
 
       <Footer />
     </>
