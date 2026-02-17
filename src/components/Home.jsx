@@ -184,7 +184,7 @@ const Home = () => {
           <button
             onClick={() => mainSwiperRef.current.slidePrev()}
             className="w-10 h-10 flex items-center justify-center 
-               rounded-full border border-white/60 
+                border border-white/60 
                text-white hover:bg-white/20 transition"
           >
             <FaChevronLeft size={16} />
@@ -193,7 +193,7 @@ const Home = () => {
           <button
             onClick={() => mainSwiperRef.current.slideNext()}
             className="w-10 h-10 flex items-center justify-center 
-               rounded-full bg-[#C1FF00] 
+                bg-[#C1FF00] 
                text-black hover:scale-105 transition"
           >
             <FaChevronRight size={16} />
@@ -479,7 +479,7 @@ const Home = () => {
                     {/* NUMBER */}
                     <div className="mb-6 flex justify-center ">
                       <span
-                        className={`text-xs px-3 py-1 rounded-full  text-white
+                        className={`text-xs px-3 py-1  text-white
                     ${isActive ? "bg-white/30" : "bg-black/40"}`}
                       >
                         {String(index + 1).padStart(2, "0")}
@@ -815,14 +815,14 @@ const Home = () => {
           <div className="flex justify-end gap-4 mt-6">
             <button
               onClick={scrollLeft1}
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100"
+              className="w-10 h-10 flex items-center justify-center  border border-gray-300 text-gray-600 hover:bg-gray-100"
             >
               <FaChevronLeft />
             </button>
 
             <button
               onClick={scrollRight1}
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100"
+              className="w-10 h-10 flex items-center justify-center  border border-gray-300 text-gray-600 hover:bg-gray-100"
             >
               <FaChevronRight />
             </button>
@@ -833,13 +833,13 @@ const Home = () => {
           {`
             /* Hide scrollbar for Chrome, Safari, Edge */
 
-  .hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+              .hide-scrollbar::-webkit-scrollbar {
+              display: none;
+            }
+            .hide-scrollbar {
+              -ms-overflow-style: none;
+              scrollbar-width: none;
+            }
 
 
             `}

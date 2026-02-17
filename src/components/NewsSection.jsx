@@ -5,55 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function NewsSection() {
   const sliderRef = useRef(null);
-
-  // const news = [
-  //   {
-  //     id: 1,
-  //     img: "/img/s1.png",
-  //     title:
-  //       "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
-  //     date: "November 2, 2025",
-  //     desc: "Sonarpur (West Bengal) [India], January 12: Premier Global School,",
-  //   },
-  //   {
-  //     id: 2,
-  //     img: "/img/s2.png",
-  //     title:
-  //       "Integrated Townships: Premier Group’s Vision for Modern, Sustainable Living",
-  //     date: "November 2, 2025",
-  //     desc: "In today’s fast-paced world, urban spaces focus on communities where people can live, work, learn, and thrive.",
-  //   },
-  //   {
-  //     id: 3,
-  //     img: "/img/s3.png",
-  //     title: "Growth with Purpose: The Journey of Premier Group",
-  //     date: "November 2, 2025",
-  //     desc: "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
-  //   },
-  //   {
-  //     id: 1,
-  //     img: "/img/s1.png",
-  //     title:
-  //       "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
-  //     date: "November 2, 2025",
-  //     desc: "Sonarpur (West Bengal) [India], January 12: Premier Global School,",
-  //   },
-  //   {
-  //     id: 2,
-  //     img: "/img/s2.png",
-  //     title:
-  //       "Integrated Townships: Premier Group’s Vision for Modern, Sustainable Living",
-  //     date: "November 2, 2025",
-  //     desc: "In today’s fast-paced world, urban spaces focus on communities where people can live, work, learn, and thrive.",
-  //   },
-  //   {
-  //     id: 3,
-  //     img: "/img/s3.png",
-  //     title: "Growth with Purpose: The Journey of Premier Group",
-  //     date: "November 2, 2025",
-  //     desc: "Premier Global School Unveils Ambitious Plans for State-of-the-Art Education Hub in Sonarpur, West Bengal",
-  //   }
-  // ];
   const [news, setNews] = useState([]);
 
   const fetchData = async () => {
@@ -97,37 +48,13 @@ export default function NewsSection() {
           ref={sliderRef}
           className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth"
         >
-          {/* {news.map((item) => (
-            <div
-              key={item.id}
-              className="min-w-[360px] bg-white rounded-xl  transition p-4"
-            >
-              <img
-                src={item.image_url}
-                alt={item.title}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
-
-              <p className="text-gray-500 text-sm mb-2">{item.createdAt}</p>
-
-              <h3 className="font-bold text-lg mb-3 leading-tight">
-                {item.title}
-              </h3>
-
-              <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-                {item.description}
-              </p>
-            </div>
-          ))} */}
           {news.map((item) => (
             <div
               key={item.id}
               onClick={() => navigate(`/news/${item.id}`, { state: item })} 
               className="min-w-[360px] bg-white  transition p-4"
             >
-              
-
-
+            
               <img
                 src={item.image_url}
                 alt={item.title}
@@ -141,8 +68,6 @@ export default function NewsSection() {
               <h3 className="font-bold text-lg mb-3 leading-tight">
                 {item.title}
               </h3>
-
-              {/* FIX — Render HTML + clamp */}
               <div
                 className="text-gray-600 text-sm leading-relaxed line-clamp-3"
                 dangerouslySetInnerHTML={{ __html: item.description }}
@@ -171,15 +96,15 @@ export default function NewsSection() {
 
       <style>
         {`
-            /* Hide scrollbar for Chrome, Safari, Edge */
+          /* Hide scrollbar for Chrome, Safari, Edge */
 
-  .hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
 
 
             `}
