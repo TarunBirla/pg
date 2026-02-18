@@ -99,7 +99,7 @@ const Home = () => {
     <>
       <Header />
 
-      <section className="relative w-full  h-[60vh] sm:h-[80vh] md:h-[90vh] ">
+      <section className="relative w-full  h-[50vh] sm:h-[80vh] md:h-[90vh] ">
         {/* MAIN SWIPER */}
         <Swiper
           modules={[Navigation, Pagination, Thumbs, Controller, Autoplay]}
