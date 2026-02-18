@@ -130,10 +130,6 @@ const Home = () => {
 
                 <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
                   <div className="max-w-xl text-white">
-                    {/* <h1 className="text-4xl md:text-6xl font-bold ">
-                      {slide.heading}
-                    </h1> */}
-
                     <h1
                       className="text-white font-[Syne] font-[700] tracking-[0.01em]
                         text-[30px] leading-[46px]
@@ -145,10 +141,7 @@ const Home = () => {
                     </h1>
 
                     <div className="flex items-start gap-4 ml-1 md:ml-6 mt-6 ">
-                      {/* Green vertical line */}
                       <div className="w-[2px] bg-[#C1FF00] self-stretch"></div>
-
-                      {/* Right content (text + button) */}
                       <div className="flex flex-col">
                         <p
                           className="text-white/90 font-[Poppins] font-[400] tracking-[0.01em]
