@@ -90,6 +90,18 @@ const Home = () => {
   // const activeTab = tabsall.find((t) => t.id === active);
   const activeTab = tabsall.find((t) => t.id === (hoverTab ?? active));
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Show loader until data arrives
   if (!activeTab) {
     return <div className="text-center py-10">Loading...</div>;
@@ -104,7 +116,14 @@ const Home = () => {
         <Swiper
           modules={[Navigation, Pagination, Thumbs, Controller, Autoplay]}
           navigation={false}
-          pagination={false}
+          // pagination={false}
+          pagination={
+            isMobile
+              ? {
+                  clickable: true,
+                }
+              : false
+          }
           effect="fade"
           fadeEffect={{ crossFade: true }}
           loop={true}
@@ -171,6 +190,22 @@ const Home = () => {
           ))}
         </Swiper>
 
+        <style>
+          {`
+                  @media (max-width: 768px) {
+                  .swiper-pagination-bullet {
+                    background: white;
+                    opacity: 0.6;
+                  }
+
+                  .swiper-pagination-bullet-active {
+                    background: #C1FF00;
+                    opacity: 1;
+                  }
+                }
+
+          `}
+        </style>
         <div className=" hidden md:flex absolute bottom-20 left-2/5 -translate-x-1/2 z-20 flex items-center gap-5">
           <div className="w-[200px] h-[2px] bg-white/80"></div>
 
