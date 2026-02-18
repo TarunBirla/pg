@@ -75,7 +75,7 @@ const Contactus = () => {
       ></section>
 
       <section
-        className="block md:hidden relative w-full h-[85vh] bg-cover md:bg-cover bg-center bg-no-repeat"
+        className="block md:hidden relative w-full  h-[50vh] sm:h-[60vh] md:h-[85vh]  bg-cover md:bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/contact.png')" }}
       >
         <div className="absolute inset-0 bg-black/60"></div>

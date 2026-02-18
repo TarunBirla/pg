@@ -99,7 +99,7 @@ const Home = () => {
     <>
       <Header />
 
-      <section className="relative w-full  h-[60vh] sm:h-[80vh] md:h-[90vh] ">
+      <section className="relative w-full  h-[65vh] sm:h-[80vh] md:h-[90vh] ">
         {/* MAIN SWIPER */}
         <Swiper
           modules={[Navigation, Pagination, Thumbs, Controller, Autoplay]}
@@ -136,7 +136,7 @@ const Home = () => {
 
                     <h1
                       className="text-white font-[Syne] font-[700] tracking-[0.01em]
-                        text-[30px] leading-[46px]
+                        text-[42px] leading-[46px]
                         sm:text-[56px] sm:leading-[58px]
                         md:text-[72px] md:leading-[70px]
                         lg:text-[72px] lg:leading-[70px]"
@@ -144,15 +144,15 @@ const Home = () => {
                       {slide.heading}
                     </h1>
 
-                    <div className="flex items-start gap-4 ml-1 md:ml-6 mt-6 ">
+                    <div className="flex items-start gap-4 ml-8 mt-6 ">
                       {/* Green vertical line */}
-                      <div className="w-[2px] bg-[#C1FF00] self-stretch"></div>
+                      <div className="w-[3px] bg-[#C1FF00] self-stretch"></div>
 
                       {/* Right content (text + button) */}
                       <div className="flex flex-col">
                         <p
                           className="text-white/90 font-[Poppins] font-[400] tracking-[0.01em]
-                            text-[10px] leading-[20px]
+                            text-[16px] leading-[26px]
                             sm:text-[18px] sm:leading-[30px]
                             md:text-[20px] md:leading-[32px]
                             lg:text-[20px] lg:leading-[32px]"
