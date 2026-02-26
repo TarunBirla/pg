@@ -11,6 +11,7 @@ import Besiness from "./components/Besiness";
 import NewUpdate from "./components/NewUpdate";
 import Contactus from "./components/Contactus";
 import NewsDetail from "./components/NewsDetail";
+import Joinus from "./components/Joinus";
 function App() {
   return (
     <BrowserRouter>
@@ -30,6 +31,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/abouts" element={<Abouts />} />
         <Route path="/business" element={<Besiness />} />
+        <Route path="/joinus" element={<Joinus />} />
+
         <Route path="/news-updates" element={<NewUpdate />} />
         <Route path="/contact" element={<Contactus />} />
         <Route path="/admin/login" element={<Login />} />

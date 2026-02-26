@@ -743,14 +743,14 @@ const Home = () => {
               {/* RIGHT SIDE CONTENT */}
               <div
                 className={`p-6 text-white flex flex-col justify-center
-    ${
-      index === 0 || index === 3
-        ? "bg-[#0a70b1]"
-        : index === 1 || index === 2
-          ? "bg-[#85AC02]"
-          : "bg-gray-900"
-    }
-  `}
+                        ${
+                          index === 0 || index === 3
+                            ? "bg-[#0a70b1]"
+                            : index === 1 || index === 2
+                              ? "bg-[#85AC02]"
+                              : "bg-gray-900"
+                        }
+                      `}
               >
                 {/* DESCRIPTION (HTML from API) */}
                 <div

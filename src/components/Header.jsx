@@ -27,7 +27,6 @@ const Header = () => {
       ${isScrolled ? "transparent shadow-lg" : "bg-black/10 shadow-lg"}`}
     >
       <div className="relative max-w-6xl mx-auto flex items-center px-4 py-3">
-
         {/* LEFT: LOGO */}
 
         <div className="flex items-center">
@@ -41,7 +40,7 @@ const Header = () => {
         </div>
 
         {/* CENTER: NAV */}
-        <nav className="hidden md:flex text-sm bg-[#00000033] absolute left-1/2 -translate-x-1/2 items-center space-x-6 text-white uppercase bg-black/30 px-5 py-3 font-medium">
+        <nav className="hidden md:flex text-sm  absolute left-1/2 -translate-x-1/2 items-center space-x-6 text-white uppercase bg-transparent px-5 py-3 font-medium">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -69,6 +68,15 @@ const Header = () => {
             Businesses
           </NavLink>
 
+          {/* <NavLink
+            to="/joinus"
+            className={({ isActive }) =>
+              isActive ? "text-[#40BD02]" : "hover:text-[#40BD02]"
+            }
+          >
+            Join us
+          </NavLink> */}
+
           <NavLink
             to="/news-updates"
             className={({ isActive }) =>
@@ -91,7 +99,7 @@ const Header = () => {
         {/* RIGHT: BUTTON */}
         <div className="ml-auto hidden md:block">
           <Link
-            to="/admin/login"
+            to="/business"
             className="px-5 py-2  text-white font-semibold 
               bg-gradient-to-r from-[#40BD02] to-[#37B8E1] 
               hover:scale-105 transition"
@@ -125,14 +133,13 @@ const Header = () => {
                 z-50 shadow-2xl
                 border-l border-black/10
                 transition-all duration-500 ease-out"
-                >
+          >
             {/* TOP BAR */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
               {/* <span className="h-10 w-auto object-contain">
                 Menu
               </span> */}
 
-                
               <button onClick={() => setMenuOpen(false)}>
                 <X size={28} className="text-black" />
               </button>

@@ -15,7 +15,6 @@ const Footer = () => {
           <div className="max-w-6xl mb-5 md:mb-20 mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
             {/* LEFT LARGE COLUMN - COL 4 */}
             <div className="md:col-span-4 flex flex-col">
-  
               {/* LOGO */}
               <img
                 src="/img/Logo.png"
@@ -29,7 +28,6 @@ const Footer = () => {
                 growth, empower communities, and inspire progress for future
                 generations.
               </p>
-
             </div>
 
             {/* RIGHT COLUMNS (Quick Links + Legal + Contact) - COL 8 */}
@@ -51,6 +49,11 @@ const Footer = () => {
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     {" "}
                     <Link to="/business">Businesses</Link>
+                  </li>
+
+                  <li className="hover:text-[#40BD02] cursor-pointer">
+                    {" "}
+                    <Link to="/joinus">Join Us</Link>
                   </li>
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     {" "}
@@ -108,8 +111,8 @@ const Footer = () => {
                     </a>
                     {/* <X size={18} /> */}
                     {/* <Youtube size={18} /> */}
-                    
-                      {/* <a
+
+                    {/* <a
                         href="mailto:contact@premiergroup.co"
                         className="hover:text-[#40BD02] transition-colors"
                       >
@@ -117,7 +120,7 @@ const Footer = () => {
                       </a> */}
                   </div>
 
-                  <div className="flex border border-[#98C20B] w-80" >
+                  <div className="flex border border-[#98C20B] w-80">
                     <input
                       placeholder="Enter your email to subscribe"
                       className="bg-transparent px-3 py-2 text-sm outline-none text-white w-full"
