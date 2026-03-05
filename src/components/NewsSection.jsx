@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function NewsSection() {
   const sliderRef = useRef(null);
   const [news, setNews] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -23,6 +24,32 @@ export default function NewsSection() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+  if (window.innerWidth < 768) {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => {
+        const next = prev + 1 >= news.length ? 0 : prev + 1;
+
+        sliderRef.current?.scrollTo({
+          left: next * 360,
+          behavior: "smooth",
+        });
+
+        return next;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }
+}, [news]);
+const goToSlide = (index) => {
+  setCurrentIndex(index);
+
+  sliderRef.current?.scrollTo({
+    left: index * 360,
+    behavior: "smooth",
+  });
+};
   const scrollLeft = () => {
     sliderRef.current.scrollBy({ left: -350, behavior: "smooth" });
   };
@@ -77,7 +104,7 @@ export default function NewsSection() {
         </div>
 
         {/* Buttons */}
-        <div className="flex justify-center gap-1 mt-6">
+          <div className="hidden md:flex justify-center gap-1 mt-6">
           <button
             onClick={scrollLeft}
             className="w-10 h-10 flex items-center justify-center border border-gray-300 text-gray-600 hover:bg-gray-100"
@@ -92,6 +119,18 @@ export default function NewsSection() {
             <FaChevronRight />
           </button>
         </div>
+        {/* Mobile Dots */}
+<div className="flex md:hidden justify-center gap-2 mt-6">
+  {news.map((_, index) => (
+    <button
+      key={index}
+      onClick={() => goToSlide(index)}
+      className={`w-2.5 h-2.5 rounded-full ${
+        currentIndex === index ? "bg-green-600" : "bg-gray-300"
+      }`}
+    />
+  ))}
+</div>
       </div>
 
       <style>

@@ -69,7 +69,7 @@ const Contactus = () => {
       <Header />
 
       {/* TOP BANNER */}
-      <section
+      {/* <section
         className="hidden md:block relative w-full h-[90vh] bg-cover bg-center"
         style={{ backgroundImage: "url('/img/contact.png')" }}
       ></section>
@@ -89,13 +89,32 @@ const Contactus = () => {
 
             <h1 className="text-3xl md:text-5xl font-bold mb-4">Contact Us</h1>
 
-            {/* <div className="flex gap-3 items-start">
-              <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div>
+           
+          </div>
+        </div>
+      </section> */}
+       <section
+        className="relative w-full h-[50vh] sm:h-[60vh] md:h-[85vh] bg-cover md:bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/contact.png')" }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
 
-              <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
-               Building a future where progress meets responsibility Premier Group leads with purpose, innovation, and a commitment to sustainable growth.
-              </p>
-            </div> */}
+        <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
+          <div className="max-w-xl text-white">
+           
+
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+
+            <div className="flex gap-3 items-start">
+              {/* <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div> */}
+
+              {/* <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
+                Building upon its international expertise, Premier Group has
+                diversified its presence in India across multiple high-growth
+                sectors, aligned with its philosophy of purpose-driven progress
+                and community upliftment
+              </p> */}
+            </div>
           </div>
         </div>
       </section>
@@ -122,7 +141,7 @@ const Contactus = () => {
               <h5 className="text-2xl  tracking-widest mb-2">
                 Get in touch with us.
               </h5>
-              <div className="grid grid-cols-2 gap-4  ">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4  ">
               <div>
                 <label className="block text-sm mb-1">
                   Name <span className="text-red-500">*</span>

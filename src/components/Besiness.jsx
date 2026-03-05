@@ -34,12 +34,12 @@ const Besiness = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
           <div className="max-w-xl text-white">
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <span className="w-15 h-[2px] bg-[#40BD02]"></span>
-              <p className="text-sm text-gray-200">Businesses</p>
-            </div>
+              <p className="text-sm text-gray-200">Business</p>
+            </div> */}
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Businesses</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Business</h1>
 
             <div className="flex gap-3 items-start">
               <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div>
@@ -66,7 +66,7 @@ const Besiness = () => {
       <section className="w-full py-12 mb-5 mx-auto px-5 max-w-6xl">
         <div className="mb-10">
           <p className="text-[#86C200] font-semibold tracking-wide">BUSINESS</p>
-          <h2 className="text-4xl md:text-5xl font-bold">Businesses</h2>
+          <h2 className="text-4xl md:text-5xl font-bold">Business</h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
@@ -130,7 +130,7 @@ const Besiness = () => {
 
       <img src="/img/line.png" />
 
-      <section className="w-full py-12 mb-5 mx-auto px-5 max-w-6xl">
+      {/* <section className="w-full py-12 mb-5 mx-auto px-5 max-w-6xl">
         <div className="mb-10">
           <p className="text-[#86C200] font-semibold tracking-wide">CAREERS</p>
           <h2 className="text-4xl md:text-5xl font-bold">JOIN US</h2>
@@ -146,7 +146,7 @@ const Besiness = () => {
           </div>
 
           <div className="col-span-12 md:col-span-7 h-[220px] bg-[#1E6FB6] text-white p-10  flex flex-col justify-center">
-            <h3 className="text-2xl font-semibold mb-3">Businesses in India</h3>
+            <h3 className="text-2xl font-semibold mb-3">Business in India</h3>
             <p className="text-sm leading-relaxed max-w-md">
               Building upon its international expertise, Premier Group has
               diversified its presence in India across multiple.
@@ -168,10 +168,8 @@ const Besiness = () => {
 
             <div className="flex gap-4">
               
-              {/* Vertical Line */}
               <div className="w-[2px] opacity-80 bg-[#C1FF00]"></div>
 
-              {/* Text */}
               <p className="text-sm leading-relaxed">
                 Building upon its <br />
                 international expertise, <br />
@@ -183,9 +181,8 @@ const Besiness = () => {
           </div>
 
         </div>
-      </section>
+      </section> */}
 
-      {/* <GlobalMap /> */}
 
       <Footer />
     </>

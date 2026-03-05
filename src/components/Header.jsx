@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 
-      ${isScrolled ? "transparent shadow-lg" : "bg-black/10 shadow-lg"}`}
+      ${isScrolled ? "bg-black shadow-lg" : "bg-black/10 shadow-lg"}`}
     >
       <div className="relative max-w-6xl mx-auto flex items-center px-4 py-3">
         {/* LEFT: LOGO */}
@@ -65,7 +65,7 @@ const Header = () => {
               isActive ? "text-[#40BD02]" : "hover:text-[#40BD02]"
             }
           >
-            Businesses
+            Business
           </NavLink>
 
           {/* <NavLink
@@ -104,7 +104,7 @@ const Header = () => {
               bg-gradient-to-r from-[#40BD02] to-[#37B8E1] 
               hover:scale-105 transition"
           >
-            Businesses
+            Business
           </Link>
         </div>
 
@@ -186,7 +186,7 @@ const Header = () => {
                   }`
                 }
               >
-                Businesses
+                Business
               </NavLink>
 
               <NavLink

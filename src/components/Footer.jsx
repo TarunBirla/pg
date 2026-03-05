@@ -14,21 +14,21 @@ const Footer = () => {
         >
           <div className="max-w-6xl mb-5 md:mb-20 mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10">
             {/* LEFT LARGE COLUMN - COL 4 */}
-            <div className="md:col-span-4 flex flex-col">
-              {/* LOGO */}
-              <img
-                src="/img/Logo.png"
-                alt="PG Logo"
-                className="h-10 md:h-14 w-auto object-contain mb-2 order-2 md:order-1"
-              />
+           <div className="md:col-span-4 flex flex-col">
+  {/* LOGO */}
+  <img
+    src="/img/Logo.png"
+    alt="PG Logo"
+    className="h-10 md:h-14 w-auto object-contain mb-2 order-1 md:order-1"
+  />
 
-              {/* DESCRIPTION */}
-              <p className="text-[#CCCCCC] mb-3 md:mb-0 text-sm leading-relaxed max-w-xs order-1 md:order-2">
-                Premier Group unites under a shared vision to drive sustainable
-                growth, empower communities, and inspire progress for future
-                generations.
-              </p>
-            </div>
+  {/* DESCRIPTION */}
+  <p className="text-[#CCCCCC] mb-3 md:mb-0 text-sm leading-relaxed max-w-xs order-2 md:order-2">
+    Premier Group unites under a shared vision to drive sustainable
+    growth, empower communities, and inspire progress for future
+    generations.
+  </p>
+</div>
 
             {/* RIGHT COLUMNS (Quick Links + Legal + Contact) - COL 8 */}
             <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-4 gap-10 items-start">
@@ -48,7 +48,7 @@ const Footer = () => {
                   </li>
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     {" "}
-                    <Link to="/business">Businesses</Link>
+                    <Link to="/business">Business</Link>
                   </li>
 
                   <li className="hover:text-[#40BD02] cursor-pointer">

@@ -44,6 +44,7 @@ const Home = () => {
   const [section, setSection] = useState([]);
   const [tabsall, setTabsAll] = useState([]);
   const [active, setActive] = useState(null);
+  const [currentIndex1, setCurrentIndex1] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -66,6 +67,33 @@ const Home = () => {
       console.error("Error fetching commen data:", err);
     }
   };
+
+  useEffect(() => {
+  if (window.innerWidth < 1024 && architech.length > 0) {
+    const interval = setInterval(() => {
+      setCurrentIndex1((prev) => {
+        const next = prev + 1 >= architech.length ? 0 : prev + 1;
+
+        sliderRef1.current?.scrollTo({
+          left: next * 360,
+          behavior: "smooth",
+        });
+
+        return next;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }
+}, [architech]);
+const goToSlide1 = (index) => {
+  setCurrentIndex1(index);
+
+  sliderRef1.current?.scrollTo({
+    left: index * 360,
+    behavior: "smooth",
+  });
+};
 
   useEffect(() => {
     fetchData();
@@ -839,7 +867,8 @@ const Home = () => {
           </div>
 
           {/* Buttons */}
-          <div className="flex justify-end gap-4 mt-6">
+          {/* <div className="flex justify-end gap-4 mt-6"> */}
+            <div className="hidden lg:flex justify-end gap-4 mt-6">
             <button
               onClick={scrollLeft1}
               className="w-10 h-10 flex items-center justify-center  border border-gray-300 text-gray-600 hover:bg-gray-100"
@@ -854,6 +883,18 @@ const Home = () => {
               <FaChevronRight />
             </button>
           </div>
+          {/* Mobile Dots */}
+<div className="flex lg:hidden justify-center gap-2 mt-6">
+  {architech.map((_, index) => (
+    <button
+      key={index}
+      onClick={() => goToSlide1(index)}
+      className={`w-2.5 h-2.5 rounded-full ${
+        currentIndex1 === index ? "bg-green-600" : "bg-gray-300"
+      }`}
+    />
+  ))}
+</div>
         </div>
 
         <style>
