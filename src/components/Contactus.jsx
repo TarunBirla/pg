@@ -45,7 +45,7 @@ const Contactus = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch("https://test.imanglobal.net/api/contacus", {
+      const response = await fetch("https://api.premiergroup.co/api/contacus", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

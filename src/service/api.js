@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = "https://test.imanglobal.net";
+export const baseURL = "https://api.premiergroup.co";
 
 const api = axios.create({
   baseURL: `${baseURL}/api`, // reuse the baseURL here
