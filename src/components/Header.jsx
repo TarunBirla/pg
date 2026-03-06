@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 
-      ${isScrolled ? "bg-black shadow-lg" : "bg-black/10 shadow-lg"}`}
+      ${isScrolled ? "bg-white shadow-lg text-black" : "bg-black/10  text-white shadow-lg"}`}
     >
       <div className="relative max-w-6xl mx-auto flex items-center px-4 py-3">
         {/* LEFT: LOGO */}
@@ -40,7 +40,7 @@ const Header = () => {
         </div>
 
         {/* CENTER: NAV */}
-        <nav className="hidden md:flex text-sm  absolute left-1/2 -translate-x-1/2 items-center space-x-6 text-white uppercase bg-transparent px-5 py-3 font-medium">
+        <nav className="hidden md:flex text-sm  absolute left-1/2 -translate-x-1/2 items-center space-x-6  uppercase bg-transparent px-5 py-3 font-medium">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -110,11 +110,11 @@ const Header = () => {
 
         {/* MOBILE MENU BUTTON */}
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden ml-auto text-white"
-        >
-          {menuOpen ? <X size={26} /> : <Menu size={26} />}
-        </button>
+  onClick={() => setMenuOpen(!menuOpen)}
+  className={`md:hidden ml-auto ${isScrolled ? "text-black" : "text-white"}`}
+>
+  {menuOpen ? <X size={26} /> : <Menu size={26} />}
+</button>
       </div>
 
       {/* Mobile Menu */}

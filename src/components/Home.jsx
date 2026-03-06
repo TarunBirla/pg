@@ -68,24 +68,6 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-  if (window.innerWidth < 1024 && architech.length > 0) {
-    const interval = setInterval(() => {
-      setCurrentIndex1((prev) => {
-        const next = prev + 1 >= architech.length ? 0 : prev + 1;
-
-        sliderRef1.current?.scrollTo({
-          left: next * 360,
-          behavior: "smooth",
-        });
-
-        return next;
-      });
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }
-}, [architech]);
 const goToSlide1 = (index) => {
   setCurrentIndex1(index);
 
@@ -109,11 +91,12 @@ const goToSlide1 = (index) => {
   const sliderRef1 = useRef(null);
 
   const scrollLeft1 = () => {
-    sliderRef1.current.scrollBy({ left: -350, behavior: "smooth" });
+    sliderRef1.current.scrollBy({ left: -360, behavior: "smooth" });
   };
 
+
   const scrollRight1 = () => {
-    sliderRef1.current.scrollBy({ left: 350, behavior: "smooth" });
+    sliderRef1.current.scrollBy({ left: 360, behavior: "smooth" });
   };
   // const activeTab = tabsall.find((t) => t.id === active);
   const activeTab = tabsall.find((t) => t.id === (hoverTab ?? active));
@@ -256,7 +239,7 @@ const goToSlide1 = (index) => {
           </button>
         </div>
 
-        <div className="hidden lg:block absolute bottom-8 right-[-5px] w-[520px] z-20">
+        <div className="hidden lg:block absolute bottom-8 right-[0px] w-[520px] z-20">
           <Swiper
             modules={[Navigation, Thumbs, Controller]}
             slidesPerView={3}
@@ -829,7 +812,8 @@ const goToSlide1 = (index) => {
             {architech.map((item, index) => (
               <div
                 key={item.id}
-                className="min-w-[360px] bg-white  transition p-4"
+                className="min-w-[100%] bg-white  transition p-4"
+                // className="min-w-full bg-white transition p-4"
               >
                 <img
                   src={item.image_url}
@@ -848,7 +832,6 @@ const goToSlide1 = (index) => {
     }
   `}
                 >
-                  {/* DESCRIPTION (HTML from API) */}
                   <div
                     className="text-sm leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: item?.description }}
@@ -868,7 +851,7 @@ const goToSlide1 = (index) => {
 
           {/* Buttons */}
           {/* <div className="flex justify-end gap-4 mt-6"> */}
-            <div className="hidden lg:flex justify-end gap-4 mt-6">
+          <div className="hidden lg:flex justify-end gap-4 mt-6">
             <button
               onClick={scrollLeft1}
               className="w-10 h-10 flex items-center justify-center  border border-gray-300 text-gray-600 hover:bg-gray-100"
@@ -884,17 +867,17 @@ const goToSlide1 = (index) => {
             </button>
           </div>
           {/* Mobile Dots */}
-<div className="flex lg:hidden justify-center gap-2 mt-6">
-  {architech.map((_, index) => (
-    <button
-      key={index}
-      onClick={() => goToSlide1(index)}
-      className={`w-2.5 h-2.5 rounded-full ${
-        currentIndex1 === index ? "bg-green-600" : "bg-gray-300"
-      }`}
-    />
-  ))}
-</div>
+          <div className="flex lg:hidden justify-center gap-2 mt-6">
+            {architech.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide1(index)}
+                className={`w-2.5 h-2.5 rounded-full ${
+                  currentIndex1 === index ? "bg-green-600" : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         <style>

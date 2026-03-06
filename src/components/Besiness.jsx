@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import GlobalMap from "./GlobalMap";
 import http from "../service/http";
+import { Link } from "react-router-dom";
 
 const Besiness = () => {
   const [business, setBusiness] = useState([]);
@@ -85,6 +86,7 @@ const Besiness = () => {
                 />
 
                 <div className="absolute inset-0 bg-black/20 rounded"></div>
+                  <Link to={`/bussiness-details/${item.title}`}>
 
                 <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
                   {item.title}
@@ -95,6 +97,7 @@ const Besiness = () => {
                 <span className="absolute bottom-2 right-3 text-white text-xl">
                   <img src="/img/icon.png" />
                 </span>
+                  </Link>
               </div>
             ))}
           </div>
@@ -108,6 +111,7 @@ const Besiness = () => {
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                  <Link to={`/bussiness-details/${business[5].title}`}>
 
               <p className="absolute bottom-12 left-6 text-white text-2xl font-semibold">
                 {business[5].title}
@@ -123,6 +127,8 @@ const Besiness = () => {
                 <span>Explore More</span>
                 <span className="text-xl">⟶</span>
               </div>
+                  </Link>
+
             </div>
           )}
         </div>
