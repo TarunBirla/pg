@@ -94,7 +94,23 @@ const NewUpdate = () => {
           {/* TOP: FIRST NEWS ITEM AS FEATURED */}
           {news.length > 0 && (
             <div 
-             onClick={() => navigate(`/news/${news[0]?.id}`, { state: news[0] })}
+            //  onClick={() => navigate(`/news/${news[0]?.id}`, { state: news[0] })}
+             onClick={() => {
+  if (news[0]?.id === 2) {
+    window.open(
+      "https://theprint.in/ani-press-releases/premier-global-school-unveils-ambitious-plans-for-state-of-the-art-education-hub-in-sonarpur-west-bengal/1921389/",
+      "_blank"
+    );
+  } else if (news[0]?.id === 3) {
+    window.open(
+      "https://apacentrepreneur.com/mohammad-jamaluddin-razvi/",
+      "_blank"
+    );
+  } else {
+    navigate(`/news/${news[0]?.id}`, { state: news[0] });
+  }
+}}
+             
             className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
 
               {/* Left Text Side */}
@@ -134,7 +150,26 @@ const NewUpdate = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-3">
 
             {news.slice(1, 4).map((item, index) => (
-              <div key={index}  onClick={() => navigate(`/news/${item.id}`, { state: item })} className="">
+              <div key={index} 
+              //  onClick={() => navigate(`/news/${item.id}`, { state: item })}
+               onClick={() => {
+  if (!item) return;
+
+  if (item.id === 2) {
+    window.open(
+      "https://theprint.in/ani-press-releases/premier-global-school-unveils-ambitious-plans-for-state-of-the-art-education-hub-in-sonarpur-west-bengal/1921389/",
+      "_blank"
+    );
+  } else if (item.id === 3) {
+    window.open(
+      "https://apacentrepreneur.com/mohammad-jamaluddin-razvi/",
+      "_blank"
+    );
+  } else {
+    navigate(`/news/${item.id}`, { state: item });
+  }
+}}
+                className="">
                 <img src={item.image_url} className=" mb-3 w-full h-32 object-cover" />
 
                 <h3 className="font-semibold text-[15px] leading-snug">
