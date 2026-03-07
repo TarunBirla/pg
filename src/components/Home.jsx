@@ -68,14 +68,39 @@ const Home = () => {
     }
   };
 
-const goToSlide1 = (index) => {
-  setCurrentIndex1(index);
+  useEffect(() => {
+  const isMobile = window.innerWidth < 1024;
 
-  sliderRef1.current?.scrollTo({
-    left: index * 360,
-    behavior: "smooth",
-  });
-};
+  if (!isMobile || architech.length === 0) return;
+
+  const interval = setInterval(() => {
+    setCurrentIndex1((prev) => {
+      const next = (prev + 1) % architech.length;
+
+      const cardWidth = sliderRef1.current.children[0].offsetWidth;
+
+      sliderRef1.current.scrollTo({
+        left: next * cardWidth,
+        behavior: "smooth",
+      });
+
+      return next;
+    });
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [architech]);
+
+
+
+  const goToSlide1 = (index) => {
+    setCurrentIndex1(index);
+
+    sliderRef1.current?.scrollTo({
+      left: index * 360,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     fetchData();
@@ -93,7 +118,6 @@ const goToSlide1 = (index) => {
   const scrollLeft1 = () => {
     sliderRef1.current.scrollBy({ left: -360, behavior: "smooth" });
   };
-
 
   const scrollRight1 = () => {
     sliderRef1.current.scrollBy({ left: 360, behavior: "smooth" });

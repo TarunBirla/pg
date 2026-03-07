@@ -19,6 +19,42 @@ export default function NewsSection() {
       console.error("Error fetching commen data:", err);
     }
   };
+  useEffect(() => {
+  const isMobile = window.innerWidth < 768;
+
+  if (!isMobile || news.length === 0) return;
+
+  const interval = setInterval(() => {
+    setCurrentIndex((prev) => {
+      const next = (prev + 1) % news.length;
+
+      const cardWidth = sliderRef.current.children[0].offsetWidth;
+
+      sliderRef.current.scrollTo({
+        left: next * cardWidth,
+        behavior: "smooth",
+      });
+
+      return next;
+    });
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [news]);
+
+useEffect(() => {
+  const slider = sliderRef.current;
+
+  const handleScroll = () => {
+    const cardWidth = slider.children[0].offsetWidth;
+    const index = Math.round(slider.scrollLeft / cardWidth);
+    setCurrentIndex(index);
+  };
+
+  slider.addEventListener("scroll", handleScroll);
+
+  return () => slider.removeEventListener("scroll", handleScroll);
+}, []);
 
   useEffect(() => {
     fetchData();
@@ -70,32 +106,7 @@ export default function NewsSection() {
           ref={sliderRef}
           className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar scroll-smooth"
         >
-          {/* {news.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => navigate(`/news/${item.id}`, { state: item })} 
-              className="snap-start min-w-full md:min-w-[33.33%]  transition p-4"
-            >
-            
-              <img
-                src={item.image_url || "/Mohammad-Jamaluddin-Razvi.jpg"}
-                alt={item.title}
-                className="w-full h-48   mb-4"
-              />
-
-              <p className="text-gray-500 text-sm mb-2">
-                {new Date(item.createdAt).toLocaleDateString()}
-              </p>
-
-              <h3 className="font-bold text-lg mb-3 leading-tight">
-                {item.title}
-              </h3>
-              <div
-                className="text-gray-600 text-sm leading-relaxed line-clamp-3"
-                dangerouslySetInnerHTML={{ __html: item.description }}
-              ></div>
-            </div>
-          ))} */}
+          
           {displayNews.map((item, index) => (
             <div
               key={index}
