@@ -46,9 +46,22 @@ useEffect(() => {
   const slider = sliderRef.current;
 
   const handleScroll = () => {
-    const cardWidth = slider.children[0].offsetWidth;
-    const index = Math.round(slider.scrollLeft / cardWidth);
-    setCurrentIndex(index);
+    const slides = Array.from(slider.children);
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    slides.forEach((slide, index) => {
+      const rect = slide.getBoundingClientRect();
+      const distance = Math.abs(rect.left);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    setCurrentIndex(closestIndex);
   };
 
   slider.addEventListener("scroll", handleScroll);
@@ -128,6 +141,7 @@ useEffect(() => {
                 }
               }}
               className="snap-start min-w-full md:min-w-[33.33%] transition p-4"
+              // className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar"
             >
               {item ? (
                 <>

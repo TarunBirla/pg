@@ -21,6 +21,7 @@ import Footer from "./Footer";
 import GlobalMap from "./GlobalMap";
 import NewsSection from "./NewsSection";
 import http from "../service/http";
+import Achi from "./Achi";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -68,39 +69,11 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-  const isMobile = window.innerWidth < 1024;
-
-  if (!isMobile || architech.length === 0) return;
-
-  const interval = setInterval(() => {
-    setCurrentIndex1((prev) => {
-      const next = (prev + 1) % architech.length;
-
-      const cardWidth = sliderRef1.current.children[0].offsetWidth;
-
-      sliderRef1.current.scrollTo({
-        left: next * cardWidth,
-        behavior: "smooth",
-      });
-
-      return next;
-    });
-  }, 3000);
-
-  return () => clearInterval(interval);
-}, [architech]);
 
 
 
-  const goToSlide1 = (index) => {
-    setCurrentIndex1(index);
 
-    sliderRef1.current?.scrollTo({
-      left: index * 360,
-      behavior: "smooth",
-    });
-  };
+ 
 
   useEffect(() => {
     fetchData();
@@ -115,13 +88,6 @@ const Home = () => {
 
   const sliderRef1 = useRef(null);
 
-  const scrollLeft1 = () => {
-    sliderRef1.current.scrollBy({ left: -360, behavior: "smooth" });
-  };
-
-  const scrollRight1 = () => {
-    sliderRef1.current.scrollBy({ left: 360, behavior: "smooth" });
-  };
   // const activeTab = tabsall.find((t) => t.id === active);
   const activeTab = tabsall.find((t) => t.id === (hoverTab ?? active));
 
@@ -136,6 +102,8 @@ const Home = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+ 
 
   // Show loader until data arrives
   if (!activeTab) {
@@ -821,104 +789,7 @@ const Home = () => {
       </section>
 
       <section className="w-full block lg:hidden  bg-white py-6  mx-auto px-5">
-        {/* Heading */}
-        <div className="mb-5">
-          <p className="text-green-600 font-semibold tracking-wide">COMPANY</p>
-          <h2 className="text-3xl  mt-2">Architects of Growth</h2>
-        </div>
-
-        {/* Slider Row */}
-        <div className="relative w-full max-w-7xl mx-auto">
-          <div
-            ref={sliderRef1}
-            className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth"
-          >
-            {architech.map((item, index) => (
-              <div
-                key={item.id}
-                className="min-w-[100%] bg-white  transition p-4"
-                // className="min-w-full bg-white transition p-4"
-              >
-                <img
-                  src={item.image_url}
-                  alt={item.title}
-                  className="w-full h-48 object-cover  mb-4"
-                />
-
-                <div
-                  className={`p-6 text-white flex flex-col justify-center
-    ${
-      index === 0 || index === 3
-        ? "bg-[#0A70B1]"
-        : index === 1 || index === 2
-          ? "bg-[#85AC02]"
-          : "bg-gray-900"
-    }
-  `}
-                >
-                  <div
-                    className="text-sm leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: item?.description }}
-                  ></div>
-
-                  {/* DESIGNATION */}
-                  <p className="mt-4 font-bold text-green-400">
-                    {item?.designation}
-                  </p>
-
-                  {/* NAME */}
-                  <p className="font-semibold mt-1 uppercase">{item?.name}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Buttons */}
-          {/* <div className="flex justify-end gap-4 mt-6"> */}
-          <div className="hidden lg:flex justify-end gap-4 mt-6">
-            <button
-              onClick={scrollLeft1}
-              className="w-10 h-10 flex items-center justify-center  border border-gray-300 text-gray-600 hover:bg-gray-100"
-            >
-              <FaChevronLeft />
-            </button>
-
-            <button
-              onClick={scrollRight1}
-              className="w-10 h-10 flex items-center justify-center  border border-gray-300 text-gray-600 hover:bg-gray-100"
-            >
-              <FaChevronRight />
-            </button>
-          </div>
-          {/* Mobile Dots */}
-          <div className="flex lg:hidden justify-center gap-2 mt-6">
-            {architech.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide1(index)}
-                className={`w-2.5 h-2.5 rounded-full ${
-                  currentIndex1 === index ? "bg-green-600" : "bg-gray-300"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-
-        <style>
-          {`
-            /* Hide scrollbar for Chrome, Safari, Edge */
-
-              .hide-scrollbar::-webkit-scrollbar {
-              display: none;
-            }
-            .hide-scrollbar {
-              -ms-overflow-style: none;
-              scrollbar-width: none;
-            }
-
-
-            `}
-        </style>
+      <Achi/>
       </section>
 
       {/* New Update */}
