@@ -176,13 +176,13 @@ const Achi = () => {
           <div
             ref={sliderRef1}
             // className="flex gap-2 overflow-x-auto hide-scrollbar scroll-smooth"
-            className="flex gap-2 overflow-x-auto snap-x snap-mandatory hide-scrollbar scroll-smooth"
+            className="flex gap-2 overflow-x-auto snap-x snap-mandatory hide-scrollbar scroll-smooth "
           >
             {architech.map((item, index) => (
               <div
                 key={item.id}
                 // className="min-w-[100%] bg-white  transition p-4"
-                className="snap-center min-w-[100%] bg-white transition p-4"
+                className="snap-center min-w-[100%]  bg-white transition p-4"
                 // className="min-w-full bg-white transition p-4"
               >
                 <img
@@ -193,11 +193,11 @@ const Achi = () => {
 
                 <div
               
-                  className="p-6 text-black flex flex-col justify-center  bg-gradient-to-b from-[#FFFFFF] to-[#CCCCCC]"
+                  className="p-6 text-black flex flex-col justify-center h-[240px]  bg-gradient-to-b from-[#FFFFFF] to-[#CCCCCC]"
   
                 >
                   <div
-                    className="text-sm leading-relaxed"
+                    className="text-sm leading-relaxed "
                     dangerouslySetInnerHTML={{ __html: item?.description }}
                   ></div>
 
