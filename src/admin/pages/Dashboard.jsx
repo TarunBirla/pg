@@ -30,9 +30,9 @@ import EditGlobal from "./globalPresence/EditGlobal";
 import JourneyList from "./journey/JourneyList";
 import AddJourney from "./journey/AddJourney";
 import EditJourney from "./journey/EditJourney";
-import businessList from "./business/businessList";
-import Addbusiness from "./business/Addbusiness";
-import Editbusiness from "./business/Editbusiness";
+import BusinessList from "./business/BusinessList";
+import AddBusiness from "./business/AddBusiness";
+import EditBusiness from "./business/EditBusiness";
 import AddJourneySteps from "./journey/AddJourneySteps";
 import JourneyStepsList from "./journey/JourneyStepsList";
 import EditJourneySteps from "./journey/EditJourneySteps";
@@ -126,9 +126,9 @@ export default function DashboardLayout() {
             <Route path="architech/add" element={<AddArchitech />} />
             <Route path="architech/edit/:id" element={<EditArchitech />} />
 
-            <Route path="businesses" element={<businessList />} />
-            <Route path="businesses/add" element={<Addbusiness />} />
-            <Route path="businesses/edit/:id" element={<Editbusiness />} />
+            <Route path="businesses" element={<BusinessList />} />
+            <Route path="businesses/add" element={<AddBusiness />} />
+            <Route path="businesses/edit/:id" element={<EditBusiness />} />
 
             <Route path="journey" element={<JourneyList />} />
             <Route path="journey/add" element={<AddJourney />} />
