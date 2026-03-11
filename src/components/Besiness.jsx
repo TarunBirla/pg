@@ -34,7 +34,7 @@ const Besiness = () => {
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
-          <div className="max-w-xl text-white">
+          <div className="max-w-xl text-white mt-10 md:mt-0">
             {/* <div className="flex items-center gap-2">
               <span className="w-15 h-[2px] bg-[#40BD02]"></span>
               <p className="text-sm text-gray-200">Business</p>
@@ -86,7 +86,7 @@ const Besiness = () => {
                 />
 
                 <div className="absolute inset-0 bg-black/20 rounded"></div>
-                  <Link to={`/bussiness-details/${item.title}`}>
+                  <Link to={`/business-details/${item.id}`}>
 
                 <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
                   {item.title}
@@ -111,7 +111,7 @@ const Besiness = () => {
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                  <Link to={`/bussiness-details/${business[5].title}`}>
+                  <Link to={`/business-details/${business[5].id}`}>
 
               <p className="absolute bottom-12 left-6 text-white text-2xl font-semibold">
                 {business[5].title}

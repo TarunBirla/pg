@@ -72,7 +72,7 @@ the present</h1>
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
-          <div className="max-w-xl text-white">
+          <div className="max-w-xl text-white mt-10 md:mt-0">
            
 
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Building the 

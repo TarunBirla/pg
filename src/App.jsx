@@ -38,7 +38,7 @@ function App() {
         <Route path="/contact" element={<Contactus />} />
         <Route path="/admin/login" element={<Login />} />
         <Route path="/news/:id" element={<NewsDetail />} />
-        <Route path="/bussiness-details/:title" element={<Detailspage />} />
+        <Route path="/business-details/:id" element={<Detailspage />} />
 
         <Route
           path="/dashboard/*"

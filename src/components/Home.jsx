@@ -151,7 +151,7 @@ const Home = () => {
                 <div className="absolute inset-0 bg-black/60"></div>
 
                 <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
-                  <div className="max-w-xl text-white">
+                  <div className="max-w-xl text-white mt-10 md:mt-0">
                     <h1
                       className="text-white font-[Syne] font-[700] tracking-[0.01em]
                         text-[30px] leading-[46px]
@@ -745,15 +745,18 @@ const Home = () => {
 
               {/* RIGHT SIDE CONTENT */}
               <div
-                className={`p-6 text-white flex flex-col justify-center
-                        ${
-                          index === 0 || index === 3
-                            ? "bg-[#0a70b1]"
-                            : index === 1 || index === 2
-                              ? "bg-[#85AC02]"
-                              : "bg-gray-900"
-                        }
-                      `}
+                // className={`p-6 text-white flex flex-col justify-center
+                //         ${
+                //           index === 0 || index === 3
+                //             ? "bg-[#0a70b1]"
+                //             : index === 1 || index === 2
+                //               ? "bg-[#85AC02]"
+                //               : "bg-gray-900"
+                //         }
+                //       `}
+               
+                  className="p-6 text-black flex flex-col justify-center bg-gradient-to-b from-[#FFFFFF] to-[#CCCCCC]"
+                       
               >
                 {/* DESCRIPTION (HTML from API) */}
                 <div
@@ -767,15 +770,18 @@ const Home = () => {
                 </p> */}
 
                 <p
-                  className={`mt-4 font-bold text-sm 
-    ${
-      index === 0 || index === 3
-        ? "text-[#CAFF00]"
-        : index === 1 || index === 2
-          ? "text-[#034570]"
-          : "text-gray-900"
-    }
-  `}
+  //                 className={`mt-4 font-bold text-sm 
+  //   ${
+  //     index === 0 || index === 3
+  //       ? "text-[#CAFF00]"
+  //       : index === 1 || index === 2
+  //         ? "text-[#034570]"
+  //         : "text-gray-900"
+  //   }
+  // `}
+
+                 className="mt-4 font-bold text-sm text-[#034570]"
+   
                 >
                   {item?.designation}
                 </p>

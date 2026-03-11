@@ -192,15 +192,9 @@ const Achi = () => {
                 />
 
                 <div
-                  className={`p-6 text-white flex flex-col justify-center
-    ${
-      index === 0 || index === 3
-        ? "bg-[#0A70B1]"
-        : index === 1 || index === 2
-          ? "bg-[#85AC02]"
-          : "bg-gray-900"
-    }
-  `}
+              
+                  className="p-6 text-black flex flex-col justify-center  bg-gradient-to-b from-[#FFFFFF] to-[#CCCCCC]"
+  
                 >
                   <div
                     className="text-sm leading-relaxed"
@@ -208,7 +202,7 @@ const Achi = () => {
                   ></div>
 
                   {/* DESIGNATION */}
-                  <p className="mt-4 font-bold text-green-400">
+                  <p className="mt-4 font-bold text-[#034570]">
                     {item?.designation}
                   </p>
 
