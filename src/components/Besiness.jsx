@@ -136,58 +136,7 @@ const Besiness = () => {
 
       <img src="/img/line.png" />
 
-      {/* <section className="w-full py-12 mb-5 mx-auto px-5 max-w-6xl">
-        <div className="mb-10">
-          <p className="text-[#86C200] font-semibold tracking-wide">CAREERS</p>
-          <h2 className="text-4xl md:text-5xl font-bold">JOIN US</h2>
-        </div>
-
-        <div className="grid grid-cols-12 gap-3 mt-10">
-          <div className="col-span-12 md:col-span-5 h-[220px]">
-            <img
-              src="/img/b.png"
-              alt=""
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="col-span-12 md:col-span-7 h-[220px] bg-[#1E6FB6] text-white p-10  flex flex-col justify-center">
-            <h3 className="text-2xl font-semibold mb-3">business in India</h3>
-            <p className="text-sm leading-relaxed max-w-md">
-              Building upon its international expertise, Premier Group has
-              diversified its presence in India across multiple.
-            </p>
-          </div>
-
-          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] "></div>
-
-          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#1E6FB6] text-white flex flex-col items-center justify-center text-center p-6">
-            <img src="/img/Group.png" className="w-12 mb-3" />
-            <h3 className="text-3xl font-bold">200+</h3>
-            <p className="text-sm mt-1">Employees at the Premier Group</p>
-          </div>
-
-          <div className="col-span-12 md:col-span-4 h-[220px] bg-[#86C200] text-white p-8 flex flex-col justify-center">
-            <h3 className="text-2xl font-semibold mb-4">
-              Featured Jobs
-            </h3>
-
-            <div className="flex gap-4">
-              
-              <div className="w-[2px] opacity-80 bg-[#C1FF00]"></div>
-
-              <p className="text-sm leading-relaxed">
-                Building upon its <br />
-                international expertise, <br />
-                Premier Group has <br />
-                diversified its presence.
-              </p>
-
-            </div>
-          </div>
-
-        </div>
-      </section> */}
+      
 
 
       <Footer />
