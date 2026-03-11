@@ -8,7 +8,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { toast } from "react-toastify";
 
-const EditBusiness = () => {
+const Editbusiness = () => {
   const { id } = useParams();
 
   const [formData, setFormData] = useState({
@@ -87,7 +87,7 @@ const EditBusiness = () => {
       });
 
       if (res.status === 200) {
-        toast.success("Business updated successfully!");
+        toast.success("businesses updated successfully!");
       }
     } catch (error) {
       console.error("Error updating:", error);
@@ -102,7 +102,7 @@ const EditBusiness = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Edit Business
+            Edit businesses
           </h1>
 
           {/* Title */}
@@ -195,4 +195,4 @@ const EditBusiness = () => {
   );
 };
 
-export default EditBusiness;
+export default Editbusiness;

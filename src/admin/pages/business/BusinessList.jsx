@@ -5,21 +5,21 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RotatingLines } from "react-loader-spinner";
 
-export default function BusinessList() {
+export default function businessList() {
   const [entries, setEntries] = useState(10);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const [business, setBusiness] = useState([]);
+  const [business, setbusiness] = useState([]);
   const [loading, setLoading] = useState(false);
   const fetchbusiness = async () => {
     try {
       setLoading(true);
       const res = await http.get("/business");
-      setBusiness(res.data);
+      setbusiness(res.data);
       console.log(res.data);
     } catch (error) {
-      console.error("Error fetching business:", error);
+      console.error("Error fetching businesses:", error);
     } finally {
       setLoading(false);
     }
@@ -81,18 +81,18 @@ export default function BusinessList() {
 
   const [deleteLoadingId, setDeleteLoadingId] = useState(null);
   const handleDeletebusiness = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this business?"))
+    if (!window.confirm("Are you sure you want to delete this businesses?"))
       return;
 
     try {
       setDeleteLoadingId(id);
       await http.delete(`/business/${id}`);
 
-      toast.success("business deleted successfully!");
+      toast.success("businesses deleted successfully!");
       fetchbusiness();
     } catch (error) {
       console.error("Delete error:", error);
-      toast.error(error.response.data.message || "Failed to delete business.");
+      toast.error(error.response.data.message || "Failed to delete businesses.");
     } finally {
       setDeleteLoadingId(null);
     }
@@ -155,14 +155,14 @@ export default function BusinessList() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-4 md:p-6 border-b border-gray-200">
           <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
-            Business List
+            businesses List
           </h1>
           <button
-            onClick={() => navigate("/dashboard/business/add")}
+            onClick={() => navigate("/dashboard/businesses/add")}
             className="flex cursor-pointer items-center gap-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors w-full sm:w-auto justify-center"
           >
             <Plus size={18} />
-            Add Business
+            Add businesses
           </button>
         </div>
 

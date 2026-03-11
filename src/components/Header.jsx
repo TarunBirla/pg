@@ -60,12 +60,12 @@ const Header = () => {
           </NavLink>
 
           <NavLink
-            to="/business"
+            to="/businesses"
             className={({ isActive }) =>
               isActive ? "text-[#40BD02]" : "hover:text-[#40BD02]"
             }
           >
-            Business
+            Businesses
           </NavLink>
 
           {/* <NavLink
@@ -99,12 +99,12 @@ const Header = () => {
         {/* RIGHT: BUTTON */}
         <div className="ml-auto hidden md:block">
           <Link
-            to="/business"
+            to="/businesses"
             className="px-5 py-2  text-white font-semibold 
               bg-gradient-to-r from-[#40BD02] to-[#37B8E1] 
               hover:scale-105 transition"
           >
-            Business
+            Businesses
           </Link>
         </div>
 
@@ -176,7 +176,7 @@ const Header = () => {
               </NavLink>
 
               <NavLink
-                to="/business"
+                to="/businesses"
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
                   `py-4 uppercase tracking-wide transition-all duration-300 ${
@@ -186,7 +186,7 @@ const Header = () => {
                   }`
                 }
               >
-                Business
+                Businesses
               </NavLink>
 
               <NavLink

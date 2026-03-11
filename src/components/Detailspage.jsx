@@ -7,8 +7,8 @@ import { useParams } from "react-router-dom";
 
 const Detailspage = () => {
   const { id } = useParams();
-  const [business, setBusiness] = useState([]);
-  const [singleBusiness, setSingleBusiness] = useState(null);
+  const [business, setbusiness] = useState([]);
+  const [singlebusiness, setSinglebusiness] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,11 +20,11 @@ const Detailspage = () => {
       const Alldata = response.data?.data;
 
       const businessData = Alldata?.business || [];
-      setBusiness(businessData);
+      setbusiness(businessData);
 
       // id match
       const matched = businessData.find((item) => item.id === Number(id));
-      setSingleBusiness(matched);
+      setSinglebusiness(matched);
 
     } catch (err) {
       console.error("Error fetching commen data:", err);
@@ -34,7 +34,7 @@ const Detailspage = () => {
   useEffect(() => {
     fetchData();
   }, [id]);
-   if (!singleBusiness) return <p>Loading...</p>;
+   if (!singlebusiness) return <p>Loading...</p>;
   return (
     <>
       <Header />
@@ -49,16 +49,16 @@ const Detailspage = () => {
           <div className="max-w-4xl text-white mt-10 md:mt-0">
             <div className="flex items-center gap-2">
               <span className="w-15 h-[2px] bg-[#40BD02]"></span>
-              <p className="text-sm text-gray-200">Business</p>
+              <p className="text-sm text-gray-200">Businesses</p>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{singleBusiness.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{singlebusiness.title}</h1>
 
             <div className="flex gap-3 items-start">
               <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div>
 
               <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
-                {singleBusiness.description || "Building upon its international expertise, Premier Group has diversified its presence in India across multiple high-growth sectors, aligned with its philosophy of purpose-driven progress and community upliftment"}
+                {singlebusiness.description || "Building upon its international expertise, Premier Group has diversified its presence in India across multiple high-growth sectors, aligned with its philosophy of purpose-driven progress and community upliftment"}
               </p>
             </div>
           </div>
@@ -76,7 +76,7 @@ const Detailspage = () => {
 
       <section className="w-full mt-10  mx-auto px-5 max-w-6xl">
         <div className="mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold">{singleBusiness.title}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold">{singlebusiness.title}</h2>
        
         </div>
       </section>
@@ -85,13 +85,13 @@ const Detailspage = () => {
         {/* Row 1 */}
         <div className="grid md:grid-cols-2 gap-10 items-center mb-16">
           <div className="flex justify-start">
-            <img  src={singleBusiness.image_url || "/dp1.png"} className="w-[350px] h-[250px] object-cover" />
+            <img  src={singlebusiness.image_url || "/dp1.png"} className="w-[350px] h-[250px] object-cover" />
           </div>
 
           <div className="relative">
            
             <p className="text-gray-600 text-sm">
-                             {singleBusiness.description || "Building upon its international expertise, Premier Group has diversified its presence in India across multiple high-growth sectors, aligned with its philosophy of purpose-driven progress and community upliftment"}
+                             {singlebusiness.description || "Building upon its international expertise, Premier Group has diversified its presence in India across multiple high-growth sectors, aligned with its philosophy of purpose-driven progress and community upliftment"}
 
             </p>
           </div>

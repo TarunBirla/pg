@@ -7,7 +7,7 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { toast } from "react-toastify";
 
-const AddBusiness = () => {
+const Addbusiness = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -78,11 +78,11 @@ const AddBusiness = () => {
 
       if (response.status == 201) {
         const result = await response.data;
-        toast.success("Business created successfully!");
+        toast.success("businesses created successfully!");
         handleReset();
       } else {
         const error = await response.data;
-        toast.error(`Error: ${error.message || "Failed to create Business."}`);
+        toast.error(`Error: ${error.message || "Failed to create businesses."}`);
       }
     } catch (error) {
       console.error("Error submitting:", error);
@@ -115,7 +115,7 @@ const AddBusiness = () => {
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-sm">
         <div className="p-6 sm:p-8">
           <h1 className="text-2xl font-normal text-gray-700 mb-6">
-            Add Business
+            Add businesses
           </h1>
 
           <div>
@@ -248,4 +248,4 @@ const AddBusiness = () => {
   );
 };
 
-export default AddBusiness;
+export default Addbusiness;

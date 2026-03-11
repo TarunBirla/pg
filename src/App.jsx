@@ -31,14 +31,14 @@ function App() {
         {/* <Route path="/" element={<LandingPage />} /> */}
         <Route path="/" element={<Home />} />
         <Route path="/abouts" element={<Abouts />} />
-        <Route path="/business" element={<Besiness />} />
+        <Route path="/businesses" element={<Besiness />} />
         <Route path="/joinus" element={<Joinus />} />
 
         <Route path="/news-updates" element={<NewUpdate />} />
         <Route path="/contact" element={<Contactus />} />
         <Route path="/admin/login" element={<Login />} />
         <Route path="/news/:id" element={<NewsDetail />} />
-        <Route path="/business-details/:id" element={<Detailspage />} />
+        <Route path="/businesses-details/:id" element={<Detailspage />} />
 
         <Route
           path="/dashboard/*"

@@ -1164,7 +1164,7 @@ const WhyHysterYale = forwardRef((props, ref) => {
   //               At Hyster-Yale Materials Handling, our goal isn’t just to build
   //               the best lift trucks possible, but to create solutions that enable
   //               our customers to improve the overall efficiency and effectiveness
-  //               of their Business. Product development is informed, on-going and
+  //               of their business. Product development is informed, on-going and
   //               proactive. Our wide global presence, among the largest of all
   //               material handling manufacturers, enables Hyster-Yale to commit the
   //               resources necessary to ensure our lift trucks are some of the most
@@ -1302,7 +1302,7 @@ const WhyHysterYale = forwardRef((props, ref) => {
 
           <p className="animated-text mt-10 md:mt-16 text-[#373737] text-sm md:text-lg font-normal leading-relaxed px-2 md:px-10 lg:px-0">
             At Eurocon, we are committed to delivering reliable,
-            high-performance industrial solutions that enable Business to
+            high-performance industrial solutions that enable business to
             operate with greater efficiency, safety, and precision. With
             expertise in material handling, construction equipment, and
             engineering services, Eurocon focuses on providing products and

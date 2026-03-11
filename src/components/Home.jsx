@@ -177,7 +177,7 @@ const Home = () => {
                         />
 
                         <Link
-                          to="/business"
+                          to="/businesses"
                           className="mt-6 inline-block w-fit px-6 py-2 text-sm font-semibold text-white
                  bg-gradient-to-r from-[#40BD02] to-[#37B8E1]
                  hover:scale-105 transition"
@@ -435,14 +435,14 @@ const Home = () => {
         </div>
       </section>
 
-      {/* BUSINESS SECTION */}
+      {/* business SECTION */}
       {/* desktop */}
       <section className="w-full hidden lg:block bg-white">
         {/* HEADER */}
         <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 gap-12">
           <div>
             <p className="text-[#7ED321] font-semibold tracking-[3px] text-sm mb-4">
-              BUSINESS
+              Businesses
             </p>
 
             <h2 className="text-5xl font-semibold leading-tight text-black">
@@ -551,7 +551,7 @@ const Home = () => {
         {/* HEADER */}
         <div className="px-5 pt-10 pb-6">
           <p className="text-[#40BD02] font-semibold tracking-widest text-sm mb-2">
-            BUSINESS
+            Businesses
           </p>
 
           <h2 className="text-3xl  leading-snug mb-3">

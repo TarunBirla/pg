@@ -6,7 +6,7 @@ import http from "../service/http";
 import { ChevronDown, Search } from "lucide-react";
 import Select from "react-select";
 const Joinus = () => {
-  const [business, setBusiness] = useState([]);
+  const [business, setbusiness] = useState([]);
 
   const countryOptions = [
     { value: "india", label: "India" },
@@ -18,7 +18,7 @@ const Joinus = () => {
       const response = await http.get(`/common`);
       console.log("Fetched data:", response.data);
       const Alldata = response.data?.data;
-      setBusiness(Alldata?.business);
+      setbusiness(Alldata?.business);
     } catch (err) {
       console.error("Error fetching commen data:", err);
     }

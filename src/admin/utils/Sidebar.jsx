@@ -76,9 +76,9 @@ const Sidebar = ({ isOpen, setIsOpen, user }) => {
         { name: "All Global Presence", link: "/dashboard/globalPresence" },
         { name: "Add Global Presence", link: "/dashboard/globalPresence/add" },
 
-        // { type: "title", name: "Business Options" },
-        // { name: "All Business", link: "/dashboard/business" },
-        // { name: "Add Business", link: "/dashboard/business/add" },
+        // { type: "title", name: "businesses Options" },
+        // { name: "All businesses", link: "/dashboard/businesses" },
+        // { name: "Add businesses", link: "/dashboard/businesses/add" },
         // { type: "hr" },
 
         // { type: "title", name: "Journey Options" },
@@ -114,13 +114,13 @@ const Sidebar = ({ isOpen, setIsOpen, user }) => {
       ],
     },
     {
-      id: "business",
-      label: "Business",
+      id: "businesses",
+      label: "businesses",
       icon: Users,
       options: [
-        { type: "title", name: "Business Options" },
-        { name: "All Business", link: "/dashboard/business" },
-        { name: "Add Business", link: "/dashboard/business/add" },
+        { type: "title", name: "businesses Options" },
+        { name: "All businesses", link: "/dashboard/businesses" },
+        { name: "Add businesses", link: "/dashboard/businesses/add" },
         // { type: "hr" },
       ],
     },

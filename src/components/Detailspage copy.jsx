@@ -24,7 +24,7 @@ const Detailspage = () => {
           <div className="max-w-4xl text-white">
             <div className="flex items-center gap-2">
               <span className="w-15 h-[2px] bg-[#40BD02]"></span>
-              <p className="text-sm text-gray-200">Business</p>
+              <p className="text-sm text-gray-200">business</p>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>

@@ -6,14 +6,14 @@ import http from "../service/http";
 import { Link } from "react-router-dom";
 
 const Besiness = () => {
-  const [business, setBusiness] = useState([]);
+  const [business, setbusiness] = useState([]);
 
   const fetchData = async () => {
     try {
       const response = await http.get(`/common`);
       console.log("Fetched data:", response.data);
       const Alldata = response.data?.data;
-      setBusiness(Alldata?.business);
+      setbusiness(Alldata?.business);
     } catch (err) {
       console.error("Error fetching commen data:", err);
     }
@@ -37,10 +37,10 @@ const Besiness = () => {
           <div className="max-w-xl text-white mt-10 md:mt-0">
             {/* <div className="flex items-center gap-2">
               <span className="w-15 h-[2px] bg-[#40BD02]"></span>
-              <p className="text-sm text-gray-200">Business</p>
+              <p className="text-sm text-gray-200">business</p>
             </div> */}
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Business</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Businesses</h1>
 
             <div className="flex gap-3 items-start">
               <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div>
@@ -66,8 +66,8 @@ const Besiness = () => {
 
       <section className="w-full py-12 mb-5 mx-auto px-5 max-w-6xl">
         <div className="mb-10">
-          <p className="text-[#86C200] font-semibold tracking-wide">BUSINESS</p>
-          <h2 className="text-4xl md:text-5xl font-bold">Business</h2>
+          <p className="text-[#86C200] font-semibold tracking-wide">Businesses</p>
+          <h2 className="text-4xl md:text-5xl font-bold">Businesses</h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
@@ -86,7 +86,7 @@ const Besiness = () => {
                 />
 
                 <div className="absolute inset-0 bg-black/20 rounded"></div>
-                  <Link to={`/business-details/${item.id}`}>
+                  <Link to={`/businesses-details/${item.id}`}>
 
                 <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
                   {item.title}
@@ -111,7 +111,7 @@ const Besiness = () => {
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                  <Link to={`/business-details/${business[5].id}`}>
+                  <Link to={`/businesses-details/${business[5].id}`}>
 
               <p className="absolute bottom-12 left-6 text-white text-2xl font-semibold">
                 {business[5].title}
@@ -152,7 +152,7 @@ const Besiness = () => {
           </div>
 
           <div className="col-span-12 md:col-span-7 h-[220px] bg-[#1E6FB6] text-white p-10  flex flex-col justify-center">
-            <h3 className="text-2xl font-semibold mb-3">Business in India</h3>
+            <h3 className="text-2xl font-semibold mb-3">business in India</h3>
             <p className="text-sm leading-relaxed max-w-md">
               Building upon its international expertise, Premier Group has
               diversified its presence in India across multiple.

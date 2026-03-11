@@ -64,7 +64,7 @@ const Header = () => {
               isActive ? "text-[#40BD02]" : "hover:text-[#40BD02]"
             }
           >
-            Business
+            business
           </NavLink>
 
           <NavLink
@@ -94,7 +94,7 @@ const Header = () => {
       bg-gradient-to-r from-[#40BD02] to-[#37B8E1] 
       hover:scale-105 transition"
           >
-            Business
+            business
           </Link>
         </div>
 
@@ -160,7 +160,7 @@ const Header = () => {
                 }`
               }
             >
-              Business
+              business
             </NavLink>
 
             <NavLink

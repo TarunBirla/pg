@@ -404,14 +404,14 @@ const Home = () => {
         </div>
       </section>
 
-      {/* BUSINESS SECTION */}
+      {/* business SECTION */}
       {/* desktop */}
       <section className="w-full hidden lg:block bg-white">
         {/* HEADER */}
         <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 gap-12">
           <div>
             <p className="text-[#7ED321] font-semibold tracking-[3px] text-sm mb-4">
-              BUSINESS
+              business
             </p>
 
             <h2 className="text-5xl font-semibold leading-tight text-black">
@@ -520,7 +520,7 @@ const Home = () => {
         {/* HEADER */}
         <div className="px-5 pt-10 pb-6">
           <p className="text-[#40BD02] font-semibold tracking-widest text-sm mb-2">
-            BUSINESS
+            business
           </p>
 
           <h2 className="text-3xl  leading-snug mb-3">

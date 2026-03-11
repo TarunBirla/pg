@@ -48,7 +48,7 @@ const Footer = () => {
                   </li>
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     {" "}
-                    <Link to="/business">Business</Link>
+                    <Link to="/businesses">Businesses</Link>
                   </li>
 
                   <li className="hover:text-[#40BD02] cursor-pointer">
