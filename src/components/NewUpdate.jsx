@@ -64,14 +64,14 @@ const NewUpdate = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
           <div className="max-w-xl text-white mt-10 md:mt-0">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mb-4">
               News & Updates
             </h1>
 
             <div className="flex gap-3 items-start">
               {/* <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div> */}
 
-              {/* <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
+              {/* <p className="text-gray-200 leading-relaxed  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] max-w-md">
                 Building upon its international expertise, Premier Group has
                 diversified its presence in India across multiple high-growth
                 sectors, aligned with its philosophy of purpose-driven progress
@@ -130,7 +130,7 @@ const NewUpdate = () => {
                 </div>
 
                 <p
-                  className="text-gray-700 text-[15px] leading-relaxed"
+                  className="text-gray-700  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: news[0]?.description }}
                 ></p>
               </div>
@@ -177,7 +177,7 @@ const NewUpdate = () => {
                 />
 
                 {/* Title */}
-                <h3 className="md:font-semibold  text-lg md:text-[15px] font-bold leading-snug order-1 md:order-2">
+                <h3 className="md:font-semibold   text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] font-bold leading-snug order-1 md:order-2">
                   {item.title}
                 </h3>
 
@@ -215,7 +215,7 @@ const NewUpdate = () => {
 
           {/* Recent News */}
           <div>
-            <h4 className="font-semibold mb-4">Recent News & Updates</h4>
+            <h4 className="font-semibold  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]  mb-4">Recent News & Updates</h4>
             <div className="space-y-4">
               {news.slice(0, 3).map((item, index) => (
                 <div key={index} className="flex gap-3">

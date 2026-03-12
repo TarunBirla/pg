@@ -32,12 +32,12 @@ const GlobalMap = () => {
           to-[#FFFFFF]
         "
       >
-        <h1 className="text-3xl md:text-4xl font-bold mb-6">
+        <h1 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mb-6">
           {globalPresence?.title}
         </h1>
 
         <div
-          className="max-w-3xl mx-auto text-gray-700 leading-relaxed mb-10 line-clamp-4"
+          className="max-w-3xl  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mx-auto text-gray-700 leading-relaxed mb-10 line-clamp-4"
           dangerouslySetInnerHTML={{ __html: globalPresence?.description }}
         ></div>
 

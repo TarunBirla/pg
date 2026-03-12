@@ -110,7 +110,7 @@ useEffect(() => {
       {/* Heading */}
       <div className="mb-12">
         <p className="text-green-600 font-semibold tracking-wide">BLOG</p>
-        <h2 className="text-4xl font-bold mt-2">News & Updates</h2>
+        <h2 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mt-2">News & Updates</h2>
       </div>
 
       {/* Slider Row */}
@@ -160,7 +160,7 @@ useEffect(() => {
                   </h3>
 
                   <div
-                    className="text-gray-600 text-sm leading-relaxed line-clamp-3"
+                    className="text-gray-600  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed line-clamp-3"
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   />
                 </>

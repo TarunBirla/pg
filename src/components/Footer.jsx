@@ -21,9 +21,9 @@ const Footer = () => {
     alt="PG Logo"
     className="h-10 md:h-14 w-auto object-contain mb-2 order-1 md:order-1"
   />
-
+ 
   {/* DESCRIPTION */}
-  <p className="text-[#CCCCCC] mb-3 md:mb-0 text-sm leading-relaxed max-w-xs order-2 md:order-2">
+  <p className="text-[#CCCCCC] mb-3 md:mb-0 text-[14px] leading-[20px] sm:text-[16px] sm:leading-[20px] leading-relaxed max-w-xs order-2 md:order-2">
     Premier Group unites under a shared vision to drive sustainable
     growth, empower communities, and inspire progress for future
     generations.
@@ -38,7 +38,7 @@ const Footer = () => {
                 <h4 className="text-lg font-semibold text-white mb-4">
                   Quick Link
                 </h4>
-                <ul className="space-y-2 text-[#CCCCCC] text-sm">
+                <ul className="space-y-2 text-[#CCCCCC] text-[14px] leading-[20px] sm:text-[16px] sm:leading-[20px]">
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     <Link to="/">Home</Link>
                   </li>
@@ -69,7 +69,7 @@ const Footer = () => {
               {/* LEGAL */}
               <div className="">
                 <h4 className="text-lg font-semibold text-white mb-4">Legal</h4>
-                <ul className="space-y-2 text-[#CCCCCC] text-sm">
+                <ul className="space-y-2 text-[#CCCCCC] text-[14px] leading-[20px] sm:text-[16px] sm:leading-[20px]">
                   <li className="hover:text-[#40BD02] cursor-pointer">
                     <Link to="">Terms & Conditions </Link>
                   </li>
@@ -123,7 +123,7 @@ const Footer = () => {
                   <div className="flex border border-[#98C20B] w-80">
                     <input
                       placeholder="Enter your email to subscribe"
-                      className="bg-transparent px-3 py-2 text-sm outline-none text-white w-full"
+                      className="bg-transparent px-3 py-2 text-[14px] leading-[20px] sm:text-[16px] sm:leading-[20px] outline-none text-white w-full"
                     />
                     <button className="bg-[#98C20B] px-4 flex items-center justify-center">
                       →
@@ -136,7 +136,7 @@ const Footer = () => {
         </div>
 
         {/* COPYRIGHT BAR */}
-        <div className="w-full bg-[#0C0C0C] text-center py-4 text-gray-400 text-sm">
+        <div className="w-full bg-[#0C0C0C] text-center py-4 text-gray-400 text-[14px] leading-[20px] sm:text-[16px] sm:leading-[20px]">
           Copyright © 2025{" "}
           <span className="text-[#40BD02] font-semibold cursor-pointer">
             Premier Group

@@ -84,7 +84,7 @@ const Contactus = () => {
           <div className="max-w-xl text-white ">
             <div className="flex items-center gap-2">
               <span className="w-15 h-[2px] bg-[#40BD02]"></span>
-              <p className="text-sm text-gray-200">Contact</p>
+              <p className=" text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] text-gray-200">Contact</p>
             </div>
 
             <h1 className="text-3xl md:text-5xl font-bold mb-4">Contact Us</h1>
@@ -103,12 +103,12 @@ const Contactus = () => {
           <div className="max-w-xl text-white mt-10 md:mt-0">
            
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+            <h1 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mb-4">Contact Us</h1>
 
             <div className="flex gap-3 items-start">
               {/* <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div> */}
 
-              {/* <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
+              {/* <p className="text-gray-200 leading-relaxed  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] max-w-md">
                 Building upon its international expertise, Premier Group has
                 diversified its presence in India across multiple high-growth
                 sectors, aligned with its philosophy of purpose-driven progress
@@ -131,8 +131,8 @@ const Contactus = () => {
           </div>
 
           <div>
-            <h2 className="text-4xl  mb-3">Need more help?</h2>
-            <p className="text-gray-600 mb-8">
+            <h2 className="text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px]   mb-3">Need more help?</h2>
+            <p className="text-gray-600  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-8">
               We’d love to hear from you! Whether you’re looking to buy, sell, or invest in real estate, our team is here to guide you every step of the way.
             </p>
 
@@ -143,7 +143,7 @@ const Contactus = () => {
               </h5>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4  ">
               <div>
-                <label className="block text-sm mb-1">
+                <label className="block  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-1">
                   Name <span className="text-red-500">*</span>
                 </label>
                 <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
@@ -163,7 +163,7 @@ const Contactus = () => {
 
               {/* EMAIL */}
               <div>
-                <label className="block text-sm mb-1">
+                <label className="block  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-1">
                   Email <span className="text-red-500">*</span>
                 </label>
                 <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
@@ -173,7 +173,7 @@ const Contactus = () => {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="your@email.com"
-                    className="w-full bg-white px-4 py-2  outline-none"
+                    className="w-full bg-white px-4 py-2  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] outline-none"
                   />
                 </div>
                 {errors.email && (
@@ -184,7 +184,7 @@ const Contactus = () => {
 
               {/* PHONE */}
               <div>
-                <label className="block text-sm mb-1">
+                <label className="block  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-1">
                   Phone Number <span className="text-red-500">*</span>
                 </label>
                 <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
@@ -210,7 +210,7 @@ const Contactus = () => {
 
               {/* MESSAGE */}
               <div>
-                <label className="block text-sm mb-1">
+                <label className="block  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-1">
                   Message <span className="text-red-500">*</span>
                 </label>
                 <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
@@ -247,14 +247,14 @@ const Contactus = () => {
 
                 {/* Email Text */}
                 <div>
-                  <h4 className="font-semibold text-lg">Email Address</h4>
+                  <h4 className="font-semibold text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">Email Address</h4>
                   <p className="text-gray-600">contact@premiergroup.co</p>
                 </div>
               </div>
 
               {/* RIGHT — Social Icons */}
               <div>
-                <h4 className="text-lg font-semibold mb-3 md:text-right">
+                <h4 className=" text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] font-semibold mb-3 md:text-right">
                   Connect with us
                 </h4>
 

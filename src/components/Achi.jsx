@@ -168,7 +168,7 @@ const Achi = () => {
         {/* Heading */}
         <div className="mb-5">
           <p className="text-green-600 font-semibold tracking-wide">COMPANY</p>
-          <h2 className="text-3xl  mt-2">Architects of Growth</h2>
+          <h2 className="text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px]    mt-2">Architects of Growth</h2>
         </div>
 
         {/* Slider Row */}
@@ -197,7 +197,7 @@ const Achi = () => {
   
                 >
                   <div
-                    className="text-sm leading-relaxed "
+                    className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed "
                     dangerouslySetInnerHTML={{ __html: item?.description }}
                   ></div>
 

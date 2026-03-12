@@ -124,12 +124,12 @@ const Joinus = () => {
               <p className="text-sm text-gray-200">Careers</p>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">JOIN US</h1>
+            <h1 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mb-4">JOIN US</h1>
 
             <div className="flex gap-3 items-start">
               <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div>
 
-              <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
+              <p className="text-gray-200 leading-relaxed  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] max-w-md">
                 Building upon its international expertise, Premier Group has
                 diversified its presence in India across multiple high-growth
                 sectors, aligned with its philosophy of purpose-driven progress

@@ -1160,7 +1160,7 @@ const WhyHysterYale = forwardRef((props, ref) => {
   //           </h2>
 
   //           <div className="px-[2rem] md:px-[5rem] mt-[7rem]">
-  //             <p className="animated-text text-[#373737] text-sm md:text-base font-normal">
+  //             <p className="animated-text text-[#373737]  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] font-normal">
   //               At Hyster-Yale Materials Handling, our goal isn’t just to build
   //               the best lift trucks possible, but to create solutions that enable
   //               our customers to improve the overall efficiency and effectiveness

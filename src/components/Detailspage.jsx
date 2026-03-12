@@ -52,12 +52,12 @@ const Detailspage = () => {
               <p className="text-sm text-gray-200">Businesses</p>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{singlebusiness.title}</h1>
+            <h1 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mb-4">{singlebusiness.title}</h1>
 
             <div className="flex gap-3 items-start">
               <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div>
 
-              <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
+              <p className="text-gray-200 leading-relaxed  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] max-w-md">
                 {singlebusiness.description || "Building upon its international expertise, Premier Group has diversified its presence in India across multiple high-growth sectors, aligned with its philosophy of purpose-driven progress and community upliftment"}
               </p>
             </div>
@@ -76,7 +76,7 @@ const Detailspage = () => {
 
       <section className="w-full mt-10  mx-auto px-5 max-w-6xl">
         <div className="mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold">{singlebusiness.title}</h2>
+          <h2 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold">{singlebusiness.title}</h2>
        
         </div>
       </section>
@@ -90,7 +90,7 @@ const Detailspage = () => {
 
           <div className="relative">
            
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">
                              {singlebusiness.description || "Building upon its international expertise, Premier Group has diversified its presence in India across multiple high-growth sectors, aligned with its philosophy of purpose-driven progress and community upliftment"}
 
             </p>

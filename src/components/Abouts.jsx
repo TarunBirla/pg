@@ -30,7 +30,7 @@ const Abouts = () => {
       <Header />
 
       {/* TOP HERO BANNER */}
-       {/* <section
+      {/* <section
         className=" hidden md:block relative w-full h-[50vh] md:h-[85vh] bg-contain md:bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: "url('/img/about.png')",
@@ -38,7 +38,7 @@ const Abouts = () => {
       >
         
       </section> */}
-       {/* <section
+      {/* <section
         className="block md:hidden relative w-full h-[50vh] sm:h-[60vh] md:h-[85vh]  bg-cover md:bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/aboutimg.png')" }}
       >
@@ -58,14 +58,14 @@ the present</h1>
             <div className="flex gap-3 items-start">
               <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div>
 
-              <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
+              <p className="text-gray-200 leading-relaxed  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] max-w-md">
                Building a future where progress meets responsibility Premier Group leads with purpose, innovation, and a commitment to sustainable growth.
               </p>
             </div>
           </div>
         </div>
       </section> */}
-        <section
+      <section
         className="relative w-full h-[50vh] sm:h-[60vh] md:h-[85vh] bg-cover md:bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/aboutimg.png')" }}
       >
@@ -73,16 +73,14 @@ the present</h1>
 
         <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
           <div className="max-w-xl text-white mt-10 md:mt-0">
-           
-
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Building the 
-future, leading 
-the present</h1>
+            <h1 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mb-4">
+              Building the future, leading the present
+            </h1>
 
             <div className="flex gap-3 items-start">
               <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div>
 
-              <p className="text-gray-200 leading-relaxed text-sm md:text-base max-w-md">
+              <p className="text-gray-200 leading-relaxed  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] max-w-md">
                 Building upon its international expertise, Premier Group has
                 diversified its presence in India across multiple high-growth
                 sectors, aligned with its philosophy of purpose-driven progress
@@ -127,7 +125,7 @@ the present</h1>
           </h2>
 
           <p
-            className="text-gray-700 leading-relaxed mb-6"
+            className="text-gray-700   text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed mb-6"
             dangerouslySetInnerHTML={{ __html: abouts?.description }}
           ></p>
 
@@ -143,10 +141,10 @@ the present</h1>
         <div className="md:w-1/2 bg-[#EEF5D7] mt-20  flex flex-col justify-center ">
           <p className="text-green-600 font-semibold tracking-wide">CHAIRMAN</p>
 
-          <h2 className="text-2xl  mb-4">{abouts?.title}</h2>
+          <h2 className="text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px]  mb-4">{abouts?.title}</h2>
 
           <p
-            className="text-gray-700 leading-relaxed mb-6"
+            className="text-gray-700 text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed mb-6"
             dangerouslySetInnerHTML={{ __html: abouts?.description }}
           ></p>
         </div>
@@ -166,13 +164,13 @@ the present</h1>
       <section className="w-full py-16 mx-auto px-5 max-w-6xl">
         {/* Heading */}
         <p className="text-[#98C20B] font-semibold tracking-wide">GROWTH</p>
-        <h2 className="text-4xl font-bold mt-2 mb-12">{aboutsdeco?.title}</h2>
+        <h2 className="text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px]  font-bold mt-2 mb-12">{aboutsdeco?.title}</h2>
 
         {/* Two Column Layout */}
         <div className="grid md:grid-cols-2 gap-2">
           {/* LEFT BLUE BOX */}
           <div
-            className="bg-[#0B5394] text-white p-8 md:p-12  flex flex-col justify-center"
+            className="bg-[#0B5394] text-white p-8 md:p-12  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]  flex flex-col justify-center"
             dangerouslySetInnerHTML={{ __html: aboutsdeco?.description }}
           ></div>
 
@@ -190,8 +188,8 @@ the present</h1>
       <JourneyTimeline journey={journey} />
 
       <section className="w-full py-16 mx-auto px-5 max-w-6xl">
-          <div
-            className="
+        <div
+          className="
               text-center 
               bg-gradient-to-b from-[#FFFFFF] to-[#CCCCCC] 
               p-6 md:p-10 
@@ -199,12 +197,12 @@ the present</h1>
               max-w-8xl
               mx-auto
             "
-          >
-          <p className="text-base md:text-lg font-semibold font-[Syne] text-gray-700 leading-relaxed">
+        >
+          <p className=" text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] font-semibold font-[Syne] text-gray-700 leading-relaxed">
             This 25-year journey—from resilient roots to global leadership—is a
             testament to our team’s spirit and our legacy of excellence. As we
-            celebrate this milestone, we honor the past and boldly shape the next
-            quarter-century.
+            celebrate this milestone, we honor the past and boldly shape the
+            next quarter-century.
           </p>
         </div>
       </section>

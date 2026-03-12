@@ -7,7 +7,7 @@ const JourneyTimeline = ({ journey }) => {
         <p className="text-[#9AD000] font-semibold tracking-widest mb-2">
           JOURNEY
         </p>
-        <h2 className="text-4xl font-bold text-balck mb-14">{journey.title}</h2>
+        <h2 className="text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px]  font-bold text-balck mb-14">{journey.title}</h2>
       </div>
       <div className="w-full py-16 bg-[#052842]">
         <div className="max-w-6xl mx-auto px-5">
@@ -35,7 +35,7 @@ const JourneyTimeline = ({ journey }) => {
 
                 {/* DESCRIPTION */}
                 <div
-                  className="text-[16px] font-[Syne] leading-7 text-white/90"
+                  className=" text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] font-[Syne] leading-7 text-white/90"
                   dangerouslySetInnerHTML={{ __html: step.description }}
                 />
               </div>

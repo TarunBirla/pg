@@ -252,7 +252,7 @@ const Home = () => {
               ABOUT US
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+            <h2 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold leading-tight">
               {abouts?.title?.split(" ")?.map((word, index) =>
                 (index + 1) % 3 === 0 ? (
                   <>
@@ -312,7 +312,7 @@ const Home = () => {
 
             {/* DESCRIPTION */}
             <p
-              className="text-gray-700 text-sm md:text-base leading-relaxed mb-6"
+              className="text-gray-700  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed mb-6"
               dangerouslySetInnerHTML={{ __html: abouts?.description }}
             ></p>
 
@@ -385,7 +385,7 @@ const Home = () => {
 
             {/* DESCRIPTION */}
             <p
-              className="text-gray-700 text-sm md:text-base leading-relaxed mb-6"
+              className="text-gray-700  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed mb-6"
               dangerouslySetInnerHTML={{ __html: abouts?.description }}
             ></p>
 

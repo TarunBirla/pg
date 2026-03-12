@@ -154,10 +154,9 @@ const Home = () => {
                   <div className="max-w-xl text-white mt-10 md:mt-0">
                     <h1
                       className="text-white font-[Syne] font-[700] tracking-[0.01em]
-                        text-[30px] leading-[46px]
-                        sm:text-[56px] sm:leading-[58px]
-                        md:text-[72px] md:leading-[70px]
-                        lg:text-[72px] lg:leading-[70px]"
+                        text-[30px] leading-[36px]
+                        sm:text-[40px] sm:leading-[48px]
+                       "
                     >
                       {slide.heading}
                     </h1>
@@ -167,10 +166,9 @@ const Home = () => {
                       <div className="flex flex-col">
                         <p
                           className="text-white/90 font-[Poppins] font-[400] tracking-[0.01em]
-                            text-[10px] leading-[20px]
-                            sm:text-[18px] sm:leading-[30px]
-                            md:text-[20px] md:leading-[32px]
-                            lg:text-[20px] lg:leading-[32px]"
+                            text-[14px] leading-[20px]
+                            sm:text-[18px] sm:leading-[25px]
+                           "
                           dangerouslySetInnerHTML={{
                             __html: slide?.description,
                           }}
@@ -283,7 +281,7 @@ const Home = () => {
               ABOUT US
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+            <h2 className="text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold leading-tight">
               {abouts?.title?.split(" ")?.map((word, index) =>
                 (index + 1) % 3 === 0 ? (
                   <>
@@ -298,7 +296,7 @@ const Home = () => {
 
           <div className="flex flex-col justify-center">
             <p
-              className="text-gray-600 text-base leading-relaxed mt-4 max-w-lg"
+              className="text-gray-600  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed mt-4 max-w-lg"
               dangerouslySetInnerHTML={{ __html: abouts?.summary }}
             ></p>
           </div>
@@ -317,33 +315,33 @@ const Home = () => {
             {/* STATS */}
             <div className="flex items-center gap-10 mb-6">
               <div>
-                <h3 className="text-3xl font-bold">
+                <h3 className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]font-bold">
                   {abouts?.companies_count}
                   <span className="text-[#40BD02]">+</span>
                 </h3>
-                <p className="text-gray-500 text-sm">COMPANIES</p>
+                <p className="text-gray-500  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">COMPANIES</p>
               </div>
 
               <div>
-                <h3 className="text-3xl font-bold">
+                <h3 className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]font-bold">
                   {abouts?.employee_count}
                   <span className="text-[#40BD02]">+</span>
                 </h3>
-                <p className="text-gray-500 text-sm">Employees</p>
+                <p className="text-gray-500  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">Employees</p>
               </div>
 
               <div>
-                <h3 className="text-3xl font-bold">
+                <h3 className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]font-bold">
                   {abouts?.nations_count}
                   <span className="text-[#40BD02]">+</span>
                 </h3>
-                <p className="text-gray-500 text-sm">Nations strong</p>
+                <p className="text-gray-500  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">Nations strong</p>
               </div>
             </div>
 
             {/* DESCRIPTION */}
             <p
-              className="text-gray-700 text-sm md:text-base leading-relaxed mb-6"
+              className="text-gray-700  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed mb-6"
               dangerouslySetInnerHTML={{ __html: abouts?.description }}
             ></p>
 
@@ -366,7 +364,7 @@ const Home = () => {
               ABOUT US
             </p>
 
-            <h2 className=" text-3xl font-semibold  leading-tight">
+            <h2 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px]     font-semibold  leading-tight">
               {abouts?.title?.split(" ")?.map((word, index) =>
                 (index + 1) % 3 === 0 ? (
                   <>
@@ -381,7 +379,7 @@ const Home = () => {
 
           <div className="flex flex-col justify-center">
             <p
-              className="text-gray-600 text-base leading-relaxed  max-w-lg"
+              className="text-gray-600 text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed  max-w-lg"
               dangerouslySetInnerHTML={{ __html: abouts?.summary }}
             ></p>
           </div>
@@ -390,33 +388,33 @@ const Home = () => {
             {/* STATS */}
             <div className="flex items-center gap-10 mb-6">
               <div>
-                <h3 className="text-3xl ">
+                <h3 className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">
                   {abouts?.companies_count}
                   <span className="text-[#0A70B1]">+</span>
                 </h3>
-                <p className="text-gray-500 text-sm">COMPANIES</p>
+                <p className="text-gray-500 text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">COMPANIES</p>
               </div>
 
               <div>
-                <h3 className="text-3xl ">
+                <h3 className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">
                   {abouts?.employee_count}
                   <span className="text-[#0A70B1]">+</span>
                 </h3>
-                <p className="text-gray-500 text-sm">Employees</p>
+                <p className="text-gray-500 text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">Employees</p>
               </div>
 
               <div>
-                <h3 className="text-3xl ">
+                <h3 className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">
                   {abouts?.nations_count}
                   <span className="text-[#0A70B1]">+</span>
                 </h3>
-                <p className="text-gray-500 text-sm">Nations strong</p>
+                <p className="text-gray-500 text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">Nations strong</p>
               </div>
             </div>
 
             {/* DESCRIPTION */}
             <p
-              className="text-gray-700 text-sm md:text-base leading-relaxed mb-6"
+              className="text-gray-700 text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed mb-6"
               dangerouslySetInnerHTML={{ __html: abouts?.description }}
             ></p>
 
@@ -445,14 +443,14 @@ const Home = () => {
               Businesses
             </p>
 
-            <h2 className="text-5xl font-semibold leading-tight text-black">
+            <h2 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px]  font-semibold leading-tight text-black">
               {section?.title}
             </h2>
           </div>
 
           <div className="flex items-center">
             <p
-              className="text-gray-500 max-w-md text-lg leading-relaxed"
+              className="text-gray-500 max-w-md text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed"
               dangerouslySetInnerHTML={{ __html: section?.description }}
             />
           </div>
@@ -497,7 +495,7 @@ const Home = () => {
                     {/* CENTER VERTICAL TEXT */}
                     <div className="flex justify-center mb-2 border-b-3 pb-2 px-2 border-white  items-end flex-1">
                       <div
-                        className="text-white font-medium text-[15px] tracking-wide text-center"
+                        className="text-white font-medium text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] tracking-wide text-center"
                         style={{
                           writingMode: "vertical-rl",
                           transform: "rotate(180deg)",
@@ -535,7 +533,7 @@ const Home = () => {
               "
               >
                 <p
-                  className="text-sm leading-relaxed text-white/90"
+                  className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed text-white/90"
                   dangerouslySetInnerHTML={{
                     __html: activeTab?.description,
                   }}
@@ -554,7 +552,7 @@ const Home = () => {
             Businesses
           </p>
 
-          <h2 className="text-3xl  leading-snug mb-3">
+          <h2 className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-snug mb-3">
             {section?.title?.split(" ").map((word, i) => (
               <span key={i}>
                 {(i + 1) % 3 === 0 ? (
@@ -569,7 +567,7 @@ const Home = () => {
           </h2>
 
           <p
-            className="text-gray-600 text-sm leading-relaxed"
+            className="text-gray-600 text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed"
             dangerouslySetInnerHTML={{ __html: section?.description }}
           />
         </div>
@@ -592,7 +590,7 @@ const Home = () => {
 
               {/* OVERLAY */}
               <div className="absolute inset-0 bg-black/40 flex items-end">
-                <p className="text-white text-sm font-semibold p-3">
+                <p className="text-white text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] font-semibold p-3">
                   {item.title}
                 </p>
               </div>
@@ -610,7 +608,7 @@ const Home = () => {
         {/* TOP BLUE BAR */}
         <div className=" w-full bg-[#0A5A9C]">
           <div className="max-w-6xl mx-auto py-10 px-2">
-            <h2 className="text-white text-3xl md:text-[32px] font-bold tracking-wide uppercase">
+            <h2 className="text-white text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]md:text-[32px] font-bold tracking-wide uppercase">
               CHAIRMAN’S MESSAGE
             </h2>
           </div>
@@ -621,7 +619,7 @@ const Home = () => {
           {/* LEFT SIDE TEXT */}
           <div className="flex flex-col justify-center">
             <p
-              className="text-[#4A4A4A] text-[17px] leading-[30px]"
+              className="text-[#4A4A4A]  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]"
               dangerouslySetInnerHTML={{ __html: abouts1?.description }}
             ></p>
 
@@ -699,7 +697,7 @@ const Home = () => {
           {/* LEFT SIDE TEXT */}
           <div className="flex flex-col justify-center">
             <p
-              className="text-[#4A4A4A] text-[17px] leading-[30px]"
+              className="text-[#4A4A4A]  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]"
               dangerouslySetInnerHTML={{ __html: abouts1?.description }}
             ></p>
 
@@ -725,7 +723,7 @@ const Home = () => {
         {/* Heading */}
         <div className="mb-12">
           <p className="text-green-600 font-semibold tracking-wide">COMPANY</p>
-          <h2 className="text-4xl font-bold mt-2">Architects of Growth</h2>
+          <h2 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mt-2">Architects of Growth</h2>
         </div>
 
         {/* Grid */}
@@ -760,7 +758,7 @@ const Home = () => {
               >
                 {/* DESCRIPTION (HTML from API) */}
                 <div
-                  className="text-sm leading-relaxed"
+                  className="text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] leading-relaxed "
                   dangerouslySetInnerHTML={{ __html: item?.description }}
                 ></div>
 
