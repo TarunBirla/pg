@@ -286,7 +286,13 @@ const Contactus = () => {
       </section>
 
     <section className="w-full">
+              <a
+  href="https://maps.app.goo.gl/ypQ9XFfAASKzmze78"
+  target="_blank"
+  rel="noopener noreferrer"
+>
         <img src="/image 104.png" className="w-full" alt="Banner" />
+        </a>
       </section>
       <Footer />
     </>
