@@ -87,14 +87,10 @@ const NewUpdate = () => {
         <img src="/img/image.png" className="w-full  object-cover" />
       </section>
 
-      {/* Main Blog Section */}
       <section className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-12 gap-10">
-        {/* LEFT MAIN POST */}
         <div className="md:col-span-8 space-y-3">
-          {/* TOP: FIRST NEWS ITEM AS FEATURED */}
-          {news.length > 0 && (
+          {/* {news.length > 0 && (
             <div
-              //  onClick={() => navigate(`/news/${news[0]?.id}`, { state: news[0] })}
               onClick={() => {
                 if (news[0]?.id === 2) {
                   window.open(
@@ -112,7 +108,6 @@ const NewUpdate = () => {
               }}
               className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6"
             >
-              {/* Left Text Side */}
               <div>
                 <h2 className="text-lg md:text-3xl font-bold leading-snug">
                   {news[0]?.title}
@@ -135,7 +130,6 @@ const NewUpdate = () => {
                 ></p>
               </div>
 
-              {/* Right Image Side */}
               <div>
                 <img
                   src={news[0]?.image_url}
@@ -143,13 +137,13 @@ const NewUpdate = () => {
                 />
               </div>
             </div>
-          )}
+          )} */}
 
-          {/* BOTTOM GRID OF NEWS */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-3">
-            {news.slice(1, 4).map((item, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-3 ">
+            {news.slice(0, 4).map((item, index) => (
               <div
                 key={index}
+                
                 onClick={() => {
                   if (!item) return;
 
@@ -167,22 +161,20 @@ const NewUpdate = () => {
                     navigate(`/news/${item.id}`, { state: item });
                   }
                 }}
-                className="flex flex-col"
+                className=" bg-white shadow-md md:mt-0 mt-6 rounded overflow-hidden hover:shadow-lg transition cursor-pointer"
               >
                 {/* Image */}
                 <img
                   src={item.image_url}
-                  className="mb-3 md:mt-0 mt-6 w-full h-32 object-cover order-3 md:order-1"
+                  className="mb-3 md:mt-0  w-full h-32 object-cover order-3 md:order-1"
                   alt=""
                 />
 
                 {/* Title */}
-                <h3 className="md:font-semibold   text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] font-bold leading-snug order-1 md:order-2">
+                <h3 className="md:font-semibold  line-clamp-3 px-4 text-[14px] leading-[20px] sm:text-[14px] sm:leading-[20px] font-bold leading-snug order-1 md:order-2">
                   {item.title}
                 </h3>
-
-                {/* Date */}
-                <div className="flex items-center gap-2 text-gray-500 text-sm mt-2 order-2 md:order-3">
+                <div className="flex items-center gap-2  px-4 text-[#40BD02] text-sm mt-2 order-2 md:order-3">
                   <Calendar size={16} />
                   {new Date(item.createdAt).toLocaleDateString("en-IN", {
                     day: "2-digit",
@@ -190,6 +182,14 @@ const NewUpdate = () => {
                     year: "numeric",
                   })}
                 </div>
+                  <p
+          className="text-gray-600 text-sm line-clamp-3 px-4 mt-2"
+          dangerouslySetInnerHTML={{ __html: item?.description }}
+        />
+         <button className="text-[#40BD02] mt-3 text-sm px-4 mb-3 hover:underline">
+          Read More
+        </button>
+
               </div>
             ))}
           </div>
@@ -227,7 +227,7 @@ const NewUpdate = () => {
                     <p className="text-sm font-medium leading-tight">
                       {item.title}
                     </p>
-                    <p className="text-xs text-green-600 mt-1">
+                    <p className="text-xs text-[#40BD02] mt-1">
                       {new Date(item.createdAt).toLocaleDateString("en-IN", {
                         day: "2-digit",
                         month: "short",

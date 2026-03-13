@@ -93,7 +93,7 @@ const Contactus = () => {
           </div>
         </div>
       </section> */}
-       <section
+      <section
         className="relative w-full h-[50vh] sm:h-[60vh] md:h-[85vh] bg-cover md:bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/contact.png')" }}
       >
@@ -101,9 +101,9 @@ const Contactus = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6">
           <div className="max-w-xl text-white mt-10 md:mt-0">
-           
-
-            <h1 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mb-4">Contact Us</h1>
+            <h1 className=" text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px] font-bold mb-4">
+              Contact Us
+            </h1>
 
             <div className="flex gap-3 items-start">
               {/* <div className="w-[2px] bg-[#40BD02] h-20 mt-4"></div> */}
@@ -131,9 +131,13 @@ const Contactus = () => {
           </div>
 
           <div>
-            <h2 className="text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px]   mb-3">Need more help?</h2>
+            <h2 className="text-[30px] leading-[36px] sm:text-[40px] sm:leading-[48px]   mb-3">
+              Need more help?
+            </h2>
             <p className="text-gray-600  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-8">
-              We’d love to hear from you! Whether you’re looking to buy, sell, or invest in real estate, our team is here to guide you every step of the way.
+              We’d love to hear from you! Whether you’re looking to buy, sell,
+              or invest in real estate, our team is here to guide you every step
+              of the way.
             </p>
 
             <form className="space-y-5" onSubmit={handleSubmit}>
@@ -142,44 +146,44 @@ const Contactus = () => {
                 Get in touch with us.
               </h5>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4  ">
-              <div>
-                <label className="block  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-1">
-                  Name <span className="text-red-500">*</span>
-                </label>
-                <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
-                  <input
-                    type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Your Name"
-                    className="w-full bg-white px-4 py-2  outline-none"
-                  />
+                <div>
+                  <label className="block  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-1">
+                    Name <span className="text-red-500">*</span>
+                  </label>
+                  <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
+                    <input
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Your Name"
+                      className="w-full bg-white px-4 py-2  outline-none"
+                    />
+                  </div>
+                  {errors.name && (
+                    <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                  )}
                 </div>
-                {errors.name && (
-                  <p className="text-red-500 text-xs mt-1">{errors.name}</p>
-                )}
-              </div>
 
-              {/* EMAIL */}
-              <div>
-                <label className="block  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-1">
-                  Email <span className="text-red-500">*</span>
-                </label>
-                <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="your@email.com"
-                    className="w-full bg-white px-4 py-2  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] outline-none"
-                  />
+                {/* EMAIL */}
+                <div>
+                  <label className="block  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] mb-1">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <div className="p-[2px]  bg-gradient-to-r from-[#37B8E1] to-[#40BD02]">
+                    <input
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="your@email.com"
+                      className="w-full bg-white px-4 py-2  text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px] outline-none"
+                    />
+                  </div>
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                  )}
                 </div>
-                {errors.email && (
-                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                )}
-              </div>
               </div>
 
               {/* PHONE */}
@@ -236,10 +240,8 @@ const Contactus = () => {
             </form>
 
             <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-
               {/* LEFT — Email Section */}
               <div className="flex items-center gap-4">
-                
                 {/* Circle Icon */}
                 <div className="w-12 h-12 rounded-full border-2 border-[#37B8E1] flex items-center justify-center">
                   <Mail className="text-[#37B8E1]" size={22} />
@@ -247,7 +249,9 @@ const Contactus = () => {
 
                 {/* Email Text */}
                 <div>
-                  <h4 className="font-semibold text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">Email Address</h4>
+                  <h4 className="font-semibold text-[14px] leading-[20px] sm:text-[18px] sm:leading-[25px]">
+                    Email Address
+                  </h4>
                   <p className="text-gray-600">contact@premiergroup.co</p>
                 </div>
               </div>
@@ -260,38 +264,37 @@ const Contactus = () => {
 
                 <div className="flex md:justify-start gap-5">
                   <Facebook size={18} />
-                    <a
-                      href="https://www.instagram.com/premiergroup.co?igsh=MTlkM2FsYzJpdTdsMg%3D%3D"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#40BD02] transition-colors"
-                    >
-                      <Instagram size={18} />
-                    </a>
+                  <a
+                    href="https://www.instagram.com/premiergroup.co?igsh=MTlkM2FsYzJpdTdsMg%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#40BD02] transition-colors"
+                  >
+                    <Instagram size={18} />
+                  </a>
 
-                    <a
-                      href="https://www.linkedin.com/company/premiergroup-co/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#40BD02] transition-colors"
-                    >
-                      <Linkedin size={18} />
-                    </a>
+                  <a
+                    href="https://www.linkedin.com/company/premiergroup-co/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#40BD02] transition-colors"
+                  >
+                    <Linkedin size={18} />
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          
         </div>
       </section>
 
-    <section className="w-full">
-              <a
-  href="https://maps.app.goo.gl/ypQ9XFfAASKzmze78"
-  target="_blank"
-  rel="noopener noreferrer"
->
-        <img src="/image 104.png" className="w-full" alt="Banner" />
+      <section className="w-full">
+        <a
+          href="https://maps.app.goo.gl/ypQ9XFfAASKzmze78"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/image 104.png" className="w-full" alt="Banner" />
         </a>
       </section>
       <Footer />
