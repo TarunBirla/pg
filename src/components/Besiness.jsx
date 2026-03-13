@@ -23,9 +23,13 @@ const Besiness = () => {
     fetchData();
   }, []);
 
+  const createSlug = (title) => {
+    return title.toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, "-");
+  };
   return (
     <>
       <Header />
+
 
       <section
         className="relative w-full h-[50vh] sm:h-[60vh] md:h-[85vh] bg-cover md:bg-cover bg-center bg-no-repeat"
@@ -72,34 +76,38 @@ const Besiness = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {business.slice(0, 5).map((item, index) => (
-              <div
-                key={item.id}
-                className={`relative group cursor-pointer ${
-                  index === 4 ? "sm:col-span-2" : ""
-                }`}
-              >
-                <img
-                  src={item.image_url}
-                  className="w-full h-48 object-cover"
-                  alt={item.title}
-                />
+              {business.slice(0, 5).map((item, index) => {
+                const slug = createSlug(item.title);
 
-                <div className="absolute inset-0 bg-black/20 rounded"></div>
-                  <Link to={`/businesses-details/${item.id}`}>
+                return (
+                  <div
+                    key={item.id}
+                    className={`relative group cursor-pointer ${
+                      index === 4 ? "sm:col-span-2" : ""
+                    }`}
+                  >
+                    <Link to={`/businesses-details/${createSlug(item.title)}`}>
+                      <img
+                        src={item.image_url}
+                        className="w-full h-48 object-cover"
+                        alt={item.title}
+                      />
 
-                <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
-                  {item.title}
-                </p>
+                      <div className="absolute inset-0 bg-black/20 rounded"></div>
 
-                <div className="absolute left-3 bottom-4 w-[75%] h-[1px] bg-gradient-to-r from-[#C1FF00] to-[#2295CA]"></div>
+                      <p className="absolute bottom-6 left-3 text-white font-semibold text-lg">
+                        {item.title}
+                      </p>
 
-                <span className="absolute bottom-2 right-3 text-white text-xl">
-                  <img src="/img/icon.png" />
-                </span>
-                  </Link>
-              </div>
-            ))}
+                      <div className="absolute left-3 bottom-4 w-[75%] h-[1px] bg-gradient-to-r from-[#C1FF00] to-[#2295CA]"></div>
+
+                      <span className="absolute bottom-2 right-3 text-white text-xl">
+                        <img src="/img/icon.png" />
+                      </span>
+                    </Link>
+                  </div>
+                );
+              })}
           </div>
 
           {business[5] && (
